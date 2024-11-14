@@ -6,6 +6,7 @@ use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\employe\EmployeController;
 use App\Http\Controllers\admin\manajer\ManajerController;
+use App\Http\Controllers\admin\vacancy\VacancyController;
 use App\Http\Controllers\employe\CandidateController;
 use \App\Http\Controllers\manajer\data\PegawaiController as DataPegawaiController;
 
@@ -48,6 +49,10 @@ Route::middleware('admin')->group(function () {
 
     //data pelamar
     Route::get('/employe/data', [EmployeController::class, 'index'])->name('employe.index');
+
+    //Vacancy
+    Route::get('/vacancy', [VacancyController::class, 'index'])->name('vacancy.index');
+
 
 });
 

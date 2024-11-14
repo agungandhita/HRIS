@@ -13,6 +13,8 @@
 
 
     @include('rekrutmen.partials.end')
+    @include('rekrutmen.partials.footer')
+
 
 
 
