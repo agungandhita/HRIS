@@ -24,7 +24,7 @@ class='shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] sticky top-0 py-3 px-4 sm:px-
         </a>
       </li>
       <li class='max-lg:border-b max-lg:py-3 px-3'>
-        <a href='javascript:void(0)'
+        <a href='/'
           class='hover:text-yellow-400 text-yellow-400 block font-semibold transition-all'>Home</a>
       </li>
       <li class='max-lg:border-b max-lg:py-3 px-3'><a href='javascript:void(0)'
@@ -33,7 +33,7 @@ class='shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] sticky top-0 py-3 px-4 sm:px-
       <li class='max-lg:border-b max-lg:py-3 px-3'><a href='javascript:void(0)'
           class='hover:text-yellow-400 block font-semibold transition-all'>Menu</a>
       </li>
-      <li class='max-lg:border-b max-lg:py-3 px-3'><a href='javascript:void(0)'
+      <li class='max-lg:border-b max-lg:py-3 px-3'><a href='/career'
           class='hover:text-yellow-400 block font-semibold transition-all'>Career</a>
       </li>
       {{-- <li class='max-lg:border-b max-lg:py-3 px-3'><a href='javascript:void(0)'
@@ -57,3 +57,24 @@ class='shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] sticky top-0 py-3 px-4 sm:px-
   </div>
 </div>
 </header>
+
+
+<script>
+
+  var toggleOpen = document.getElementById('toggleOpen');
+  var toggleClose = document.getElementById('toggleClose');
+  var collapseMenu = document.getElementById('collapseMenu');
+
+  function handleClick() {
+    if (collapseMenu.style.display === 'block') {
+      collapseMenu.style.display = 'none';
+    } else {
+      collapseMenu.style.display = 'block';
+    }
+  }
+
+  toggleOpen.addEventListener('click', handleClick);
+  toggleClose.addEventListener('click', handleClick);
+
+</script>
+</body>

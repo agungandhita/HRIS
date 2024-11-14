@@ -51,10 +51,11 @@ Route::middleware('admin')->group(function () {
 
 });
 
-
-    Route::get('/', [CandidateController::class, 'index'])->name('home');
-
 Route::middleware(['auth', 'manajer'])->group(function () {
     Route::get('/manajer', [\App\Http\Controllers\manajer\dashboard\DashboardController::class, 'index'])->name('manajer');
     Route::get('/list/pegawai', [DataPegawaiController::class, 'index'])->name('data');
 });
+
+Route::get('/', [CandidateController::class, 'index'])->name('home');
+Route::get('/career', [CandidateController::class, 'career'])->name('career');
+
