@@ -32,7 +32,7 @@
               <p>Experience unparalleled customization options tailored to suit your unique needs. Our platform provides
                 a wide array of features, ensuring you have the flexibility to personalize your journey.</p>
               <button type="button"
-                class="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-5 py-2.5 mt-8 transition-all">
+                class="bg-yellow-400 hover:bg-yellow-600 text-white rounded-full px-5 py-2.5 mt-8 transition-all">
                 Learn More
               </button>
             </div>
@@ -41,7 +41,7 @@
               <p>Unlock top-notch performance with our advanced optimization techniques. We prioritize speed,
                 efficiency, and reliability to ensure a seamless experience, no matter the complexity of your tasks.</p>
               <button type="button"
-                class="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-5 py-2.5 mt-8 transition-all">
+                class="bg-yellow-400 hover:bg-yellow-600 text-white rounded-full px-5 py-2.5 mt-8 transition-all">
                 Learn More
               </button>
             </div>
@@ -57,42 +57,42 @@
         <div class="max-w-7xl max-md:max-w-lg mx-auto">
           <h2 class="md:text-4xl text-3xl font-bold md:text-center mb-14">Our Latest Blogs</h2>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-14">
-            <div class="bg-white cursor-pointer rounded-md overflow-hidden group">
+            <div class="bg-white cursor-pointer rounded-md overflow-hidden group shadow-best">
               <div class="relative overflow-hidden">
                 <img src="https://readymadeui.com/Imagination.webp" alt="Blog Post 1"
                   class="w-full h-60 object-cover group-hover:scale-125 transition-all duration-300" />
-                <div class="px-4 py-2.5 text-white bg-blue-600 absolute bottom-0 right-0">June 10, 2023</div>
+                <div class="px-4 py-2.5 text-white bg-yellow-400 absolute bottom-0 right-0 rounded-tl-2xl">June 10, 2023</div>
               </div>
               <div class="p-6">
-                <h3 class="text-xl font-semibold">A Guide to Igniting Your Imagination</h3>
+                <h3 class="text-xl font-semibold line-clamp-1">A Guide to Igniting Your Imagination</h3>
                 <button type="button"
-                  class="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-5 py-2.5 mt-6 transition-all">Read
+                  class="bg-yellow-400 hover:bg-yellow-700 text-white rounded-xl px-5 py-2.5 mt-6 transition-all">Read
                   More</button>
               </div>
             </div>
-            <div class="bg-white cursor-pointer rounded-md overflow-hidden group">
+            <div class="bg-white cursor-pointer rounded-md overflow-hidden group shadow-best">
               <div class="relative overflow-hidden">
                 <img src="https://readymadeui.com/hacks-watch.webp" alt="Blog Post 2"
                   class="w-full h-60 object-cover group-hover:scale-125 transition-all duration-300" />
-                <div class="px-4 py-2.5 text-white bg-blue-600 absolute bottom-0 right-0">April 20, 2023</div>
+                <div class="px-4 py-2.5 text-white bg-yellow-400 absolute bottom-0 right-0 rounded-tl-2xl">April 20, 2023</div>
               </div>
               <div class="p-6">
-                <h3 class="text-xl font-semibold">Hacks to Supercharge Your Day</h3>
+                <h3 class="text-xl font-semibold line-clamp-1">Hacks to Supercharge Your Day</h3>
                 <button type="button"
-                  class="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-5 py-2.5 mt-6 transition-all">Read
+                  class="bg-yellow-400 hover:bg-yellow-700 text-white rounded-xl px-5 py-2.5 mt-6 transition-all">Read
                   More</button>
               </div>
             </div>
-            <div class="bg-white cursor-pointer rounded-md overflow-hidden group">
+            <div class="bg-white cursor-pointer rounded-md overflow-hidden group shadow-best">
               <div class="relative overflow-hidden">
                 <img src="https://readymadeui.com/prediction.webp" alt="Blog Post 3"
                   class="w-full h-60 object-cover group-hover:scale-125 transition-all duration-300" />
-                <div class="px-4 py-2.5 text-white bg-blue-600 absolute bottom-0 right-0">August 16, 2023</div>
+                <div class="px-4 py-2.5 text-white bg-yellow-400 absolute bottom-0 right-0 rounded-tl-2xl">August 16, 2023</div>
               </div>
               <div class="p-6">
-                <h3 class="text-xl font-semibold">Trends and Predictions</h3>
+                <h3 class="text-xl font-semibold line-clamp-1">Trends and Predictions</h3>
                 <button type="button"
-                  class="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-5 py-2.5 mt-6 transition-all">Read
+                  class="bg-yellow-400 hover:bg-yellow-700 text-white rounded-xl px-5 py-2.5 mt-6 transition-all">Read
                   More</button>
               </div>
             </div>
@@ -100,7 +100,7 @@
         </div>
       </div>
 
-      <div class="mt-28">
+      {{-- <div class="mt-28">
         <div class="grid md:grid-cols-2 justify-center items-center gap-10">
           <div>
             <h2 class="md:text-4xl text-3xl font-bold mb-6">Unlock Premium Features</h2>
@@ -115,9 +115,14 @@
             <img src="https://readymadeui.com/login-image.webp" alt="Premium Benefits" class="w-full mx-auto" />
           </div>
         </div>
-      </div>
+      </div> --}}
+
+ 
 
       <div class="mt-28 bg-gray-50 px-4 sm:px-10 py-12">
+        <h1 class="text-center mb-8 font-semibold text-4xl ">
+          Testimonial
+        </h1>
         <div class="max-w-6xl mx-auto">
           <div class="grid md:grid-cols-2 items-center gap-8">
             <div class="space-y-6 bg-gray-100 rounded-md p-6 max-w-md max-md:order-1">
@@ -148,7 +153,6 @@
               </div>
             </div>
             <div>
-              <h6 class="text-xl font-bold text-gray-300 mb-4">Testimonials</h6>
               <h2 class="md:text-4xl text-3xl font-bold">We are loyal with our customer</h2>
               <div class="mt-4">
                 <p>Veniam proident aute magna anim excepteur et ex consectetur velit ullamco veniam minim aute sit. Elit
@@ -159,7 +163,7 @@
         </div>
       </div>
 
-      <div class="mt-28">
+      {{-- <div class="mt-28">
         <h2 class="md:text-4xl text-3xl font-bold text-center mb-14">Application Metrics</h2>
         <div class="grid lg:grid-cols-4 sm:grid-cols-2 gap-6 max-lg:gap-12">
           <div class="text-center">
@@ -183,7 +187,7 @@
             <p class="mt-2">The percentage of time the server has been operational and available.</p>
           </div>
         </div>
-      </div>
+      </div> --}}
 
       <div class="mt-28 bg-gray-50 px-4 sm:px-10 py-12 space-y-6">
         <div class="md:text-center max-w-2xl mx-auto mb-14">
@@ -191,7 +195,7 @@
           <p>Explore common questions and find answers to help you make the most out of our services. If you don't see
             your question here, feel free to contact us for assistance.</p>
         </div>
-        <div class="shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] border-2 border-blue-600 rounded-md transition-all"
+        <div class="shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] border-2 border-yellow-400 rounded-md transition-all"
           role="accordion">
           <button type="button" class="w-full font-semibold text-left py-5 px-6 flex items-center">
             <span class="text-base mr-4">Are there any special discounts or promotions available during the
@@ -215,7 +219,7 @@
           </div>
         </div>
         <div
-          class="shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] border-2 border-transparent hover:border-blue-600 rounded-md transition-all"
+          class="shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] border-2 border-transparent hover:border-yellow-400 rounded-md transition-all"
           role="accordion">
           <button type="button" class="w-full font-semibold text-left py-5 px-6 flex items-center">
             <span class="text-base mr-4">What are the dates and locations for the product launch events?</span>
@@ -231,7 +235,7 @@
           </div>
         </div>
         <div
-          class="shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] border-2 border-transparent hover:border-blue-600 rounded-md transition-all"
+          class="shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] border-2 border-transparent hover:border-yellow-400 rounded-md transition-all"
           role="accordion">
           <button type="button" class="w-full font-semibold text-left py-5 px-6 flex items-center">
             <span class="text-base mr-4">Can I bring a guest with me to the product launch event?</span>
@@ -247,7 +251,7 @@
           </div>
         </div>
         <div
-          class="shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] border-2 border-transparent hover:border-blue-600 rounded-md transition-all"
+          class="shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] border-2 border-transparent hover:border-yellow-400 rounded-md transition-all"
           role="accordion">
           <button type="button" class="w-full font-semibold text-left py-5 px-6 flex items-center">
             <span class="text-base mr-4">How can I contact customer support?</span>
@@ -263,7 +267,7 @@
           </div>
         </div>
         <div
-          class="shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] border-2 border-transparent hover:border-blue-600 rounded-md transition-all"
+          class="shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] border-2 border-transparent hover:border-yellow-400 rounded-md transition-all"
           role="accordion">
           <button type="button" class="w-full font-semibold text-left py-5 px-6 flex items-center">
             <span class="text-base mr-4">What payment methods do you accept?</span>
@@ -281,14 +285,14 @@
       </div>
     </div>
 
-    <footer class="bg-gray-50 px-4 sm:px-10 py-12 mt-28">
-      <div class="md:max-w-[50%] mx-auto text-center">
+    <footer class="bg-gray-50 px-4 sm:px-10 py-12 mt-16">
+      {{-- <div class="md:max-w-[50%] mx-auto text-center">
         <div class="bg-[#fff] border flex px-2 py-1 rounded-full text-left mt-4">
           <input type='email' placeholder='Enter your email' class="w-full outline-none bg-transparent pl-4" />
           <button type='button'
             class="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-5 py-2.5 transition-all">Subscribe</button>
         </div>
-      </div>
+      </div> --}}
       <div class="grid max-sm:grid-cols-1 max-xl:grid-cols-2 xl:grid-cols-5 gap-8 border-t border-gray-300 mt-10 pt-8">
         <div class="xl:col-span-2">
           <h4 class="text-xl font-semibold mb-6">Disclaimer</h4>
@@ -331,8 +335,8 @@
           </ul>
         </div>
       </div>
-      <p class='mt-10'>© 2023<a href='https://readymadeui.com/' target='_blank'
-          class="hover:underline mx-1">ReadymadeUI</a>All Rights Reserved.</p>
+      <p class='mt-10'>© 2024<a href='https://readymadeui.com/' target='_blank'
+          class="hover:underline mx-1">Andhii</a>All Rights Reserved.</p>
     </footer>
 
   </div>

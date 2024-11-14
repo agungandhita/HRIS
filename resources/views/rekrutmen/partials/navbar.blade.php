@@ -43,10 +43,10 @@ class='shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] sticky top-0 py-3 px-4 sm:px-
   </div>
 
   <div class='flex ml-auto'>
-    <button class='mr-6 font-semibold border-none outline-none'><a href='javascript:void(0)'
+    <button class='mr-6 font-semibold border-none outline-none'><a href='/login'
         class='text-yellow-400 hover:underline'>Login</a></button>
-    <button class='bg-yellow-400 hover:bg-yellow-700 transition-all text-white rounded-full px-5 py-2.5'>Sign
-      up</button>
+    <button class='bg-yellow-400 hover:bg-yellow-700 transition-all text-white rounded-full px-5 py-2.5'><a href="/register">Sign
+      up</a> </button>
     <button id="toggleOpen" class='lg:hidden ml-7'>
       <svg class="w-7 h-7" fill="#000" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd"
