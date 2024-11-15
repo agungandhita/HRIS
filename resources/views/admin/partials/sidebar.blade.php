@@ -3,9 +3,9 @@
     aria-label="Sidebar">
     {{-- logo area --}}
     <div class="h-20 mb-2 border-b-[4px] border-white px-3 relative">
-        <div class="flex gap-x-4 absolute top-[50%] -translate-y-[50%] p-2">
-            <img src="{{ asset('img/logo.png') }}" alt="" class="object-contain w-7 h-7 my-auto">
-            <h1 class="font-semibold text-white text-[21px] my-auto">Admin</h1>
+        <div class="absolute top-[50%] -translate-y-[50%] p-2">
+            {{-- <img src="{{ asset('img/logo.png') }}" alt="" class="object-contain w-7 h-7 my-auto"> --}}
+            <h1 class="font-semibold text-white text-[30px] my-auto ">Admin</h1>
         </div>
     </div>
     
@@ -196,8 +196,8 @@
                 <img src="{{ asset('img/myFoto.jpg') }}" alt=""
                     class="object-cover w-10 h-10 rounded-full my-auto">
                 <div class="my-auto">
-                    <h1 class="text-lg text-white">Satria Pinandhita</h1>
-                    <h1 class="text-sm text-gray-300">Admin</h1>
+                    <h1 class="text-lg text-white font-bold">Satria Pinandhita</h1>
+                    <h1 class="text-lg text-white font-bold">Admin</h1>
                 </div>
             </div>
         </div>
