@@ -30,7 +30,7 @@ class StoreManajerRequest extends FormRequest
             'password' => 'required|string|min:6'
         ];
     }
-
+    
     public function messages() {
         return[
             'nama.required' => 'nama wajib diisi.',

@@ -3,7 +3,7 @@
 @section('container')
 <div class="font-[sans-serif] bg-gray-100 max-w-4xl flex items-center mx-auto md:h-screen p-4">
     <div class="grid md:grid-cols-3 shadow-2xl bg-white items-center rounded-xl overflow-hidden">
-      <div class="max-md:order-1 flex flex-col justify-center space-y-16 max-md:mt-16 min-h-full bg-gradient-to-r from-gray-900 to-gray-700 lg:px-8 px-4 py-4">
+      <div class="max-md:order-1 flex flex-col justify-center space-y-16 max-md:mt-16 min-h-full bg-gradient-to-r from-yellow-600 to-yellow-500 lg:px-8 px-4 py-4">
         <div>
           <h4 class="text-white text-lg font-semibold">Create an Account</h4>
           <p class="text-[13px] text-gray-300 mt-3 leading-relaxed">Welcome to our registration page! Get started by creating your account.</p>
@@ -22,17 +22,7 @@
           <h3 class="text-gray-800 text-2xl font-bold">Buat Akun</h3>
         </div>
 
-        {{-- Pesan Error --}}
-        {{-- @if ($errors->any())
-            <div class="bg-red-500 text-white p-4 mb-6 rounded-md">
-                <ul class="list-disc list-inside">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif --}}
-
+        
         <div class="space-y-6">
           <div>
             <label class="text-gray-800 text-sm mb-2 block">Nama</label>
@@ -79,11 +69,11 @@
         </div>
 
         <div class="!mt-12">
-          <button type="submit" class="w-full py-3 px-4 tracking-wider text-sm rounded-md text-white bg-gray-700 hover:bg-gray-800 focus:outline-none">
+          <button type="submit" class="w-full py-3 px-4 tracking-wider text-sm rounded-md text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none">
             Buat Akun
           </button>
         </div>
-        <p class="text-gray-800 text-sm mt-6 text-center">Sudah punya akun? <a href="/" class="text-blue-600 font-semibold hover:underline ml-1">Login disini</a></p>
+        <p class="text-gray-800 text-sm mt-6 text-center">Sudah punya akun? <a href="/login" class="text-yellow-400 font-semibold hover:underline ml-1">Login disini</a></p>
       </form>
       {{-- end form  --}}
 

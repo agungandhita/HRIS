@@ -1,19 +1,19 @@
 @extends('auth.layouts.main')
 
 @section('container')
-<div class="font-[sans-serif] bg-white">
-    <div class="grid lg:grid-cols-4 md:grid-cols-3 items-center">
-      <form class="lg:col-span-3 md:col-span-2 max-w-lg w-full p-6 mx-auto" action="/login/akun" method="POST">
-        @csrf
-        <div class="mb-12">
-          <h3 class="text-gray-800 text-4xl font-extrabold">Login</h3>
-          <p class="text-gray-800 text-sm mt-6 leading-relaxed">Welcome back! Please log in to access your account and explore a world of possibilities.</p>
-        </div>
+<div class="font-[sans-serif] max-w-7xl mx-auto h-screen">
+  <div class="grid md:grid-cols-2 items-center gap-8 h-full">
+    <form class="max-w-lg max-md:mx-auto w-full p-6"action="/login/akun" method="POST">
+      @csrf
+      <div class="mb-12">
+        <h3 class="text-gray-800 text-4xl font-extrabold">Sign in</h3>
+        <p class="text-gray-800 text-sm mt-6">Immerse yourself in a hassle-free login journey with our intuitively designed login form. Effortlessly access your account.</p>
+      </div>
 
+      <div>
+        <label class="text-gray-800 text-[15px] mb-2 block">Email</label>
         <div class="relative flex items-center">
-          <label class="text-gray-800 text-[13px] bg-white absolute px-2 top-[-9px] left-[18px] font-semibold">Email</label>
-          <input type="email" placeholder="Masukan Email" name="email"
-            class="px-4 py-3.5 bg-white w-full text-sm border-2 border-gray-200 focus:border-blue-600 rounded-md outline-none" />
+          <input name="email" type="text" required class="w-full text-sm text-gray-800 bg-gray-100 focus:bg-transparent px-4 py-3.5 rounded-md outline-blue-600" placeholder="Enter email" />
           <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" class="w-[18px] h-[18px] absolute right-4" viewBox="0 0 682.667 682.667">
             <defs>
               <clipPath id="a" clipPathUnits="userSpaceOnUse">
@@ -26,53 +26,43 @@
             </g>
           </svg>
         </div>
+      </div>
 
-        <div class="relative flex items-center mt-8">
-          <label class="text-gray-800 text-[13px] bg-white absolute px-2 top-[-9px] left-[18px] font-semibold">Password</label>
-          <input type="Password" placeholder="Masukan Password" name="password"
-            class="px-4 py-3.5 bg-white w-full text-sm border-2 border-gray-200 focus:border-blue-600 rounded-md outline-none" />
+      <div class="mt-4">
+        <label class="text-gray-800 text-[15px] mb-2 block">Password</label>
+        <div class="relative flex items-center">
+          <input name="password" type="password" required class="w-full text-sm text-gray-800 bg-gray-100 focus:bg-transparent px-4 py-3.5 rounded-md outline-blue-600" placeholder="Enter password" />
           <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" class="w-[18px] h-[18px] absolute right-4 cursor-pointer" viewBox="0 0 128 128">
             <path d="M64 104C22.127 104 1.367 67.496.504 65.943a4 4 0 0 1 0-3.887C1.367 60.504 22.127 24 64 24s62.633 36.504 63.496 38.057a4 4 0 0 1 0 3.887C126.633 67.496 105.873 104 64 104zM8.707 63.994C13.465 71.205 32.146 96 64 96c31.955 0 50.553-24.775 55.293-31.994C114.535 56.795 95.854 32 64 32 32.045 32 13.447 56.775 8.707 63.994zM64 88c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm0-40c-8.822 0-16 7.178-16 16s7.178 16 16 16 16-7.178 16-16-7.178-16-16-16z" data-original="#000000"></path>
           </svg>
         </div>
+      </div>
 
-        <div class="flex flex-wrap items-center justify-between gap-4 mt-4">
-          <div class="flex items-center">
-            <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 shrink-0 text-blue-600 focus:ring-blue-500 border-gray-300 rounded-md" />
-            <label for="remember-me" class="ml-3 block text-sm text-gray-800">
-            Ingat Saya
-            </label>
-          </div>
-          <div>
-            <a href="jajvascript:void(0);" class="text-blue-600 font-semibold text-sm hover:underline">
-              Lupa Password
-            </a>
-          </div>
+      <div class="flex flex-wrap items-center gap-4 justify-between mt-4">
+        <div class="flex items-center">
+          <input id="remember-me" name="remember-me" type="checkbox" class="shrink-0 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded-md" />
+          <label for="remember-me" class="ml-3 block text-sm text-gray-800">
+            Remember me
+          </label>
         </div>
-
-        <div class="mt-12">
-          <button type="submit" class="w-full shadow-xl py-2.5 px-4 text-sm tracking-wider font-semibold rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
-      Login
-          </button>
-        </div>
-
-        <p class="text-sm text-gray-800 mt-8 text-center">Belum Punya Akun?<a href="/register" class="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap">Registrasi Disini</a></p>
-      </form>
-
-      <div class="flex flex-col justify-center space-y-16 md:h-screen max-md:mt-16 min-h-full bg-gradient-to-r from-blue-500 to-blue-700 lg:px-8 px-4 py-4">
-        <div>
-          <h4 class="text-white text-lg font-semibold">Secure Authentication</h4>
-          <p class="text-[13px] text-white mt-2">Log in with your registered email and password securely.</p>
-        </div>
-        <div>
-          <h4 class="text-white text-lg font-semibold">Remember Me</h4>
-          <p class="text-[13px] text-white mt-2">Enable the "Remember Me" option for a seamless login experience in future sessions.</p>
-        </div>
-        <div>
-          <h4 class="text-white text-lg font-semibold">Forgot Password?</h4>
-          <p class="text-[13px] text-white mt-2">Easily recover your account by clicking on the "Forgot Password?" link.</p>
+        <div class="text-sm">
+          <a href="jajvascript:void(0);" class="text-yellow-400 font-semibold hover:underline">
+            Forgot your password?
+          </a>
         </div>
       </div>
+
+      <div class="mt-8">
+        <button type="submit" class="w-full shadow-xl py-3 px-6 text-sm tracking-wide font-semibold rounded-md text-white bg-yellow-400 hover:bg-yellow-600 focus:outline-none">
+          Log in
+        </button>
+      </div>
+      <p class="text-sm mt-8 text-center text-gray-800">Don't have an account? <a href="/register" class="text-yellow-400 font-semibold tracking-wide hover:underline ml-1">Register here</a></p>
+    </form>
+
+    <div class="h-full md:py-6 flex items-center relative max-md:before:hidden before:absolute before:bg-gradient-to-r before:from-gray-50 before:via-[#f5d56a] before:to-[#e7d561] before:h-full before:w-3/4 before:right-0 before:z-0">
+      <img src="{{ asset('bahan/log.png') }}" class="rounded-md lg:w-4/5 md:w-11/12 z-50 relative" alt="Dining Experience" />
     </div>
   </div>
+</div>
 @endsection

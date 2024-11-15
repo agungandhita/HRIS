@@ -13,7 +13,7 @@
         </div>
 
         <div class="bg-white relative z-20 mx-auto w-full rounded-t-2xl min-h-[380px] pb-20">
-            <div class="mx-auto pt-7 mb-10 lg:mb-14 container">
+            <div class="mx-auto pt-7 mb-10 lg:mb-14 px-8">
                 <h2 class="text-2xl font-extrabold md:text-5xl md:leading-tight dark:text-white italic">RECENT VACANCY
                 </h2>
                 <div class="mt-1 w-64 h-3 bg-gradient-to-r from-red-900"></div>

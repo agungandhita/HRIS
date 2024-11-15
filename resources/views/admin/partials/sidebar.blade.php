@@ -123,7 +123,7 @@
                 </a>
             </li> --}}
             <li>
-                <a href="/admin" class="flex items-center p-2 text-gray-400 rounded-lg group">
+                <a href="/vacancy" class="flex items-center p-2 text-gray-400 rounded-lg group">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
                         class="flex-shrink-0 w-5 h-5 fill-gray-400 transition duration-75"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                         <path

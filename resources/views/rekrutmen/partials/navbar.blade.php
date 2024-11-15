@@ -1,7 +1,7 @@
 <header
 class='shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] sticky top-0 py-3 px-4 sm:px-10 bg-white z-50 min-h-[70px]'>
 <div class='flex flex-wrap items-center gap-4'>
-  <a href="javascript:void(0)"><img src="{{ asset('img/logo.png') }}" alt="logo" class='w-20' />
+  <a href="javascript:void(0)"><img src="{{ asset('img/logo.png') }}" alt="logo" class='w-14 md:w-16' />
   </a>
 
   <div id="collapseMenu"
@@ -19,8 +19,11 @@ class='shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] sticky top-0 py-3 px-4 sm:px-
 
     <ul
       class='lg:ml-12 lg:flex gap-x-6 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50'>
-      <li class='mb-6 hidden max-lg:block'>
-        <a href="javascript:void(0)"><img src="https://readymadeui.com/readymadeui.svg" alt="logo" class='w-36' />
+      <li class='mb-6 hidden max-lg:block '>
+        <a href="javascript:void(0)"><img src="{{ asset('img/logo.png') }}" alt="logo" class='w-14' />
+          <h1 class="text-base mt-3 pl-2 font-semibold text-slate-700">
+            Resto Jepang Kekinian
+          </h1>
         </a>
       </li>
       <li class='max-lg:border-b max-lg:py-3 px-3'>
@@ -43,9 +46,9 @@ class='shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] sticky top-0 py-3 px-4 sm:px-
   </div>
 
   <div class='flex ml-auto'>
-    <button class='mr-6 font-semibold border-none outline-none'><a href='/login'
+    <button class='mr-6 font-semibold border-none outline-none text-base'><a href='/login'
         class='text-yellow-400 hover:underline'>Login</a></button>
-    <button class='bg-yellow-400 hover:bg-yellow-700 transition-all text-white rounded-full px-5 py-2.5'><a href="/register">Sign
+    <button class='bg-yellow-400 hover:bg-yellow-700 transition-all text-white text-base rounded-full px-5 py-2.5'><a href="/register">Sign
       up</a> </button>
     <button id="toggleOpen" class='lg:hidden ml-7'>
       <svg class="w-7 h-7" fill="#000" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
