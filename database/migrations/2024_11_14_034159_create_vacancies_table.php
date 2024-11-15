@@ -19,9 +19,14 @@ return new class extends Migration
             $table->enum('level', ['kontrak', 'tetap']);
             $table->date('posting_date');
             $table->date('closing_date');
-            $table->integer('vacancy_count');
             $table->text('job_description');
             $table->text('qualifications');
+            $table->integer('user_created')->nullable();
+            $table->integer('user_updated')->nullable();
+            $table->softDeletes();
+            $table->integer('user_deleted')->nullable();
+            $table->integer('deleted')->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
     }

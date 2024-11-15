@@ -15,4 +15,9 @@ class Vacancy extends Model
     protected $guarded =[
         'vacancy_id'
     ];
+    public function jobApplications()
+    {
+        return $this->hasMany(JobApplication::class, 'vacancy_id', 'vacancy_id');
+    }
+    
 }

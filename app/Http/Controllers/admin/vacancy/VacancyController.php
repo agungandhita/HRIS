@@ -11,4 +11,8 @@ class VacancyController extends Controller
     public function index() {
         return view ('admin.loker.index');
     }
+
+    public function add() {
+        return view('admin.loker.add');
+    }
 }

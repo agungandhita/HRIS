@@ -15,4 +15,11 @@ class Employe extends Model
     protected $guarded =[
         'employes_id'
     ];
+
+    public function jobApplications()
+    {
+        return $this->hasMany(JobApplication::class, 'employe_id', 'employe_id');
+    }
+
+    
 }
