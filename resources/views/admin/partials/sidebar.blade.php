@@ -193,8 +193,6 @@
 
             </div>
             <div class="max-h-[50px] h-full w-full border-t-[1px] border-main2 flex gap-x-3 pt-2">
-                <img src="{{ asset('img/myFoto.jpg') }}" alt=""
-                    class="object-cover w-10 h-10 rounded-full my-auto">
                 <div class="my-auto">
                     <h1 class="text-lg text-white font-bold">Satria Pinandhita</h1>
                     <h1 class="text-lg text-white font-bold">Admin</h1>

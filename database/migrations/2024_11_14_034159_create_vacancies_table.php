@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('vacancies', function (Blueprint $table) {
             $table->id('vacancy_id');
             $table->string('title');
-            $table->string('job_type');
-            $table->string('location'); 
+            $table->string('cabang');
+            $table->string('provinsi'); 
             $table->enum('level', ['kontrak', 'tetap']);
             $table->date('posting_date');
             $table->date('closing_date');

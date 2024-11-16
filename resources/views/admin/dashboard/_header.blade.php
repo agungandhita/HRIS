@@ -1,4 +1,4 @@
-<div class="fixed w-full top-0 left-0 px-4 border-b-[1px] border-main3 bg-main">
+<div class="fixed w-full top-0 left-0 px-4 border-b-[1px] border-main3 bg-main z-30">
     <div class="h-20 relative md:ml-64">
         <div class="absolute top-[50%] -translate-y-[50%] w-full overflow-hidden">
             <div class="flex flex-row  justify-between">
