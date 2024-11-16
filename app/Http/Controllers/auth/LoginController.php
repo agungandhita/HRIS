@@ -34,8 +34,8 @@ class LoginController extends Controller
                 }
             }
 
-            return back()->with('toast_succes', 'Login berhasil');
-            
+            return back()->with('success', 'Login berhasil');
+
         } catch (Exception $e) {
             return back()->with('toast_error', 'An unexpected error occurred: ' . $e->getMessage());
         }
@@ -43,17 +43,13 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
-        try {
-            Auth::logout(); 
-        
-            $request->session()->invalidate(); 
-        
-            $request->session()->regenerateToken(); 
-        
-            return redirect('/'); 
+            Auth::logout();
 
-        } catch (Exception $e) {
-            return back()->with('LogoutError', 'An unexpected error occurred: ' . $e->getMessage());
-        }
+            $request->session()->invalidate();
+
+            $request->session()->regenerateToken();
+
+            return redirect('/')->with('Error', 'An unexpected error occurred: ');
+
     }
 }

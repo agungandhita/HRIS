@@ -52,6 +52,7 @@ Route::middleware('admin')->group(function () {
 
     //Vacancy
     Route::get('/vacancy', [VacancyController::class, 'index'])->name('vacancy.index');
+    Route::get('/vacancy/{id}', [VacancyController::class, 'show'])->name('vacancy.index');
     Route::get('/vacancy/add', [VacancyController::class, 'add'])->name('vacancy.add');
     Route::post('/vacancy/store', [VacancyController::class, 'store'])->name('vacancy.store');
 
