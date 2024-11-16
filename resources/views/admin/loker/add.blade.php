@@ -17,9 +17,9 @@
             </div>
         </div>
 
-        <div class="shadow-best bg-white rounded-md justify-between mb-4 border-main3 border-[1px]">
-            <div class="p-5 ">
-                <form class="font-[sans-serif]">
+        <form class="font-[sans-serif]">
+            <div class="shadow-best bg-white rounded-md justify-between mb-4 border-main3 border-[1px]">
+                <div class="p-5 ">
                     <div class="grid md:grid-cols-2 gap-x-6">
                         <div>
                             <h1 class="pt-3 md:pt-6 font-semibold text-lg md:text-2xl capitalize text-gray-600">
@@ -91,19 +91,8 @@
                         </div>
                     </div>
 
-                        <div>
-                            <h1 class="pt-3 md:pt-4 font-semibold text-lg md:text-2xl capitalize text-gray-600">
-                                deskripsi pekerjaan
-                            </h1>
-                            <div class="relative flex items-center">
-                               <textarea name="" id="" cols="10" rows="10" class="w-full text-lg">
 
-                               </textarea>
-                                
-                            </div>
-                        </div>
-
-                        <div>
+                    {{-- <div>
                             <h1 class="pt-3 md:pt-4 font-semibold text-lg md:text-2xl capitalize text-gray-600">
                                 Kualifikasi
                             </h1>
@@ -113,16 +102,43 @@
                                </textarea>
                                 
                             </div>
-                        </div>
+                        </div> --}}
 
-
-                    <div class="flex justify-end">
-                        <button type="submit"
-                            class="mt-8 px-4 py-2 text-lg font-semibold w-40 bg-yellow-400 hover:bg-yellow-600 text-white rounded transition-all">Submit</button>
-                    </div>
-                </form>
+                </div>
             </div>
-        </div>
-    </div>
 
+            <div class="shadow-best bg-white rounded-md justify-between mb-4 border-main3 border-[1px]">
+
+
+                <div class="p-5">
+                    <div>
+                        <h1 class="pt-3 md:pt-4 font-semibold text-lg md:text-2xl capitalize text-gray-600">
+                            deskripsi pekerjaan
+                        </h1>
+                        <div class="relative flex items-center">
+                            <textarea name="job_description" id="job_description" class="form-control textarea textarea-warning w-full text-lg rounded-lg" placeholder="Masukkan deskripsi pekerjaan..."></textarea>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="p-5">
+                    <div>
+                        <h1 class="md:pt-2 font-semibold text-lg md:text-2xl capitalize text-gray-600">
+                            Kualifikasi
+                        </h1>
+                        <div class="relative flex items-center">
+                            <textarea name="qualifications" id="qualifications" class="form-control textarea textarea-warning w-full text-lg rounded-lg"placeholder="Masukkan kualifikasi..."></textarea>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="flex justify-end mr-4">
+                    <button type="submit"
+                        class="mb-4 px-4 py-2 text-lg font-semibold w-40 bg-yellow-400 hover:bg-yellow-600 text-white rounded transition-all">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
 @endsection

@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id('vacancy_id');
             $table->string('title');
             $table->string('cabang');
-            $table->string('provinsi'); 
+            $table->string('provinsi');
             $table->enum('level', ['kontrak', 'tetap']);
             $table->date('posting_date');
             $table->date('closing_date');
-            $table->text('job_description');
-            $table->text('qualifications');
+            $table->json('job_description');
+            $table->json('qualifications');
             $table->integer('user_created')->nullable();
             $table->integer('user_updated')->nullable();
             $table->softDeletes();
