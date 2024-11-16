@@ -17,7 +17,8 @@
             </div>
         </div>
 
-        <form class="font-[sans-serif]">
+        <form class="font-[sans-serif]" method="POST" action="/vacancy/store">
+            @csrf
             <div class="shadow-best bg-white rounded-md justify-between mb-4 border-main3 border-[1px]">
                 <div class="p-5 ">
                     <div class="grid md:grid-cols-2 gap-x-6">
@@ -39,9 +40,10 @@
                                 <select name="level"
                                     class="select select-ghost px-4 bg-[#ffffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded transition-all">
                                     <option disabled selected class="text-base">Pilih Tipe Kerja</option>
-                                    <option class="text-base">Tetap</option>
-                                    <option class="text-base">Kontrak</option>
+                                    <option value="tetap" class="text-base">Tetap</option>
+                                    <option value="kontrak" class="text-base">Kontrak</option>
                                 </select>
+
                             </div>
                         </div>
                     </div>
@@ -52,7 +54,7 @@
                                 Cabang
                             </h1>
                             <div class="relative flex items-center">
-                                <input type="text" name="title" placeholder="Lamongan"
+                                <input type="text" name="cabang" placeholder="Lamongan"
                                     class="px-2 bg-[#ffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded transition-all" />
                             </div>
                         </div>
@@ -62,7 +64,7 @@
                                 Provinsi
                             </h1>
                             <div class="relative flex items-center">
-                                <input type="text" name="title" placeholder="jawa timur"
+                                <input type="text" name="provinsi" placeholder="jawa timur"
                                     class="px-2 bg-[#ffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded transition-all" />
                             </div>
                         </div>
@@ -85,25 +87,11 @@
                                 Sampai
                             </h1>
                             <div class="relative flex items-center">
-                                <input type="date" name="closing_date" placeholder="First Name"
+                                <input type="date" name="closing_date"
                                     class="px-2 bg-[#ffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded transition-all" />
                             </div>
                         </div>
                     </div>
-
-
-                    {{-- <div>
-                            <h1 class="pt-3 md:pt-4 font-semibold text-lg md:text-2xl capitalize text-gray-600">
-                                Kualifikasi
-                            </h1>
-                            <div class="relative flex items-center">
-                               <textarea name="" id="" cols="10" rows="10" class="w-full text-lg">
-
-                               </textarea>
-                                
-                            </div>
-                        </div> --}}
-
                 </div>
             </div>
 
@@ -113,26 +101,55 @@
                 <div class="p-5">
                     <div>
                         <h1 class="pt-3 md:pt-4 font-semibold text-lg md:text-2xl capitalize text-gray-600">
-                            deskripsi pekerjaan
+                            Deskripsi Pekerjaan
                         </h1>
                         <div class="relative flex items-center">
-                            <textarea name="job_description" id="job_description" class="form-control textarea textarea-warning w-full text-lg rounded-lg" placeholder="Masukkan deskripsi pekerjaan..."></textarea>
-
+                            <div id="jobDescriptionContainer" class="w-full">
+                                <div class="relative flex items-center mb-4 job-description-item">
+                                    <textarea name="job_description[]" id="job_description_1"
+                                        class="form-control textarea textarea-warning w-full text-lg rounded-lg"
+                                        placeholder="Masukkan deskripsi pekerjaan..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex space-x-4 mt-4">
+                            <button id="addJobDescriptionBtn"
+                                class="bg-blue-500 text-white px-4 py-2 rounded-md focus:outline-none hover:bg-blue-600">
+                                Tambah Deskripsi
+                            </button>
+                            <button id="removeJobDescriptionBtn"
+                                class="bg-red-500 text-white px-4 py-2 rounded-md focus:outline-none hover:bg-red-600">
+                                Hapus Deskripsi
+                            </button>
                         </div>
                     </div>
                 </div>
+
+
                 <div class="p-5">
                     <div>
                         <h1 class="md:pt-2 font-semibold text-lg md:text-2xl capitalize text-gray-600">
                             Kualifikasi
                         </h1>
-                        <div class="relative flex items-center">
-                            <textarea name="qualifications" id="qualifications" class="form-control textarea textarea-warning w-full text-lg rounded-lg"placeholder="Masukkan kualifikasi..."></textarea>
-
+                        <div id="qualifications-container">
+                            <div class="relative flex items-center mb-4">
+                                <textarea name="qualifications[]" id="qualifications"
+                                    class="form-control textarea textarea-warning w-full text-lg rounded-lg"
+                                    placeholder="Masukkan kualifikasi..."></textarea>
+                            </div>
+                        </div>
+                        <div class="flex space-x-4 mt-4">
+                            <button type="button" id="add-qualification"
+                                class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">
+                                Tambah Kualifikasi
+                            </button>
+                            <button type="button" id="remove-qualification"
+                                class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition">
+                                Hapus Kualifikasi
+                            </button>
                         </div>
                     </div>
                 </div>
-
 
                 <div class="flex justify-end mr-4">
                     <button type="submit"
@@ -141,4 +158,5 @@
             </div>
         </form>
     </div>
+
 @endsection

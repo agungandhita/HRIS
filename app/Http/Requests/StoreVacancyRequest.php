@@ -11,7 +11,7 @@ class StoreVacancyRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,16 @@ class StoreVacancyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|string|max:255',
+            'cabang' => 'required|string|max:255',
+            'provinsi' => 'required|string|max:255',
+            'level' => 'required|in:kontrak,tetap',
+            'posting_date' => 'required|date',
+            'closing_date' => 'required|date',
+            'job_description' => 'required|array',
+            'job_description.*' => 'required|string',
+            'qualifications' => 'required|array',
+            'qualifications.*' => 'required|string',
         ];
     }
 }
