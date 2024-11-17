@@ -54,4 +54,26 @@ class VacancyRepository implements VacancyInterface
 
         return $vacancies;
     }
+
+    public function updateVacancies(int $id, array $data) {
+
+        $vacancy = Vacancy::findOrFail($id);
+
+           // Menghilangkan karakter [ ] dan memisahkan berdasarkan tanda kutip
+           $jobDescription = preg_replace('/\[|\]/', '', $data['job_description']);
+           $qualifications = preg_replace('/\[|\]/', '', $data['qualifications']);
+
+           // Mengubah menjadi array berdasarkan tanda kutip
+           $jobDescriptionArray = array_map('trim', explode('","', trim($jobDescription, '"')));
+           $qualificationsArray = array_map('trim', explode('","', trim($qualifications, '"')));
+
+           // Encode kembali menjadi JSON
+           $vacancy->job_description = json_encode($jobDescriptionArray);
+           $vacancy->qualifications = json_encode($qualificationsArray);
+
+           // Simpan perubahan
+           $vacancy->save();
+
+           return $vacancy;
+    }
 }

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\admin\vacancy;
 
-use App\Models\Vacancy;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreVacancyRequest;
+use App\Http\Requests\UpdateVacancyRequest;
 use App\Repositories\Vacancy\VacancyInterface;
 use Illuminate\Http\Request;
 
@@ -33,7 +33,6 @@ class VacancyController extends Controller
         return view('admin.loker.add');
     }
 
-
     public function store(StoreVacancyRequest $request, VacancyInterface $vacancyRepository)
     {
 
@@ -45,4 +44,18 @@ class VacancyController extends Controller
 
         return redirect()->route('vacancy.index')->with('success', 'suskes menambah loker');
     }
+
+    public function update(UpdateVacancyRequest $request, $id)
+    {
+
+        $data = $request->only(['job_description', 'qualifications']);
+
+        $vacancy = $this->vacancyRepository->updateVacancies($id, $data);
+
+        return redirect()->route('vacancies.index')->with('success', 'Vacancy updated successfully.');
+    }
+
+    // public function edit($id){
+
+    // }
 }

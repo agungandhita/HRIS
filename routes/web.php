@@ -1,13 +1,12 @@
 <?php
 
+use App\Http\Controllers\page\FrontController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\admin\DashboardController;
-use App\Http\Controllers\admin\employe\EmployeController;
 use App\Http\Controllers\admin\manajer\ManajerController;
 use App\Http\Controllers\admin\vacancy\VacancyController;
-use App\Http\Controllers\employe\CandidateController;
 use \App\Http\Controllers\manajer\data\PegawaiController as DataPegawaiController;
 
 /*
@@ -47,8 +46,7 @@ Route::middleware('admin')->group(function () {
     Route::get('/manajer/detail', [ManajerController::class, 'look'])->name('edit');
     Route::post('/delete/{id}', [ManajerController::class, 'destroy'])->name('hapus');
 
-    //data pelamar
-    Route::get('/employe/data', [EmployeController::class, 'index'])->name('employe.index');
+
 
     //Vacancy
     Route::get('/vacancy', [VacancyController::class, 'index'])->name('vacancy.index');
@@ -63,6 +61,7 @@ Route::middleware(['auth', 'manajer'])->group(function () {
     Route::get('/list/pegawai', [DataPegawaiController::class, 'index'])->name('data');
 });
 
-Route::get('/', [CandidateController::class, 'index'])->name('home');
-Route::get('/career', [CandidateController::class, 'career'])->name('career');
+
+Route::get('/', [FrontController::class, 'index'])->name('home');
+Route::get('/career', [FrontController::class, 'career'])->name('career');
 

@@ -11,7 +11,7 @@ class UpdateVacancyRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class UpdateVacancyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'job_description' => 'required|string',
+            'qualifications' => 'required|string',
         ];
     }
 }
