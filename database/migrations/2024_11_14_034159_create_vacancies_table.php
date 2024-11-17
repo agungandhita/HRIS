@@ -21,6 +21,7 @@ return new class extends Migration
             $table->date('closing_date');
             $table->json('job_description');
             $table->json('qualifications');
+            $table->enum('status', ['open', 'closed'])->default('open');
             $table->integer('user_created')->nullable();
             $table->integer('user_updated')->nullable();
             $table->softDeletes();

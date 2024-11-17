@@ -21,15 +21,12 @@ class VacancyController extends Controller
 
     public function index()
     {
-        $data = Vacancy::get();
-
+        $data = $this->vacancyRepository->getAllVacancies();
 
         return view('admin.loker.index', [
             'data' => $data,
         ]);
     }
-
-
 
     public function add()
     {
@@ -47,16 +44,5 @@ class VacancyController extends Controller
         $vacancy = $vacancyRepository->createVacancy($data);
 
         return redirect()->route('vacancy.index')->with('success', 'suskes menambah loker');
-    }
-
-    public function show($id)
-    {
-        $vacancy = Vacancy::findOrFail($id);
-
-        $jobDescriptions = json_decode($vacancy->job_description);
-        $qualifications = json_decode($vacancy->qualifications);
-
-        return view('admin.loker.index', compact( 'jobDescriptions', 'qualifications'));
-
     }
 }

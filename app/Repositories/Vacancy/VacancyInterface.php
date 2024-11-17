@@ -11,4 +11,7 @@ interface VacancyInterface
      * @return mixed
      */
     public function createVacancy(array $data);
+
+    public function getAllVacancies();
+
 }
