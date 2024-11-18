@@ -63,5 +63,8 @@ Route::middleware(['auth', 'manajer'])->group(function () {
 
 
 Route::get('/', [FrontController::class, 'index'])->name('home');
+//career
 Route::get('/career', [FrontController::class, 'career'])->name('career');
+Route::get('/career/detail', [FrontController::class, 'detail'])->name('career.detail');
+
 
