@@ -18,10 +18,10 @@ class LokerRepository implements LokerInterface
 
     public function showAll()
     {
-        $vacancy = Vacancy::all()->map(function ($item) {
-            if (Carbon::parse($item->closing_date)->isPast() && $item->status != 'closed') {
-                $item->status = 'closed';
-                $item->save();
+        $loker = Vacancy::all()->map(function ($loker) {
+            if (Carbon::parse($loker->closing_date)->isPast() && $loker->status != 'closed') {
+                $loker->status = 'closed';
+                $loker->save();
             }
 
             Carbon::setLocale('id');
@@ -30,18 +30,43 @@ class LokerRepository implements LokerInterface
             $tanggalFormat = Carbon::parse($tanggal)->translatedFormat('d F Y');
 
             // Proses job_description
-            $item->job_description = str_replace(['[', ']', '"'], '', $item->job_description);
-            $item->job_description = explode(',', $item->job_description);
-            $item->job_description = array_map('trim', $item->job_description);
+            $loker->job_description = str_replace(['[', ']', '"'], '', $loker->job_description);
+            $loker->job_description = explode(',', $loker->job_description);
+            $loker->job_description = array_map('trim', $loker->job_description);
 
             // Proses qualifications
-            $item->qualifications = str_replace(['[', ']', '"'], '', $item->qualifications);
-            $item->qualifications = explode(',', $item->qualifications);
-            $item->qualifications = array_map('trim', $item->qualifications);
+            $loker->qualifications = str_replace(['[', ']', '"'], '', $loker->qualifications);
+            $loker->qualifications = explode(',', $loker->qualifications);
+            $loker->qualifications = array_map('trim', $loker->qualifications);
 
-            return $item;
+            return $loker;
         });
 
-        return $vacancy;
+        return $loker;
+    }
+
+    public function getBySlug(string $slug)
+    {
+        $loker = $this->lokerModel->where('slug', $slug)->firstOrFail();
+
+        // Proses job_description dan qualifications agar selalu dalam bentuk array
+        $loker->job_description = $this->processListField($loker->job_description);
+        $loker->qualifications = $this->processListField($loker->qualifications);
+
+        return $loker;
+    }
+
+    private function processListField($field)
+    {
+        if (!$field) {
+            return [];
+        }
+
+        // Menghapus karakter tambahan dan memecah string menjadi array
+        $field = str_replace(['[', ']', '"'], '', $field);
+        $field = explode(',', $field);
+        $field = array_map('trim', $field);
+
+        return $field;
     }
 }

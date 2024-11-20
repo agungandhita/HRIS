@@ -21,24 +21,39 @@
             @csrf
             <div class="shadow-best bg-white rounded-md justify-between mb-4 border-main3 border-[1px]">
                 <div class="p-5 ">
-                    <div class="grid md:grid-cols-2 gap-x-6">
-                        <div>
-                            <h1 class="pt-3 md:pt-6 font-semibold text-lg md:text-2xl capitalize text-gray-600">
-                                judul
-                            </h1>
-                            <div class="relative flex items-center">
-                                <input type="text" name="title" placeholder="masukan judul lowongan"
-                                    class="px-2 bg-[#ffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded transition-all" />
-                            </div>
+                    <div>
+                        <h1 class="pt-3 md:pt-6 font-semibold text-lg md:text-2xl capitalize text-gray-600">
+                            judul
+                        </h1>
+                        <div class="relative flex items-center">
+                            <input type="text" name="title" placeholder="masukan judul lowongan"
+                                class="px-2 bg-[#ffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded transition-all" />
                         </div>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-x-6">
 
                         <div>
                             <h1 class="pt-3 md:pt-6 font-semibold text-lg md:text-2xl capitalize text-gray-600">
                                 Tipe Kerjaan
                             </h1>
                             <div class="relative flex items-center">
+                                <select name="job_type"
+                                    class="select select-ghost px-4 bg-[#ffffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded transition-all capitalize">
+                                    <option disabled selected class="text-base">Pilih Tipe Kerja</option>
+                                    <option value="penuh waktu" class="text-base">Penuh Waktu</option>
+                                    <option value="shift" class="text-base">Shift</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div>
+                            <h1 class="pt-3 md:pt-6 font-semibold text-lg md:text-2xl capitalize text-gray-600">
+                                Status
+                            </h1>
+                            <div class="relative flex items-center">
                                 <select name="level"
-                                    class="select select-ghost px-4 bg-[#ffffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded transition-all">
+                                    class="select select-ghost px-4 bg-[#ffffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded transition-all capitalize">
                                     <option disabled selected class="text-base">Pilih Tipe Kerja</option>
                                     <option value="tetap" class="text-base">Tetap</option>
                                     <option value="kontrak" class="text-base">Kontrak</option>

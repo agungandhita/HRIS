@@ -34,8 +34,10 @@ class FrontController extends Controller
     }
 
 
-    public function detail() {
+    public function detail(string $slug) {
 
-        return view('rekrutmen.page.detail');
+        $loker = $this->LokerRepository->getBySlug($slug);
+
+        return view('rekrutmen.page.detail', compact('loker'));
     }
 }

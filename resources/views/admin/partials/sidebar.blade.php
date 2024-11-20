@@ -8,7 +8,7 @@
             <h1 class="font-semibold text-white text-[30px] my-auto ">Admin</h1>
         </div>
     </div>
-    
+
     <div class="h-full px-3 pb-[290px] grid grid-cols-1 gap-4 overflow-y-auto p-4 bg-yellow-400 relative w-64 scrollbar">
         <ul class="space-y-2 font-medium">
             <h1 class="text-white text-lg font-bold">MENU</h1>

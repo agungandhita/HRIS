@@ -77,4 +77,9 @@ class VacancyRepository implements VacancyInterface
 
         return $vacancy;
     }
+
+    public function getBySlug(string $slug) {
+
+        return Vacancy::where('slug', $slug)->firstOrFail();
+    }
 }

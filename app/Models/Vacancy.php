@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,9 +16,20 @@ class Vacancy extends Model
     protected $guarded =[
         'vacancy_id'
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Membuat slug otomatis
+        static::creating(function ($vacancy) {
+            $vacancy->slug = Str::slug($vacancy->title);
+        });
+    }
+
     public function jobApplications()
     {
         return $this->hasMany(JobApplication::class, 'vacancy_id', 'vacancy_id');
     }
-    
+
 }

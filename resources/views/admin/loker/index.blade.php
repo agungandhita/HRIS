@@ -143,8 +143,7 @@
                                     {{ $item->level }}
                                 </td>
                                 <td class="px-4 py-4 text-sm text-gray-800 capitalize">
-                                    {{ \Carbon\Carbon::parse($item->posting_date)->format('d M Y') }} sampai
-                                    {{ \Carbon\Carbon::parse($item->closing_date)->format('d M Y') }}
+                                    {{ \Carbon\Carbon::parse($item->posting_date)->translatedFormat('l, d F Y') }}
                                 </td>
                                 <td class="px-4 py-4 text-sm text-gray-800 capitalize">
                                     <span class="{{ $item->status == 'open' ? 'text-green-500' : ($item->status == 'closed' ? 'text-red-500' : 'text-gray-800') }}">
