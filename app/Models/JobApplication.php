@@ -8,15 +8,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class JobApplication extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
 
-    protected $table = "job_application";
+    protected $table = "job_applications";
     protected $primaryKey = "application_id";
 
-    protected $guarded =[
-        'application_id'
-    ];
+    protected $guarded = ['application_id'];
 
+    /**
+     * Relasi dengan Vacancy (Many to One)
+     */
     public function vacancy()
     {
         return $this->belongsTo(Vacancy::class, 'vacancy_id', 'vacancy_id');
