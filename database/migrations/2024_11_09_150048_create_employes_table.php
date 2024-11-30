@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('employes', function (Blueprint $table) {
             $table->id('employe_id');
+            $table->foreignId('vacancy_id');
             $table->string('nama_lengkap');
             $table->string('email')->unique();
             $table->string('nomor_ktp', 16);
@@ -21,7 +22,6 @@ return new class extends Migration
             $table->string('provinsi');
             $table->string('kabupaten');
             $table->text('alamat_lengkap');
-            $table->string('posisi');
             $table->string('cv');
             $table->string('foto');
             $table->string('surat_lamaran');
@@ -29,12 +29,11 @@ return new class extends Migration
             $table->string('nama_institusi');
             $table->string('jurusan');
             $table->decimal('nilai', 3, 2);
-            $table->decimal('gpa', 3, 2);
             $table->string('nama_perusahaan')->nullable();
             $table->string('sebagai')->nullable();
-            $table->integer('lama_bekerja')->nullable();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
             $table->text('deskripsi_pekerjaan')->nullable();
-            $table->enum('status', ['unshorlisted','shortlisted', 'interview', 'on boarding']);
             $table->integer('user_created')->nullable();
             $table->integer('user_updated')->nullable();
             $table->softDeletes();

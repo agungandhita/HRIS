@@ -3,10 +3,13 @@
 namespace App\Repositories\Application;
 
 use App\Models\Employe;
+use App\Models\Vacancy;
 use App\Models\JobApplication;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
-class JobApplicationRepositroty implements JobApplicationInterface {
+class JobApplicationRepositroty implements JobApplicationInterface
+{
 
     private $jobApplicationModel;
 
@@ -15,25 +18,23 @@ class JobApplicationRepositroty implements JobApplicationInterface {
         $this->jobApplicationModel = $jobApplication;
     }
 
+
+ /**
+     * Mengajukan lamaran kerja untuk suatu vacancy.
+     *
+     * @param array $data
+     * @return bool
+     */
     public function applyForJob(array $data): bool
     {
-        DB::beginTransaction();
+        $vacancy = Vacancy::findOrFail($data['vacancy_id']);
 
-        try {
-            $employe = Employe::create($data['employe']);
+        $employe = new Employe();
+        $employe->fill($data);
+        $employe->vacancy_id = $vacancy->vacancy_id;
+        $employe->save();
 
-            JobApplication::create([
-                'vacancy_id' => $data['vacancy_id'],
-                'employe_id' => $employe->employe_id,
-                'status' => 'applied',
-            ]);
-
-            DB::commit();
-            return true;
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return false;
-        }
+        return true;
     }
 
 }

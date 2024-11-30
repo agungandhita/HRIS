@@ -27,9 +27,9 @@ class Vacancy extends Model
         });
     }
 
-    public function jobApplications()
+    public function employes()
     {
-        return $this->hasMany(JobApplication::class, 'vacancy_id', 'vacancy_id');
+        return $this->hasMany(Employe::class, 'vacancy_id', 'vacancy_id');
     }
 
 }

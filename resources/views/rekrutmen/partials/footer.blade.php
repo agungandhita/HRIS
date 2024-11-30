@@ -1,5 +1,5 @@
 
-<footer class="bg-gray-50 px-4 sm:px-10 py-12">
+<footer class="bg-gray-50 px-4 sm:px-10 py-8">
     {{-- <div class="md:max-w-[50%] mx-auto text-center">
       <div class="bg-[#fff] border flex px-2 py-1 rounded-full text-left mt-4">
         <input type='email' placeholder='Enter your email' class="w-full outline-none bg-transparent pl-4" />

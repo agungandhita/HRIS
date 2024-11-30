@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\page;
 
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreEmployeRequest;
 use App\Repositories\Loker\LokerInterface;
@@ -38,7 +40,8 @@ class FrontController extends Controller
     }
 
 
-    public function detail(string $slug) {
+    public function detail(string $slug)
+    {
 
         $loker = $this->LokerRepository->getBySlug($slug);
 
@@ -58,34 +61,9 @@ class FrontController extends Controller
     }
 
 
-    public function apply(StoreEmployeRequest $request)
+    public function apply(StoreEmployeRequest $request, $id)
     {
-        try {
-            $cvPath = $request->file('cv')->store('uploads/cv', 'public');
-            $fotoPath = $request->file('foto')->store('uploads/foto', 'public');
-            $suratLamaranPath = $request->file('surat_lamaran')->store('uploads/surat_lamaran', 'public');
 
-            $employeData = $request->except(['vacancy_id', 'cv', 'foto', 'surat_lamaran']);
-            $employeData['cv'] = $cvPath;
-            $employeData['foto'] = $fotoPath;
-            $employeData['surat_lamaran'] = $suratLamaranPath;
-
-            $jobApplicationData = [
-                'vacancy_id' => $request->input('vacancy_id'),
-                'employe' => $employeData
-            ];
-
-            $applicationSuccessful = $this->JobApplicationRepository->applyForJob($jobApplicationData);
-
-            if ($applicationSuccessful) {
-                return redirect()->route('career.detail', $request->input('vacancy_id'))->with('success', 'Lamaran berhasil di kirim');
-            }
-
-            return back()->with('error', 'ada yang salah');
-
-        } catch (\Exception $e) {
-            return back()->with('error', 'gagal: ' . $e->getMessage());
-        }
     }
 
 }

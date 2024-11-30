@@ -52,8 +52,6 @@ Route::middleware('admin')->group(function () {
     Route::get('/vacancy', [VacancyController::class, 'index'])->name('vacancy.index');
     Route::get('/vacancy/add', [VacancyController::class, 'add'])->name('vacancy.add');
     Route::post('/vacancy/store', [VacancyController::class, 'store'])->name('vacancy.store');
-
-
 });
 
 Route::middleware(['auth', 'manajer'])->group(function () {
@@ -67,5 +65,4 @@ Route::get('/', [FrontController::class, 'index'])->name('home');
 Route::get('/career', [FrontController::class, 'career'])->name('career');
 Route::get('/career/detail/{slug}', [FrontController::class, 'detail'])->name('career.detail');
 Route::get('/career/detail/{slug}/apply', [FrontController::class, 'applyForm'])->name('career.apply');
-
-
+Route::post('/career/apply/{id}/send', [FrontController::class, 'apply'])->name('career.upload');

@@ -10,16 +10,16 @@ class Employe extends Model
 {
     use HasFactory,SoftDeletes;
     protected $table = "employes";
-    protected $primaryKey = "employes_id";
+    protected $primaryKey = "employe_id";
 
     protected $guarded =[
-        'employes_id'
+        'employe_id'
     ];
 
-    public function jobApplications()
+    public function vacancy()
     {
-        return $this->hasMany(JobApplication::class, 'employe_id', 'employe_id');
+        return $this->belongsTo(Vacancy::class, 'vacancy_id', 'vacancy_id');
     }
 
-    
+
 }
