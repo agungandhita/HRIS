@@ -9,11 +9,11 @@
             <p class="text-4xl font-semibold py-4 mx-4 text-blue-500">
                 Hallo, {{ auth()->user()->nama }}
             </p>
-            <img src="{{ asset('img/hello.png') }}" class="object-contain w-16 justify-end" alt="">
+            <img src="" class="object-contain w-16 justify-end" alt="">
         </div>
 
         <p class="text-2xl font-serif pb-4 mx-4 uppercase text-black">
-                
+
             selamat datang manajer di Cabang {{ auth()->user()->kota }}
         </p>
     </div>
@@ -94,5 +94,5 @@
 
     </div>
 </div>
-    
+
 @endsection

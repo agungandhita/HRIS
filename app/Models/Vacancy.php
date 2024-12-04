@@ -27,9 +27,10 @@ class Vacancy extends Model
         });
     }
 
-    public function employes()
-    {
-        return $this->hasMany(Employe::class, 'vacancy_id', 'vacancy_id');
+
+    public function lamaran() {
+        return $this->belongsTo('vacancy_id', 'vacancy_id');
     }
+
 
 }

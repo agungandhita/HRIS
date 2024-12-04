@@ -66,5 +66,124 @@
                 </a>
             </div>
         </div>
+
+        <div id="hs-scale-animation-modal"
+            class="hs-overlay hidden size-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto pointer-events-none"
+            role="dialog" tabindex="-1" aria-labelledby="hs-scale-animation-modal-label">
+            <div
+                class="hs-overlay-animation-target hs-overlay-open:scale-100 hs-overlay-open:opacity-100 scale-95 opacity-0 ease-in-out transition-all duration-200 sm:max-w-lg sm:w-full m-3 sm:mx-auto min-h-[calc(100%-3.5rem)] flex items-center">
+                <div class="w-full flex flex-col bg-white border shadow-sm rounded-xl pointer-events-auto ">
+                    <div class="flex justify-between items-center py-3 px-4 border-b">
+                        <h3 id="hs-scale-animation-modal-label" class="font-bold text-gray-800 ">
+                            Tambah Data Pegawai
+                        </h3>
+                        <button type="button"
+                            class="size-8 inline-flex justify-center items-center gap-x-2 rounded-full border border-transparent bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none "
+                            aria-label="Close" data-hs-overlay="#hs-scale-animation-modal">
+                            <span class="sr-only">Close</span>
+                            <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
+                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 6 6 18"></path>
+                                <path d="m6 6 12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="p-4 overflow-y-auto">
+
+                        <form action="{{ route('create.pegawai') }}" method="POST">
+                            @csrf
+                            <div class="grid gap-6 mb-6 md:grid-cols-2">
+                                <div>
+                                    <h2 class="block mb-2 text-lg font-semibold text-black">Nama</h2>
+                                    <input type="text" name="nama"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        placeholder="John" value="{{ old('nama') }}" required />
+                                    @error('nama')
+                                        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div>
+                                    <h2 for="no_hp" class="block mb-2 text-lg font-semibold text-black">No Hp</h2>
+                                    <input type="text" name="no_telepon" inputmode="numeric" pattern="[0-9]*"
+                                        placeholder="Masukkan Nomor Telepon"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        value="{{ old('no_hp') }}" required />
+                                    @error('no_hp')
+                                        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h2 for="provinsi" class="block text-lg font-semibold text-black">Tanggal Lahir</h2>
+                                <input type="date" name="tanggal_lahir" placeholder="First Name" required
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    value="{{ old('tanggal_lahir') }}" required />
+                                @error('tanggal_lahir')
+                                    <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="mb-4">
+                                <h2 for="provinsi" class="block text-lg font-semibold text-black">Provinsi</h2>
+                                <input name="provinsi" placeholder="Ex: Jawa Timur"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    value="{{ old('provinsi') }}" required>
+                                @error('provinsi')
+                                    <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="mb-4">
+                                <h2 for="kota" class="block text-lg font-semibold text-black">Kabupaten/Kota</h2>
+                                <input name="kota" placeholder="Ex: Lamongan"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    value="{{ old('kota') }}" required>
+                                @error('kota')
+                                    <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="mb-6">
+                                <h2 class="block mb-2 text-lg font-semibold text-black">Email</h2>
+                                <input type="email" name="email"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    placeholder="john.doe@company.com" value="{{ old('email') }}" required />
+                                @error('email')
+                                    <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="mb-6">
+                                <h2 class="block mb-2 text-lg font-semibold text-black">Password</h2>
+                                <input type="password" name="password"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    placeholder="•••••••••" required />
+                                @error('password')
+                                    <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="flex justify-end items-center gap-x-2 py-3 px-4 border-t">
+                                <button type="button"
+                                    class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+                                    data-hs-overlay="#hs-scale-animation-modal">
+                                    Close
+                                </button>
+                                <button type="submit"
+                                    class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                                    Save changes
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>

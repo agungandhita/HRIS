@@ -169,11 +169,11 @@
 
             </div>
             <div class="max-h-[50px] h-full w-full border-t-[1px] border-main2 flex gap-x-3 pt-2">
-                <img src="{{ asset('img/myFoto.jpg') }}" alt=""
-                    class="object-cover w-10 h-10 rounded-full my-auto">
-                <div class="my-auto">
-                    <h1 class="text-lg text-white">Satria Pinandhita</h1>
-                    <h1 class="text-sm text-gray-300">Admin</h1>
+                {{-- <img src="{{ asset('img/myFoto.jpg') }}" alt=""
+                    class="object-cover w-10 h-10 rounded-full my-auto"> --}}
+                <div class="my-auto ml-3">
+                    <h1 class="text-xl text-white">{{ auth()->user()->nama }}</h1>
+                    <h1 class="text-lg text-gray-300">{{ auth()->user()->role }}</h1>
                 </div>
             </div>
         </div>

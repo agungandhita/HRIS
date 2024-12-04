@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Employe;
+use App\Models\Lamaran;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class EmployePolicy
+class LamaranPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -19,7 +19,7 @@ class EmployePolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Employe $employe): bool
+    public function view(User $user, Lamaran $lamaran): bool
     {
         //
     }
@@ -35,7 +35,7 @@ class EmployePolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Employe $employe): bool
+    public function update(User $user, Lamaran $lamaran): bool
     {
         //
     }
@@ -43,7 +43,7 @@ class EmployePolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Employe $employe): bool
+    public function delete(User $user, Lamaran $lamaran): bool
     {
         //
     }
@@ -51,7 +51,7 @@ class EmployePolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Employe $employe): bool
+    public function restore(User $user, Lamaran $lamaran): bool
     {
         //
     }
@@ -59,7 +59,7 @@ class EmployePolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Employe $employe): bool
+    public function forceDelete(User $user, Lamaran $lamaran): bool
     {
         //
     }

@@ -57,6 +57,7 @@ Route::middleware('admin')->group(function () {
 Route::middleware(['auth', 'manajer'])->group(function () {
     Route::get('/manajer', [\App\Http\Controllers\manajer\dashboard\DashboardController::class, 'index'])->name('manajer');
     Route::get('/list/pegawai', [DataPegawaiController::class, 'index'])->name('data');
+    Route::post('create/pegawai', [DataPegawaiController::class, 'store'])->name('create.pegawai');
 });
 
 
@@ -64,5 +65,6 @@ Route::get('/', [FrontController::class, 'index'])->name('home');
 //career
 Route::get('/career', [FrontController::class, 'career'])->name('career');
 Route::get('/career/detail/{slug}', [FrontController::class, 'detail'])->name('career.detail');
-Route::get('/career/detail/{slug}/apply', [FrontController::class, 'applyForm'])->name('career.apply');
-Route::post('/career/apply/{id}/send', [FrontController::class, 'apply'])->name('career.upload');
+Route::get('/career/detail/{id}/apply', [FrontController::class, 'applyForm'])->name('career.apply');
+Route::post('/career/apply/{id}/send', [FrontController::class, 'store'])->name('career.upload');
+

@@ -67,7 +67,7 @@
 </form>
 
 {{-- notifikasi page --}}
-@include('admin.partials.norifikasi')
+{{-- @include('admin.partials.norifikasi') --}}
 
 @push('scripts')
     <script>

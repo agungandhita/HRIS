@@ -2,8 +2,8 @@
 
 namespace App\Repositories\Loker;
 
-use Carbon\Carbon;
 use App\Models\Vacancy;
+use Carbon\Carbon;
 
 class LokerRepository implements LokerInterface
 {
@@ -42,18 +42,22 @@ class LokerRepository implements LokerInterface
             return $loker;
         });
 
+        // dd($loker);
+
         return $loker;
     }
 
     public function getBySlug(string $slug)
     {
-        $loker = $this->lokerModel->where('slug', $slug)->firstOrFail();
+        $job = $this->lokerModel->where('slug', $slug)->firstOrFail();
 
         // Proses job_description dan qualifications agar selalu dalam bentuk array
-        $loker->job_description = $this->processListField($loker->job_description);
-        $loker->qualifications = $this->processListField($loker->qualifications);
+        $job->job_description = $this->processListField($job->job_description);
+        $job->qualifications = $this->processListField($job->qualifications);
 
-        return $loker;
+        // dd($job);
+        return $job;
+
     }
 
     private function processListField($field)

@@ -15,19 +15,9 @@ class JobApplication extends Model
 
     protected $guarded = ['application_id'];
 
-    /**
-     * Relasi dengan Vacancy (Many to One)
-     */
+    // Relasi dengan Vacancy
     public function vacancy()
     {
         return $this->belongsTo(Vacancy::class, 'vacancy_id', 'vacancy_id');
-    }
-
-    /**
-     * Relasi dengan Employe (Many to One)
-     */
-    public function employe()
-    {
-        return $this->belongsTo(Employe::class, 'employe_id', 'employe_id');
     }
 }

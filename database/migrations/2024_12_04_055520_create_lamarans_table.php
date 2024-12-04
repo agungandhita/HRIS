@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('employes', function (Blueprint $table) {
-            $table->id('employe_id');
-            $table->foreignId('vacancy_id');
+        Schema::create('lamarans', function (Blueprint $table) {
+            $table->id('lamar_id');
+            $table->foreignId('vacancy_id')->references('vacancy_id')->on('vacancies')->onDelete('cascade');
             $table->string('nama_lengkap');
             $table->string('email')->unique();
             $table->string('nomor_ktp', 16);
@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('jenjang_pendidikan');
             $table->string('nama_institusi');
             $table->string('jurusan');
-            $table->decimal('nilai', 3, 2);
+            $table->decimal('gpa', 4, 2)->default(0);
             $table->string('nama_perusahaan')->nullable();
             $table->string('sebagai')->nullable();
             $table->date('start_date')->nullable();
@@ -48,6 +48,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('employes');
+        Schema::dropIfExists('lamarans');
     }
 };

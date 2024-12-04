@@ -2,9 +2,7 @@
 
 namespace App\Repositories\Application;
 
-interface JobApplicationInterface {
-
-
-    public function applyForJob(array $data): bool;
-
+interface JobApplicationInterface
+{
+    public function createApplication(array $data);
 }

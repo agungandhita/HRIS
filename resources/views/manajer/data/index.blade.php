@@ -6,7 +6,7 @@
         <div class="mt-24">
             @include('manajer.data._head')
         </div>
-        
+
         <div class="mt-4">
             <div class="font-sans overflow-x-auto">
                 <table class="min-w-full bg-white">
@@ -36,19 +36,21 @@
                         </tr>
                     </thead>
 
+                    @foreach ($pegawai as $no => $item)
+
                     <tbody class="whitespace-nowrap">
                         <tr class="hover:bg-gray-50">
                             <td class="p-4 text-[15px] text-gray-800">
-                                1
+                                {{ $no + 1 }}
                             </td>
                             <td class="p-4 text-[15px] text-gray-800">
-                                John Doe
+                                {{ $item->nama }}
                             </td>
                             <td class="p-4 text-[15px] text-gray-800">
-                                john@example.com
+                                {{ $item->email }}
                             </td>
                             <td class="p-4 text-[15px] text-gray-800">
-                                Waiters
+                                {{ $item->role }}
                             </td>
                             <td class="p-4 text-[15px] text-gray-800">
                                 <a href="" class="text-blue-700">
@@ -56,7 +58,7 @@
                                 </a>
                             </td>
                             <td class="p-4 text-[15px] text-gray-800">
-                                2022-05-15
+                                {{ \Carbon\Carbon::parse($item->tanggal_lahir)->translatedFormat('d F Y') }}
                             </td>
                             <td class="p-4 flex gap-x-3">
                                 <a href="#" class="mt-1">
@@ -88,8 +90,8 @@
                                 </button>
                             </td>
                         </tr>
-
                     </tbody>
+                    @endforeach
                 </table>
             </div>
         </div>

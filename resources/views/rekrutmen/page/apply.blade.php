@@ -67,9 +67,10 @@
             </div>
         </div>
 
-        <div class="max-w-[120rem] px-4 pb-10 sm:px-6 lg:px-8 lg:pb-20 md:mt-10 mx-auto">
-            <form action="/career/apply/{id}/send" method="post" enctype="multipart/form-data">
-                @csrf
+        <form action="{{ route('career.upload', $loker->vacancy_id) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="max-w-[120rem] px-4 pb-10 sm:px-6 lg:px-8 lg:pb-20 md:mt-10 mx-auto">
+                {{-- @dd($loker); --}}
                 <input type="hidden" name="vacancy_id" value="{{ $loker->vacancy_id }}">
                 <div class="flex overflow-hidden border-[1px] rounded-t-xl min-h-[56px] bg-gray-200 px-4 py-2">
                     <h1 class="text-lg md:text-2xl font-semibold font-[sans-serif] capitalize text-slate-800 pt-1">
@@ -175,19 +176,19 @@
                                     *
                                 </sup>
                                 <div class="relative flex items-center">
-                                    <input type="text" name="provinsi" placeholder="john@gmail.com" required
+                                    <input type="text" name="provinsi" placeholder="jawa timur" required
                                         class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded-xl transition-all" />
                                 </div>
                             </div>
                         </div>
                         <div class="max-w-full">
-                            <label for="textarea-email-label"
+                            <label for="alamat_lengkap"
                                 class="pt-3 md:pt-6 font-semibold text-lg md:text-2xl capitalize text-gray-600">Alamat
                                 Lengkap</label>
                             <sup class="text-red-700 md:text-lg font-medium">
                                 *
                             </sup>
-                            <textarea  name="alamat_lengkap"
+                            <textarea name="alamat_lengkap"
                                 class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded-xl transition-all"
                                 rows="3" placeholder="Alamat Lengkap"></textarea>
                         </div>
@@ -227,7 +228,7 @@
                                     *
                                 </sup>
                             </div>
-                            <input type="file" name="surat_lamaran"  accept=".pdf,.doc,.docx"
+                            <input type="file" name="surat_lamaran" accept=".pdf,.doc,.docx"
                                 class="file-input file-input-bordered file-input-warning w-full max-w-full rounded-xl fill-yellow-400 border-[1px]" />
                         </div>
                     </div>
@@ -276,7 +277,8 @@
                     <div class="p-5 grid md:grid-cols-2 gap-x-6">
                         <div>
                             <label for="textarea-email-label"
-                                class="pt-3 md:pt-6 font-semibold text-lg md:text-2xl capitalize text-gray-600">Jurusan/Bidang Keahlian</label>
+                                class="pt-3 md:pt-6 font-semibold text-lg md:text-2xl capitalize text-gray-600">Jurusan/Bidang
+                                Keahlian</label>
                             <sup class="text-red-700 md:text-lg font-medium">
                                 *
                             </sup>
@@ -293,7 +295,7 @@
                                 *
                             </sup>
                             <div class="relative flex items-center">
-                                <input type="number" name="nilai" step="0.01" min="0" max="4.00"
+                                <input type="text" name="gpa"
                                     placeholder="Masukkan Nilai/IPK (Contoh: 3.50)" required
                                     class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded-xl transition-all" />
                             </div>
@@ -311,7 +313,8 @@
                     <div class="p-5 grid md:grid-cols-2 gap-x-6">
                         <div>
                             <label for="textarea-email-label"
-                                class="pt-3 md:pt-6 font-semibold text-lg md:text-2xl capitalize text-gray-600">Nama Perusahaan</label>
+                                class="pt-3 md:pt-6 font-semibold text-lg md:text-2xl capitalize text-gray-600">Nama
+                                Perusahaan</label>
                             <sup class="text-red-700 md:text-lg font-medium">
                                 *
                             </sup>
@@ -322,7 +325,7 @@
                         </div>
 
                         <div>
-                            <label for="textarea-email-label"
+                            <label
                                 class="pt-3 md:pt-6 font-semibold text-lg md:text-2xl capitalize text-gray-600">Sebagai</label>
                             <sup class="text-red-700 md:text-lg font-medium">
                                 *
@@ -342,7 +345,7 @@
                                 *
                             </sup>
                             <div class="relative flex items-center">
-                                <input type="date" name="start_date" placeholder="First Name"
+                                <input type="date" name="start_date"
                                     class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-slate-600 w-full text-lg border outline-[#007bff] rounded-xl transition-all" />
                             </div>
                         </div>
@@ -355,14 +358,15 @@
                                 *
                             </sup>
                             <div class="relative flex items-center">
-                                <input type="date" name="end_date" placeholder="First Name"
+                                <input type="date" name="end_date"
                                     class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-slate-600 w-full text-lg border outline-[#007bff] rounded-xl transition-all" />
                             </div>
                         </div>
                     </div>
                     <div class="p-5">
                         <label for="textarea-email-label"
-                            class="pt-3 md:pt-6 font-semibold text-lg md:text-2xl capitalize text-gray-600">Deskripsi Pekerjaan</label>
+                            class="pt-3 md:pt-6 font-semibold text-lg md:text-2xl capitalize text-gray-600">Deskripsi
+                            Pekerjaan</label>
                         <sup class="text-red-700 md:text-lg font-medium">
                             *
                         </sup>
@@ -372,10 +376,10 @@
                     </div>
                     <div class="flex justify-end">
                         <button type="submit"
-                        class="m-6 w-full md:w-[10%] px-3 py-2 rounded-lg text-white md:text-xl font-semibold tracking-wider border-none outline-none bg-yellow-400 hover:bg-yellow-600">Kirim</button>
+                            class="m-6 w-full md:w-[10%] px-3 py-2 rounded-lg text-white md:text-xl font-semibold tracking-wider border-none outline-none bg-yellow-400 hover:bg-yellow-600">Kirim</button>
                     </div>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
 @endsection

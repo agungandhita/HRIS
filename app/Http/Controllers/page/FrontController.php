@@ -3,24 +3,33 @@
 namespace App\Http\Controllers\page;
 
 use Exception;
-use Illuminate\Http\Request;
+use App\Models\Vacancy;
+use App\Models\JobApplication;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreEmployeRequest;
 use App\Repositories\Loker\LokerInterface;
+use App\Repositories\Vacancy\VacancyInterface;
+use App\Http\Requests\StoreLamaranRequest;
 use App\Repositories\Application\JobApplicationInterface;
+use App\Repositories\Lamaran\LamaranRepository;
 
 class FrontController extends Controller
 {
 
     private $LokerRepository;
     private $JobApplicationRepository;
+    private $VacancyRepository;
+    private $LamaranRepository;
 
 
-    public function __construct(LokerInterface $LokerRepository, JobApplicationInterface $JobApplicationRepository)
+
+    public function __construct(LokerInterface $LokerRepository, LamaranRepository $lamaranRepository, JobApplicationInterface $JobApplicationRepository,  VacancyInterface $vacancyRepository,)
     {
         $this->LokerRepository = $LokerRepository;
         $this->JobApplicationRepository = $JobApplicationRepository;
+        $this->VacancyRepository = $vacancyRepository;
+        $this->LamaranRepository = $lamaranRepository;
     }
 
     public function index()
@@ -57,13 +66,10 @@ class FrontController extends Controller
     {
         $loker = $this->LokerRepository->getBySlug($slug);
 
-        return view('rekrutmen.page.apply', ['loker' => $loker]);
-    }
+        return view('rekrutmen.page.apply', [
 
-
-    public function apply(StoreEmployeRequest $request, $id)
-    {
-
+            'loker' => $loker,
+        ]);
     }
 
 }
