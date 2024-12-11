@@ -58,10 +58,13 @@ Route::middleware(['auth', 'manajer'])->group(function () {
     Route::get('/manajer', [\App\Http\Controllers\manajer\dashboard\DashboardController::class, 'index'])->name('manajer');
     Route::get('/list/pegawai', [DataPegawaiController::class, 'index'])->name('data');
     Route::post('create/pegawai', [DataPegawaiController::class, 'store'])->name('create.pegawai');
+    Route::get('/stock', [\App\Http\Controllers\manajer\stock\StockController::class, 'index'])->name('stock');
 });
 
 
 Route::get('/', [FrontController::class, 'index'])->name('home');
+Route::get('/about', [FrontController::class, 'about'])->name('about');
+
 //career
 Route::get('/career', [FrontController::class, 'career'])->name('career');
 Route::get('/career/detail/{slug}', [FrontController::class, 'detail'])->name('career.detail');

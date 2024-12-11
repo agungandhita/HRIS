@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\User;
+use App\Models\Pegawai;
+
 return [
 
     /*
@@ -36,11 +39,17 @@ return [
     */
 
     'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
+    'web' => [
+        'driver' => 'session',
+        'provider' => 'users',
     ],
+
+    'pegawai' => [
+        'driver' => 'session',
+        'provider' => 'pegawai',
+    ],
+],
+
 
     /*
     |--------------------------------------------------------------------------
@@ -60,16 +69,17 @@ return [
     */
 
     'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\User::class,
-        ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+    'users' => [
+        'driver' => 'eloquent',
+        'model' => User::class,
     ],
+
+    'pegawai' => [
+        'driver' => 'eloquent',
+        'model' => Pegawai::class,
+    ],
+],
+
 
     /*
     |--------------------------------------------------------------------------

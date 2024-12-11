@@ -23,11 +23,9 @@ class VacancyRepository implements VacancyInterface
      */
     public function createVacancy(array $data)
     {
-        // Encode field JSON sebelum menyimpan ke database
         $data['job_description'] = json_encode($data['job_description']);
         $data['qualifications'] = json_encode($data['qualifications']);
 
-        // Menggunakan model untuk menyimpan data
         return $this->vacancyModel->create($data);
     }
 
@@ -39,12 +37,10 @@ class VacancyRepository implements VacancyInterface
                 $item->status = 'closed';
                 $item->save();
             }
-            // Proses job_description
             $item->job_description = str_replace(['[', ']', '"'], '', $item->job_description);
             $item->job_description = explode(',', $item->job_description);
             $item->job_description = array_map('trim', $item->job_description);
 
-            // Proses qualifications
             $item->qualifications = str_replace(['[', ']', '"'], '', $item->qualifications);
             $item->qualifications = explode(',', $item->qualifications);
             $item->qualifications = array_map('trim', $item->qualifications);

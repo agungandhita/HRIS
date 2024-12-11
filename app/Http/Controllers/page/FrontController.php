@@ -34,7 +34,7 @@ class FrontController extends Controller
 
     public function index()
     {
-        return view('rekrutmen.page.home');
+        return view('home.page.home');
     }
 
     public function career()
@@ -43,7 +43,7 @@ class FrontController extends Controller
 
         // dd($loker);
 
-        return view('rekrutmen.page.career', [
+        return view('home.page.career', [
             'data' => $loker
         ]);
     }
@@ -56,7 +56,7 @@ class FrontController extends Controller
 
         $other = $this->LokerRepository->showAll();
 
-        return view('rekrutmen.page.detail', [
+        return view('home.page.detail', [
             'loker' => $loker,
             'list' => $other
         ]);
@@ -66,10 +66,15 @@ class FrontController extends Controller
     {
         $loker = $this->LokerRepository->getBySlug($slug);
 
-        return view('rekrutmen.page.apply', [
+        return view('home.page.apply', [
 
             'loker' => $loker,
         ]);
+    }
+
+    public function about() {
+
+        return view('home.page.about');
     }
 
 }

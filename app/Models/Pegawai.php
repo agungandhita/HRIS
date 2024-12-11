@@ -19,6 +19,6 @@ class Pegawai extends Model
     public function manajer() {
         return $this->belongsTo(User::class, 'user_id', 'user_id')->where('role', 'manajer');
     }
-    
+
 
 }

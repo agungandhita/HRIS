@@ -9,7 +9,17 @@ use App\Http\Controllers\Controller;
 class DashboardController extends Controller
 {
     public function index() {
+        $pegawai = User::where('role', 'manajer')
+        ->where('user_id', auth()->id())
+        ->withCount('pegawai')
+        ->first();
 
-        return view('manajer.dashboard.index', );
+    // dd($pegawai);
+
+
+        return view('manajer.dashboard.index', [
+            'pegawai' => $pegawai,
+            'title' => 'dashboard'
+        ]);
     }
 }

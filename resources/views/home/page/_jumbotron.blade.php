@@ -18,7 +18,7 @@
         </div>
       </div>
       <div class="max-md:mt-12 h-full">
-        <img src="{{ asset('bahan/16.jpg') }}" alt="banner img" class="w-full h-full object-cover" />
+        <img src="{{ asset('bahan/16.jpg') }}" alt="banner img" class="w-full h-full object-cover rounded-lg" />
       </div>
     </div>
   </div>

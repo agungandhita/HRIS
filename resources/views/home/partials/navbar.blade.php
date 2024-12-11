@@ -18,8 +18,9 @@
 
             <ul
                 class='lg:ml-12 lg:flex gap-x-6 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50'>
-                <li class='mb-6 hidden max-lg:block '>
-                    <a href="javascript:void(0)"><img src="{{ asset('img/logo.png') }}" alt="logo" class='w-14' />
+                <li class='mb-6 hidden max-lg:block'>
+                    <a href="javascript:void(0)">
+                        <img src="{{ asset('img/logo.png') }}" alt="logo" class='w-14' />
                         <h1 class="text-base mt-3 pl-2 font-semibold text-slate-700">
                             Resto Jepang Kekinian
                         </h1>
@@ -27,21 +28,30 @@
                 </li>
                 <li class='max-lg:border-b max-lg:py-3 px-3'>
                     <a href='/'
-                        class='hover:text-yellow-400 text-yellow-400 block font-semibold transition-all'>Home</a>
+                        class='{{ Request::is('/') ? 'text-yellow-400' : 'text-black' }} hover:text-yellow-400 block font-semibold transition-all'>
+                        Home
+                    </a>
                 </li>
-                <li class='max-lg:border-b max-lg:py-3 px-3'><a href='javascript:void(0)'
-                        class='hover:text-yellow-400 block font-semibold transition-all'>About</a>
+                <li class='max-lg:border-b max-lg:py-3 px-3'>
+                    <a href='/about'
+                        class='{{ Request::is('about') ? 'text-yellow-400' : 'text-black' }} hover:text-yellow-400 block font-semibold transition-all'>
+                        About
+                    </a>
                 </li>
-                <li class='max-lg:border-b max-lg:py-3 px-3'><a href='javascript:void(0)'
-                        class='hover:text-yellow-400 block font-semibold transition-all'>Menu</a>
+                <li class='max-lg:border-b max-lg:py-3 px-3'>
+                    <a href='javascript:void(0)'
+                        class='{{ Request::is('menu') ? 'text-yellow-400' : 'text-black' }} hover:text-yellow-400 block font-semibold transition-all'>
+                        Menu
+                    </a>
                 </li>
-                <li class='max-lg:border-b max-lg:py-3 px-3'><a href='/career'
-                        class='hover:text-yellow-400 block font-semibold transition-all'>Career</a>
+                <li class='max-lg:border-b max-lg:py-3 px-3'>
+                    <a href='/career'
+                        class='{{ Request::is('career') ? 'text-yellow-400' : 'text-black' }} hover:text-yellow-400 block font-semibold transition-all'>
+                        Career
+                    </a>
                 </li>
-                {{-- <li class='max-lg:border-b max-lg:py-3 px-3'><a href='javascript:void(0)'
-          class='hover:text-yellow-400 block font-semibold transition-all'>About</a>
-      </li> --}}
             </ul>
+
         </div>
 
         <div class='flex ml-auto'>

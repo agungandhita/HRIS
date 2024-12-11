@@ -1,9 +1,9 @@
-@extends('rekrutmen.layouts.main')
+@extends('home.layouts.main')
 
 @section('container')
 <div class="bg-white text-black text-[15px]">
     <div class="px-4 sm:px-10 mt-1">
-      @include('rekrutmen.page._jumbotron')
+      @include('home.page._jumbotron')
       <div class="mt-8 bg-gray-50 px-4 sm:px-10 py-12">
         <div class="max-w-7xl mx-auto">
           <div class="md:text-center max-w-2xl mx-auto">
@@ -11,7 +11,7 @@
             <p>Unlock a world of possibilities with our exclusive features. Explore how our unique offerings can
               transform your hallo and empower you to achieve more.</p>
           </div>
-          @include('rekrutmen.page._hero')
+          @include('home.page._hero')
         </div>
       </div>
 
@@ -117,7 +117,7 @@
         </div>
       </div> --}}
 
- 
+
 
       <div class="mt-28 bg-gray-50 px-4 sm:px-10 py-12">
         <h1 class="text-center mb-8 font-semibold text-4xl ">
@@ -287,6 +287,6 @@
 
   </div>
 
- 
+
 
 @endsection

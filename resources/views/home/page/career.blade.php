@@ -1,4 +1,4 @@
-@extends('rekrutmen.layouts.main')
+@extends('home.layouts.main')
 
 @section('container')
     <div class="before:z-10 object-contain before:absolute before:w-full before:h-full before:inset-0">

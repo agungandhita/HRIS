@@ -16,6 +16,8 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->integer('nip');
             $table->string('nama');
+            $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
+            $table->string('posisi');
             $table->date('tanggal_lahir');
             $table->string('no_telepon', 14);
             $table->string('email')->unique();
