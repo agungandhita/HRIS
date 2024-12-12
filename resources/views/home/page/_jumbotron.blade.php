@@ -2,8 +2,8 @@
     <div class="grid md:grid-cols-2 justify-center items-center gap-10">
       <div class="max-md:order-1">
         <p class="mt-4 mb-2 font-semibold text-yellow-400"><span class="rotate-90 inline-block mr-2">|</span> オールインワン会議スケジューラー</p>
-        <h1 class="md:text-5xl text-4xl font-bold mb-4 md:!leading-[55px]">Schedule meetings effortlessly</h1>
-        <p class="mt-4 text-lg leading-relaxed text-yellow-400">Savor the taste of Japan, delivered promptly to your doorstep. Whether it's a family dinner, a cozy night in, or a celebration, let us enhance every moment with exquisite flavors and impeccable service.</p>
+        <h1 class="md:text-5xl text-4xl font-bold mb-4 md:!leading-[55px]">Jadwalkan pertemuan dengan mudah</h1>
+        <p class="mt-4 text-lg leading-relaxed text-yellow-400">Nikmati cita rasa Jepang, dikirimkan langsung ke depan pintu Anda. Baik untuk makan malam keluarga, malam santai, atau perayaan, biarkan kami meningkatkan setiap momen dengan rasa yang lezat dan layanan yang sempurna.</p>
         <div
           class="bg-white mt-10 flex px-1 py-1.5 rounded-full shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] overflow-hidden">
           <input type='email' placeholder='Search Something...' class="w-full outline-none bg-white pl-4 border-none rounded-full" />
