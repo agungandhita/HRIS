@@ -33,7 +33,7 @@
                     </div>
                 </ol>
             </nav>
-            <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl capitalize">data employe</h1>
+            <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl capitalize">data Pelamar</h1>
         </div>
         <div class="md:flex">
             <div class="items-center mb-3 sm:flex sm:divide-x sm:divide-gray-100 sm:mb-0">

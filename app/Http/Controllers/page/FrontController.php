@@ -8,11 +8,13 @@ use App\Models\JobApplication;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
+use App\Http\Requests\StoreLamaranRequest;
 use App\Repositories\Loker\LokerInterface;
 use App\Repositories\Vacancy\VacancyInterface;
-use App\Http\Requests\StoreLamaranRequest;
-use App\Repositories\Application\JobApplicationInterface;
 use App\Repositories\Lamaran\LamaranRepository;
+use App\Repositories\Application\JobApplicationInterface;
+use GuzzleHttp\Psr7\Request;
 
 class FrontController extends Controller
 {
@@ -49,10 +51,10 @@ class FrontController extends Controller
     }
 
 
-    public function detail(string $slug)
+    public function detail($id)
     {
 
-        $loker = $this->LokerRepository->getBySlug($slug);
+        $loker = $this->LokerRepository->getById($id);
 
         $other = $this->LokerRepository->showAll();
 
@@ -62,9 +64,9 @@ class FrontController extends Controller
         ]);
     }
 
-    public function applyForm(string $slug)
+    public function applyForm($id)
     {
-        $loker = $this->LokerRepository->getBySlug($slug);
+        $loker = $this->LokerRepository->getById($id);
 
         return view('home.page.apply', [
 
@@ -72,9 +74,55 @@ class FrontController extends Controller
         ]);
     }
 
-    public function about() {
+    /**
+     * Simpan lamaran pekerjaan.
+     *
+     * @param StoreLamaranRequest $request
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(StoreLamaranRequest $request, $id)
+    {
+        // dd($request->all());
+        $path = $request->file('cv')->store('resumes', 'public');
+        $foto = $request->file('foto')->store('foto', 'public');
+
+        $data = $request->only([
+            'vacancy_id',
+            'nama_lengkap',
+            'email',
+            'tanggal_lahir',
+            'no_telepon',
+            'kabupaten',
+            'kecamatan',
+            'alamat_lengkap',
+            'jenjang_pendidikan',
+            'nama_institusi',
+            'jurusan',
+            'nilai',
+            'nama_perusahaan',
+            'sebagai',
+            'deskripsi_pekerjaan',
+            'start_date',
+            'end_date',
+        ]);
+
+        $data['cv'] = $path;
+        $data['foto'] = $foto;
+
+        $lamaran = $this->LamaranRepository->store($data);
+
+        $this->LamaranRepository->storeJobApplication($data['vacancy_id'], $lamaran->lamar_id);
+
+        return redirect()->back()->with('succes', 'Lamaran berhasil dikirim!');
+    }
+
+
+    public function about()
+    {
 
         return view('home.page.about');
     }
 
+    public function coba(Request $request) {}
 }

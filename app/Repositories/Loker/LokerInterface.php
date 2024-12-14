@@ -2,11 +2,12 @@
 
 namespace App\Repositories\Loker;
 
+use App\Models\Vacancy;
 
 interface LokerInterface
 {
     public function showAll();
 
-    public function getBySlug(string $slug);
+    public function getById(Vacancy $id);
 
 }

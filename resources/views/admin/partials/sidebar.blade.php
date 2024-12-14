@@ -35,7 +35,7 @@
                 </a>
             </li>
             <li>
-                <a href="/employe/data" class="flex items-center p-2 text-white rounded-lg group hover:underline">
+                <a href="{{ route('lamaran.index') }}" class="flex items-center p-2 text-white rounded-lg group hover:underline">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
                         class="flex-shrink-0 w-5 h-5 fill-white  transition duration-75"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                         <path

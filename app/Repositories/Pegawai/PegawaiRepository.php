@@ -21,7 +21,7 @@ class PegawaiRepository implements PegawaiInterface {
     {
         $data['user_id'] = Auth::id();
 
-        $nip = $this->generateNip($data['tanggal_lahir']);
+        $nip = $this->generateNip($data['tanggal_masuk']);
         $data['nip'] = $nip;
 
         return Pegawai::create($data);

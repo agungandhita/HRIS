@@ -22,27 +22,30 @@ class StoreLamaranRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'vacancy_id'         => 'required|exists:vacancies,vacancy_id',
-            'nama_lengkap'       => 'required|string|max:255',
-            'email'              => 'required|email|unique:lamarans,email',
-            'nomor_ktp'          => 'required|string|size:16',
-            'tanggal_lahir'      => 'required|date',
-            'no_telepon'         => 'required|string|max:14',
-            'provinsi'           => 'required|string',
-            'kabupaten'          => 'required|string',
-            'alamat_lengkap'     => 'required|string',
-            'cv'                 => 'required|file|mimes:pdf,doc,docx',
-            'foto'               => 'required|image',
-            'surat_lamaran'      => 'required|file|mimes:pdf,doc,docx',
-            'jenjang_pendidikan' => 'required|string',
-            'nama_institusi'     => 'required|string',
-            'jurusan'            => 'required|string',
-            'gpa'                => 'required|numeric|between:0,4.00',
-            'nama_perusahaan'    => 'nullable|string',
-            'sebagai'            => 'nullable|string',
-            'start_date'         => 'nullable|date',
-            'end_date'           => 'nullable|date|after_or_equal:start_date',
-            'deskripsi_pekerjaan' => 'nullable|string',
+            'vacancy_id' => 'required|exists:vacancies,vacancy_id',
+            'nama_lengkap' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'tanggal_lahir' => 'required|date',
+            'no_telepon' => 'required|string|max:15',
+            'kabupaten' => 'required|string|max:20',
+            'kecamatan' => 'required|string|max:20',
+            'alamat_lengkap' => 'required|string|max:255',
+            'jenjang_pendidikan' => 'required|string|max:50',
+            'nama_institusi' => 'required|string|max:255',
+            'jurusan' => 'required|string|max:255',
+            'nilai' => 'required|string',
+            'cv' => 'required|file|mimes:pdf|max:5120',
+            'foto' => 'required|file|mimes:png,jpg,jpeg|max:2048',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'email.unique' => 'Email sudah pernah digunakan untuk melamar',
+            'nomor_ktp.unique' => 'Nomor KTP sudah pernah digunakan untuk melamar',
+            'cv.max' => 'Ukuran CV maksimal 5MB',
+            'cv.mimes' => 'CV harus dalam format PDF, DOC, atau DOCX',
         ];
     }
 }

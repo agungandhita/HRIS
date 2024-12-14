@@ -17,20 +17,23 @@ class Vacancy extends Model
         'vacancy_id'
     ];
 
-    protected static function boot()
-    {
-        parent::boot();
+    // protected static function boot()
+    // {
+    //     parent::boot();
 
-        // Membuat slug otomatis
-        static::creating(function ($vacancy) {
-            $vacancy->slug = Str::slug($vacancy->title);
-        });
-    }
+    //     // Membuat slug otomatis
+    //     static::creating(function ($vacancy) {
+    //         $vacancy->slug = Str::slug($vacancy->title);
+    //     });
+    // }
 
 
     public function lamaran() {
         return $this->belongsTo('vacancy_id', 'vacancy_id');
     }
 
-
+    public function jobApplications()
+    {
+        return $this->hasMany(JobApplication::class, 'vacancy_id', 'vacancy_id');
+    }
 }

@@ -13,7 +13,7 @@
                     <thead class="bg-gray-300 whitespace-nowrap">
                         <tr>
                             <th class="p-4 text-left text-sm font-semibold text-gray-800">
-                                No
+                                Nip
                             </th>
                             <th class="p-4 text-left text-sm font-semibold text-gray-800">
                                 Nama
@@ -36,12 +36,12 @@
                         </tr>
                     </thead>
 
-                    @foreach ($pegawai as $no => $item)
+                    @foreach ($pegawai as $item)
 
                     <tbody class="whitespace-nowrap">
                         <tr class="hover:bg-gray-50">
                             <td class="p-4 text-[15px] text-gray-800">
-                                {{ $no + 1 }}
+                                {{ $item->nip}}
                             </td>
                             <td class="p-4 text-[15px] text-gray-800">
                                 {{ $item->nama }}
@@ -50,7 +50,7 @@
                                 {{ $item->email }}
                             </td>
                             <td class="p-4 text-[15px] text-gray-800">
-                                {{ $item->role }}
+                                {{ $item->posisi }}
                             </td>
                             <td class="p-4 text-[15px] text-gray-800">
                                 <a href="" class="text-blue-700">
@@ -58,7 +58,7 @@
                                 </a>
                             </td>
                             <td class="p-4 text-[15px] text-gray-800">
-                                {{ \Carbon\Carbon::parse($item->tanggal_lahir)->translatedFormat('d F Y') }}
+                                {{ \Carbon\Carbon::parse($item->tanggal_masuk)->translatedFormat('d F Y') }}
                             </td>
                             <td class="p-4 flex gap-x-3">
                                 <a href="#" class="mt-1">

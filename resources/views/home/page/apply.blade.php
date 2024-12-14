@@ -67,11 +67,12 @@
             </div>
         </div>
 
-        <form action="{{ route('career.upload', $loker->vacancy_id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('career.upload', ['id' => $loker->vacancy_id]) }}" method="POST"
+            enctype="multipart/form-data">
             @csrf
             <div class="max-w-[120rem] px-4 pb-10 sm:px-6 lg:px-8 lg:pb-20 md:mt-10 mx-auto">
                 {{-- @dd($loker); --}}
-                <input type="hidden" name="vacancy_id" value="{{ $loker->vacancy_id }}">
+                {{-- @dump(route('career.upload', ['id' => $loker->vacancy_id])) --}}
                 <div class="flex overflow-hidden border-[1px] rounded-t-xl min-h-[56px] bg-gray-200 px-4 py-2">
                     <h1 class="text-lg md:text-2xl font-semibold font-[sans-serif] capitalize text-slate-800 pt-1">
                         data diri
@@ -79,8 +80,9 @@
                 </div>
 
                 <div class="bg-white justify-between mb-4 border-[1px] rounded-b-xl shadow-best">
+                    <input type="hidden" name="vacancy_id" value="{{ $loker->vacancy_id }}">
                     <div class="p-5 ">
-                        <div class="grid md:grid-cols-3 gap-x-6">
+                        <div class="grid md:grid-cols-2 gap-x-6">
                             <div class="py-3">
                                 <span class="md:pt-6 font-semibold text-lg md:text-2xl capitalize text-gray-600">
                                     nama lengkap
@@ -89,8 +91,8 @@
                                     *
                                 </sup>
                                 <div class="relative flex items-center">
-                                    <input type="text" name="nama_lengkap" placeholder="Nama Lengkap" required
-                                        class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded-xl transition-all" />
+                                    <input type="text" name="nama_lengkap"  placeholder="Nama Lengkap"
+                                        class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded-xl transition-all" value="{{ old('nama_lengkap') }}" />
                                 </div>
                             </div>
 
@@ -103,23 +105,11 @@
                                     *
                                 </sup>
                                 <div class="relative flex items-center">
-                                    <input type="email" name="email" placeholder="john@gmail.com" required
-                                        class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded-xl transition-all" />
+                                    <input type="email" name="email" placeholder="john@gmail.com"
+                                        class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded-xl transition-all" value="{{ old('email') }}" />
                                 </div>
                             </div>
 
-                            <div class="py-3">
-                                <span class="pt-3 md:pt-6 font-semibold text-lg md:text-2xl capitalize text-gray-600">
-                                    NIK
-                                </span>
-                                <sup class="text-red-700 md:text-lg font-medium">
-                                    *
-                                </sup>
-                                <div class="relative flex items-center">
-                                    <input type="text" name="nomor_ktp" placeholder="****" required
-                                        class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded-xl transition-all" />
-                                </div>
-                            </div>
                         </div>
 
                         <div class="grid md:grid-cols-2 gap-x-6">
@@ -131,8 +121,8 @@
                                     *
                                 </sup>
                                 <div class="relative flex items-center">
-                                    <input type="date" name="tanggal_lahir" placeholder="First Name" required
-                                        class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-slate-600 w-full text-lg border outline-[#007bff] rounded-xl transition-all" />
+                                    <input type="date" name="tanggal_lahir" placeholder="First Name"
+                                        class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-slate-600 w-full text-lg border outline-[#007bff] rounded-xl transition-all" value="{{ old('tanggal_lahir') }}" />
                                 </div>
                             </div>
 
@@ -146,41 +136,44 @@
                                 </sup>
                                 <div class="relative flex items-center">
                                     <input type="text" name="no_telepon" id="no_telepon" maxlength="14"
-                                        class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-slate-600 w-full text-lg border outline-[#007bff] rounded-xl transition-all"
-                                        placeholder="08123456789" required>
+                                        class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-slate-600 w-full text-lg border outline-[#007bff] rounded-xl transition-all" value="{{ old('no_telepon') }}"
+                                        placeholder="08123456789">
                                 </div>
                             </div>
                         </div>
 
                         <div class="grid md:grid-cols-2 gap-x-6">
+
                             <div class="py-3">
 
                                 <span class="pt-3 md:pt-6 font-semibold text-lg md:text-2xl capitalize text-gray-600">
-                                    kabupaten
+                                    Kabupaten
                                 </span>
                                 <sup class="text-red-700 md:text-lg font-medium">
                                     *
                                 </sup>
                                 <div class="relative flex items-center">
-                                    <input type="text" name="kabupaten" placeholder="john@gmail.com" required
-                                        class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded-xl transition-all" />
+                                    <input type="text" name="kabupaten" placeholder="Lamongan" required
+                                        class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded-xl transition-all" value="{{ old('kabupaten') }}" />
                                 </div>
                             </div>
 
                             <div class="py-3">
 
                                 <span class="pt-3 md:pt-6 font-semibold text-lg md:text-2xl capitalize text-gray-600">
-                                    provinsi
+                                    Kecamatan
                                 </span>
                                 <sup class="text-red-700 md:text-lg font-medium">
                                     *
                                 </sup>
                                 <div class="relative flex items-center">
-                                    <input type="text" name="provinsi" placeholder="jawa timur" required
-                                        class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded-xl transition-all" />
+                                    <input type="text" name="kecamatan" placeholder="Maduran"
+                                        class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded-xl transition-all" value="{{ old('kecamatan') }}" />
                                 </div>
                             </div>
+
                         </div>
+
                         <div class="max-w-full">
                             <label for="alamat_lengkap"
                                 class="pt-3 md:pt-6 font-semibold text-lg md:text-2xl capitalize text-gray-600">Alamat
@@ -188,7 +181,7 @@
                             <sup class="text-red-700 md:text-lg font-medium">
                                 *
                             </sup>
-                            <textarea name="alamat_lengkap"
+                            <textarea name="alamat_lengkap" required
                                 class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded-xl transition-all"
                                 rows="3" placeholder="Alamat Lengkap"></textarea>
                         </div>
@@ -219,18 +212,6 @@
                                 class="file-input file-input-bordered file-input-warning w-full max-w-full rounded-xl fill-yellow-400 border-[1px]" />
                         </div>
 
-                        <div class="max-w-full">
-                            <div class="my-4">
-                                <label for="textarea-email-label"
-                                    class="pt-3 md:pt-6 font-semibold text-lg md:text-2xl capitalize text-gray-600">upload
-                                    surat lamaran</label>
-                                <sup class="text-red-700 md:text-lg font-medium">
-                                    *
-                                </sup>
-                            </div>
-                            <input type="file" name="surat_lamaran" accept=".pdf,.doc,.docx"
-                                class="file-input file-input-bordered file-input-warning w-full max-w-full rounded-xl fill-yellow-400 border-[1px]" />
-                        </div>
                     </div>
                 </div>
 
@@ -269,8 +250,8 @@
                                 *
                             </sup>
                             <div class="relative flex items-center">
-                                <input type="text" name="nama_institusi" placeholder="Sekolah/Universitas" required
-                                    class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded-xl transition-all" />
+                                <input type="text" name="nama_institusi" placeholder="Sekolah/Universitas"
+                                    class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded-xl transition-all" value="{{ old('nama_institusi') }}" />
                             </div>
                         </div>
                     </div>
@@ -283,8 +264,8 @@
                                 *
                             </sup>
                             <div class="relative flex items-center">
-                                <input type="text" name="jurusan" placeholder="Jurusan" required
-                                    class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded-xl transition-all" />
+                                <input type="text" name="jurusan" placeholder="Jurusan"
+                                    class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded-xl transition-all" value="{{ old('jurusan') }}" />
                             </div>
                         </div>
 
@@ -295,13 +276,14 @@
                                 *
                             </sup>
                             <div class="relative flex items-center">
-                                <input type="text" name="gpa"
-                                    placeholder="Masukkan Nilai/IPK (Contoh: 3.50)" required
-                                    class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded-xl transition-all" />
+                                <input type="text" name="nilai" placeholder="Masukkan Nilai/IPK (Contoh: 3.50)"
+                                    class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded-xl transition-all" value="{{ old('nilai') }}" />
                             </div>
                         </div>
                     </div>
                 </div>
+
+                {{-- pengalaman kerja  --}}
 
                 <div class="flex overflow-hidden border-[1px] rounded-t-xl min-h-[56px] bg-gray-200 px-4 py-2">
                     <h1 class="text-lg md:text-2xl font-semibold font-[sans-serif] capitalize text-slate-800 pt-1">
@@ -320,7 +302,7 @@
                             </sup>
                             <div class="relative flex items-center">
                                 <input type="text" name="nama_perusahaan" placeholder="PT/CV"
-                                    class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded-xl transition-all" />
+                                    class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded-xl transition-all" value="{{ old('nama_perusahaan') }}" />
                             </div>
                         </div>
 
@@ -332,7 +314,7 @@
                             </sup>
                             <div class="relative flex items-center">
                                 <input type="text" name="sebagai" placeholder="Posisi"
-                                    class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded-xl transition-all" />
+                                    class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded-xl transition-all" value="{{ old('sebagai') }}" />
                             </div>
                         </div>
                     </div>
@@ -346,7 +328,7 @@
                             </sup>
                             <div class="relative flex items-center">
                                 <input type="date" name="start_date"
-                                    class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-slate-600 w-full text-lg border outline-[#007bff] rounded-xl transition-all" />
+                                    class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-slate-600 w-full text-lg border outline-[#007bff] rounded-xl transition-all"  />
                             </div>
                         </div>
 
@@ -372,7 +354,7 @@
                         </sup>
                         <textarea name="deskripsi_pekerjaan"
                             class="px-2 mt-2 bg-[#ffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded-xl transition-all"
-                            rows="3" placeholder="Deskripsi Pekerjaan"></textarea>
+                            rows="3" placeholder="deskripsi Pekerjaan"></textarea>
                     </div>
                     <div class="flex justify-end">
                         <button type="submit"

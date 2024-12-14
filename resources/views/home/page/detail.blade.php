@@ -65,7 +65,7 @@
                     </div>
 
                     <div class="mt-4 flex justify-center items-center md:flex md:justify-end md:items-end">
-                        <a href="{{ route('career.apply', $loker->slug) }}">
+                        <a href="{{ route('career.apply', $loker->vacancy_id) }}">
                         <button type="button"
                             class="px-3 py-2 md:px-6 md:py-3 rounded-lg text-white text-sm md:text-xl tracking-wider font-semibold outline-none bg-orange-600 hover:bg-orange-700 border-2 border-orange-600 transition-all duration-300">Lamar
                             Disini</button>

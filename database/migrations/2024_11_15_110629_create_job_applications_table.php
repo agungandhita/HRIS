@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('job_applications', function (Blueprint $table) {
             $table->id('application_id');
-            $table->foreignId('vacancy_id');
-            $table->foreignId('employe_id');
+            $table->foreignId('vacancy_id')->references('vacancy_id')->on('vacancies')->onDelete('cascade');;
+            $table->foreignId('lamar_id');
             $table->enum('status', ['applied', 'shortlisted', 'interview', 'rejected', 'on boarding'])->default('applied');
             $table->timestamps();
         });

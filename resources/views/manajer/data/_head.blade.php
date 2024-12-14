@@ -118,33 +118,35 @@
                             </div>
 
                             <div class="mb-4">
-                                <h2 for="provinsi" class="block text-lg font-semibold text-black">Tanggal Lahir</h2>
-                                <input type="date" name="tanggal_lahir" placeholder="First Name" required
+                                <h2 for="tanggal_masuk" class="block text-lg font-semibold text-black">Tanggal Masuk</h2>
+                                <input type="date" name="tanggal_masuk" placeholder="First Name" required
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                    value="{{ old('tanggal_lahir') }}" required />
-                                @error('tanggal_lahir')
+                                    value="{{ old('tanggal_masuk') }}" required />
+                                @error('tanggal_masuk')
                                     <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
                                 @enderror
                             </div>
 
                             <div class="mb-4">
-                                <h2 for="provinsi" class="block text-lg font-semibold text-black">Provinsi</h2>
-                                <input name="provinsi" placeholder="Ex: Jawa Timur"
+                                <h2 for="posisi" class="block text-lg font-semibold text-black">posisi</h2>
+                                <input name="posisi" placeholder="Ex: waiters"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                    value="{{ old('provinsi') }}" required>
-                                @error('provinsi')
+                                    value="{{ old('posisi') }}" required>
+                                @error('posisi')
                                     <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
                                 @enderror
                             </div>
 
-                            <div class="mb-4">
-                                <h2 for="kota" class="block text-lg font-semibold text-black">Kabupaten/Kota</h2>
-                                <input name="kota" placeholder="Ex: Lamongan"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                    value="{{ old('kota') }}" required>
-                                @error('kota')
-                                    <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
-                                @enderror
+                            <div class="mb-6">
+                                <h2 class="block text-lg font-semibold text-black">Jenis Kelamin</h2>
+                                <div class="relative flex items-center">
+                                    <select name="jenis_kelamin" id="jenis_kelamin"
+                                        class="select select-ghostpx-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5capitalize">
+                                        <option disabled selected class="text-sm">Jenis kelamin</option>
+                                        <option value="laki-laki" class="text-sm">Laki-Laki</option>
+                                        <option value="perempuan" class="text-sm">perempuan</option>
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="mb-6">

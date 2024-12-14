@@ -23,7 +23,7 @@ class StorePegawaiRequest extends FormRequest
     {
         return [
             'nama' => 'required|string|max:255',
-            'tanggal_lahir' => 'required|date',
+            'tanggal_masuk' => 'required|date',
             'nip' => 'numeric|digits_between:1,19',
             'no_telepon' => 'required|string|max:14',
             'email' => 'required|email|unique:pegawais,email',

@@ -16,7 +16,7 @@ class VacancyRepository implements VacancyInterface
     }
 
     /**
-     * Method untuk menambahkan data lowongan pekerjaan.
+     * menambahkan data lowongan pekerjaan.
      *
      * @param array $data
      * @return Vacancy
@@ -74,8 +74,8 @@ class VacancyRepository implements VacancyInterface
         return $vacancy;
     }
 
-    public function getBySlug(string $slug) {
+    // public function getBySlug(string $slug) {
 
-        return Vacancy::where('slug', $slug)->firstOrFail();
-    }
+    //     return Vacancy::where('slug', $slug)->firstOrFail();
+    // }
 }

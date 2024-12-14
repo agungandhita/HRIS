@@ -50,7 +50,7 @@
                             <p class="mt-1 text-sm text-gray-800 leading-relaxed md:text-lg capitalize">: {{ $item->cabang }}, {{ $item->provinsi }} </p>
                         </div>
                         <div class="flex justify-end">
-                        <a href="{{ route('career.detail', $item->slug) }}">
+                        <a href="{{ route('career.detail', $item->vacancy_id) }}">
                             <button type="button"
                                 class="mt-10 px-3 py-2 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-yellow-400 hover:bg-yellow-600">Lihat
                                 Detail</button>

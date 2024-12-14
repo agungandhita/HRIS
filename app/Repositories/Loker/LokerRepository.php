@@ -47,15 +47,14 @@ class LokerRepository implements LokerInterface
         return $loker;
     }
 
-    public function getBySlug(string $slug)
+    public function getById($id)
     {
-        $job = $this->lokerModel->where('slug', $slug)->firstOrFail();
+        $job = $this->lokerModel->where('vacancy_Id', $id)->firstOrFail();
 
         // Proses job_description dan qualifications agar selalu dalam bentuk array
         $job->job_description = $this->processListField($job->job_description);
         $job->qualifications = $this->processListField($job->qualifications);
 
-        // dd($job);
         return $job;
 
     }

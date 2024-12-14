@@ -7,6 +7,7 @@ use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\manajer\ManajerController;
 use App\Http\Controllers\admin\vacancy\VacancyController;
+use App\Http\Controllers\admin\data\LamaranController;
 use \App\Http\Controllers\manajer\data\PegawaiController as DataPegawaiController;
 
 /*
@@ -46,6 +47,9 @@ Route::middleware('admin')->group(function () {
     Route::get('/manajer/detail', [ManajerController::class, 'look'])->name('edit');
     Route::post('/delete/{id}', [ManajerController::class, 'destroy'])->name('hapus');
 
+    //lamaran
+    Route::get('/lamaran', [LamaranController::class, 'index'])->name('lamaran.index');
+
 
 
     //Vacancy
@@ -67,7 +71,8 @@ Route::get('/about', [FrontController::class, 'about'])->name('about');
 
 //career
 Route::get('/career', [FrontController::class, 'career'])->name('career');
-Route::get('/career/detail/{slug}', [FrontController::class, 'detail'])->name('career.detail');
+Route::get('/career/detail/{id}', [FrontController::class, 'detail'])->name('career.detail');
 Route::get('/career/detail/{id}/apply', [FrontController::class, 'applyForm'])->name('career.apply');
-Route::post('/career/apply/{id}/send', [FrontController::class, 'store'])->name('career.upload');
+Route::post('/career/{id}/send', [FrontController::class, 'store'])->name('career.upload');
+
 
