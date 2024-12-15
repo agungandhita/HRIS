@@ -12,10 +12,12 @@ class  LamaranRepository implements LamaranInterface
 {
 
     private $lamaranModel;
+    private $jobApplicationModel;
 
-    public function __construct(Lamaran $lamaran)
+    public function __construct(Lamaran $lamaran, JobApplication $jobApplication)
     {
         $this->lamaranModel = $lamaran;
+        $this->jobApplicationModel = $jobApplication;
     }
 
 
@@ -44,5 +46,7 @@ class  LamaranRepository implements LamaranInterface
             'status' => 'applied',
         ]);
     }
+
+
 
 }

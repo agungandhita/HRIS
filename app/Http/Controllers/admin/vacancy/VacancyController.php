@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\admin\vacancy;
 
+use App\Models\Vacancy;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreVacancyRequest;
 use App\Http\Requests\UpdateVacancyRequest;
 use App\Repositories\Vacancy\VacancyInterface;
-use Illuminate\Http\Request;
 
 class VacancyController extends Controller
 {
@@ -47,15 +49,27 @@ class VacancyController extends Controller
 
     public function update(UpdateVacancyRequest $request, $id)
     {
+        $data = $request->validated();
 
-        $data = $request->only(['job_description', 'qualifications']);
+        $userId = auth()->id();
 
-        $vacancy = $this->vacancyRepository->updateVacancies($id, $data);
+        $this->vacancyRepository->updateVacancies($id,$data,$userId);
 
-        return redirect()->route('vacancies.index')->with('success', 'Vacancy updated successfully.');
+
+        return redirect()->route('vacancy.index')->with('success', 'Vacancy updated successfully!');
+
     }
 
-    // public function edit($id){
+    public function destroy($id){
+        $userId = auth()->id();
 
-    // }
+        $berhasil = $this->vacancyRepository->delete($id,$userId);
+
+        if ($berhasil) {
+            return redirect()->route('vacancy.index')->with('success', 'Vacancy deleted successfully!');
+        } else {
+            return redirect()->route('vacancy.index')->with('error', 'Failed to delete vacancy.');
+        }
+    }
+
 }

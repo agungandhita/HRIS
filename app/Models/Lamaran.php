@@ -46,6 +46,6 @@ class Lamaran extends Model
 
     public function jobApplications()
     {
-        return $this->belongsTo(JobApplication::class, 'lamar_id', 'lamar_id');
+        return $this->hasMany(JobApplication::class, 'lamar_id', 'lamar_id');
     }
 }

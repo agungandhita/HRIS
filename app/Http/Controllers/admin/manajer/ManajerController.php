@@ -18,7 +18,7 @@ class ManajerController extends Controller
     {
         $this->manajerRepository = $manajerRepository;
     }
-    
+
     public function index()
     {
         $head = User::where('role', 'manajer');
@@ -62,7 +62,6 @@ class ManajerController extends Controller
 
 
 
-    public function edit($id) {}
 
     public function destroy(User $user, $id)
     {

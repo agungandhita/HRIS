@@ -80,7 +80,7 @@
                             </svg>
                             Tambah
                         </a>
-                        <a href="#"
+                        {{-- <a href="#"
                             class="inline-flex items-center justify-center w-1/2 px-3 py-2 text-sm font-semibold text-center text-white bg-green-600 border border-gray-300 rounded-lg hover:bg-green-800 focus:ring-4 focus:ring-primary-300 sm:w-auto ">
                             <svg class="w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -89,7 +89,7 @@
                                     clip-rule="evenodd"></path>
                             </svg>
                             Export
-                        </a>
+                        </a> --}}
                     </div>
                 </div>
             </div>
@@ -146,7 +146,8 @@
                                     {{ \Carbon\Carbon::parse($item->posting_date)->translatedFormat('l, d F Y') }}
                                 </td>
                                 <td class="px-4 py-4 text-sm text-gray-800 capitalize">
-                                    <span class="{{ $item->status == 'open' ? 'text-green-500' : ($item->status == 'closed' ? 'text-red-500' : 'text-gray-800') }}">
+                                    <span
+                                        class="{{ $item->status == 'open' ? 'text-green-500' : ($item->status == 'closed' ? 'text-red-500' : 'text-gray-800') }}">
                                         {{ $item->status }}
                                     </span>
                                 </td>
@@ -161,10 +162,108 @@
                                     </button>
                                 </td>
                                 <td class="px-4 py-4 text-sm text-gray-800">
-                                    <button class="text-blue-600 mr-4">Edit</button>
-                                    <button class="text-red-600">Delete</button>
+                                    <button type="button" data-modal-target="default-modal{{ $no }}"
+                                        data-modal-toggle="default-modal{{ $no }}" class="text-blue-600 mr-4">
+                                        Edit</button>
+                                    <button aria-haspopup="dialog{{ $no }}" aria-expanded="false"
+                                        aria-controls="hs-scale-animation-modal{{ $no }}"
+                                        data-hs-overlay="#hs-scale-animation-modal{{ $no }}"
+                                        class="text-red-600">Delete</button>
                                 </td>
                             </tr>
+
+                            {{-- delet modal --}}
+                            @foreach ($data as $isi => $delete)
+                                <div id="hs-scale-animation-modal{{ $isi }}"
+                                    class="hs-overlay hidden size-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto pointer-events-none"
+                                    role="dialog" tabindex="-1"
+                                    aria-labelledby="hs-scale-animation-modal-label{{ $isi }}">
+                                    <form action="{{ route('vacancy.delete', $delete->vacancy_id) }}" method="POST">
+                                        @csrf
+                                        <div
+                                            class="hs-overlay-animation-target hs-overlay-open:scale-100 hs-overlay-open:opacity-100 scale-95 opacity-0 ease-in-out transition-all duration-200 sm:max-w-lg sm:w-full m-3 sm:mx-auto min-h-[calc(100%-3.5rem)] flex items-center">
+                                            <div
+                                                class="w-full flex flex-col bg-slate-100 border shadow-sm rounded-xl pointer-events-auto ">
+                                                <div class="flex justify-between items-center py-3 px-4 border-b ">
+                                                    <h3 id="hs-scale-animation-modal-label"
+                                                        class="font-bold text-gray-800 ">
+                                                        Hapus
+                                                    </h3>
+                                                </div>
+                                                <div class="p-4 overflow-y-auto">
+                                                    <p class="mt-1 text-gray-800 font-semibold">
+                                                        Apakah anda yakin ingin menghapus?
+                                                    </p>
+                                                </div>
+                                                <div class="flex justify-end items-center gap-x-2 py-3 px-4 border-t ">
+                                                    <button type="button"
+                                                        class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none "
+                                                        data-hs-overlay="#hs-scale-animation-modal{{ $isi }}">
+                                                        Tidak
+                                                    </button>
+                                                    <button type="submit"
+                                                        class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-red-600 text-white hover:bg-red-700 focus:outline-none focus:bg-red-700 disabled:opacity-50 disabled:pointer-events-none">
+                                                        Ya
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            @endforeach
+
+
+
+                            {{-- modal edit --}}
+                            @foreach ($data as $key => $edit)
+                                <div id="default-modal{{ $key }}" tabindex="-1" aria-hidden="true"
+                                    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                    <form action="{{ route('vacancy.update', $edit->vacancy_id) }}" method="POST">
+                                        @csrf
+                                        <div class="relative p-4 w-full max-w-2xl max-h-full">
+                                            <!-- Modal content -->
+                                            <div class="relative bg-white rounded-lg shadow">
+                                                <!-- Modal header -->
+                                                <div
+                                                    class="flex items-center justify-between p-4 md:p-5 border-b rounded-t ">
+                                                    <h3 class="text-xl font-semibold text-gray-900 ">
+                                                        Edit
+                                                    </h3>
+                                                </div>
+                                                <!-- Modal body -->
+                                                <div class="p-4 md:p-5 space-y-4">
+                                                    <div class="grid grid-cols-2 gap-x-4">
+                                                        <div class="">
+                                                            <h1 class="text-lg font-semibold">
+                                                                Tanggal Posting
+                                                            </h1>
+                                                            <input class="w-full rounded-lg text-lg" type="date"
+                                                                name="posting_date" value="{{ $edit->posting_date }}">
+                                                        </div>
+                                                        <div class="">
+                                                            <h1 class="text-lg font-semibold">
+                                                                Tanggal Berakhir
+                                                            </h1>
+                                                            <input class="w-full rounded-lg text-lg" type="date"
+                                                                name="closing_date" value="{{ $edit->closing_date }}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Modal footer -->
+                                                <div class="flex gap-x-4 items-center p-4 md:p-5 rounded-b">
+
+                                                    <button data-modal-hide="default-modal{{ $key }}"
+                                                        type="button"
+                                                        class="py-2.5 px-5 text-sm font-semibold text-white focus:outline-none bg-red-600 rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">Batal</button>
+                                                    <button data-modal-hide="default-modal" type="submit"
+                                                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center">Edit</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            @endforeach
+
 
                             <!-- Modal untuk menampilkan Job Description dan Qualification -->
                             <div id="hs-scroll-inside-body-modal{{ $no }}"

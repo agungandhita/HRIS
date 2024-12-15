@@ -16,6 +16,8 @@ interface VacancyInterface
 
     // public function getBySlug(string $slug);
 
-    public function updateVacancies(int $id, array $data);
+    public function updateVacancies(int $id, array $data, int $userId);
+
+    public function delete(int $id, int $userId);
 
 }

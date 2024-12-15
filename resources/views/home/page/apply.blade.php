@@ -190,7 +190,7 @@
                             <div class="my-4">
                                 <label for="textarea-email-label"
                                     class="pt-3 md:pt-6 font-semibold text-lg md:text-2xl capitalize text-gray-600">upload
-                                    CV</label>
+                                    CV, Lamaran kerja, Ijazah</label>
                                 <sup class="text-red-700 md:text-lg font-medium">
                                     *
                                 </sup>

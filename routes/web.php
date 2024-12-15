@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\page\FrontController;
+use App\Models\JobApplication;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\auth\LoginController;
+use App\Http\Controllers\page\FrontController;
 use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\data\LamaranController;
 use App\Http\Controllers\admin\manajer\ManajerController;
 use App\Http\Controllers\admin\vacancy\VacancyController;
-use App\Http\Controllers\admin\data\LamaranController;
 use \App\Http\Controllers\manajer\data\PegawaiController as DataPegawaiController;
 
 /*
@@ -49,13 +50,24 @@ Route::middleware('admin')->group(function () {
 
     //lamaran
     Route::get('/lamaran', [LamaranController::class, 'index'])->name('lamaran.index');
+    Route::get('/lamaran/detail/{id}', [LamaranController::class, 'detail'])->name('lamaran.detail');
 
-
+    Route::get('/cv/view/{id}', function ($id) {
+        $application = JobApplication::with('lamaran')->findOrFail($id);
+        $cvPath = $application->lamaran->cv;
+        $filePath = storage_path("app/public/{$cvPath}");
+        if (file_exists($filePath)) {
+            return response()->file($filePath);
+        }
+        return abort(404, 'CV tidak ditemukan.');
+    })->name('cv.view');
 
     //Vacancy
     Route::get('/vacancy', [VacancyController::class, 'index'])->name('vacancy.index');
     Route::get('/vacancy/add', [VacancyController::class, 'add'])->name('vacancy.add');
     Route::post('/vacancy/store', [VacancyController::class, 'store'])->name('vacancy.store');
+    Route::post('/vacancy/edit/{id}', [VacancyController::class, 'update'])->name('vacancy.update');
+    Route::post('/vacancy/delete/{id}', [VacancyController::class, 'destroy'])->name('vacancy.delete');
 });
 
 Route::middleware(['auth', 'manajer'])->group(function () {
@@ -74,5 +86,3 @@ Route::get('/career', [FrontController::class, 'career'])->name('career');
 Route::get('/career/detail/{id}', [FrontController::class, 'detail'])->name('career.detail');
 Route::get('/career/detail/{id}/apply', [FrontController::class, 'applyForm'])->name('career.apply');
 Route::post('/career/{id}/send', [FrontController::class, 'store'])->name('career.upload');
-
-

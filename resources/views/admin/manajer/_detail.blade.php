@@ -20,7 +20,8 @@
                                 d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                                 clip-rule="evenodd"></path>
                         </svg>
-                        <a href="#" class="ml-1 text-gray-700 hover:text-primary-600 md:ml-2">Users</a>
+                        <a href="{{ route('manajer.index') }}"
+                            class="ml-1 text-gray-700 hover:text-primary-600 md:ml-2">Manajer</a>
                     </div>
                     <div class="flex items-center">
                         <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
@@ -71,66 +72,66 @@
 <div class="mt-4">
     <div class="font-sans overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200">
-          <thead class="bg-gray-300 whitespace-nowrap">
-            <tr>
-                <th class="px-4 py-4 text-left text-sm font-semibold text-black capitalize tracking-wider">
-                    No
-                  </th>
-              <th class="px-4 py-4 text-left text-sm font-semibold text-black capitalize tracking-wider">
-                Nama
-              </th>
-              <th class="px-4 py-4 text-left text-sm font-semibold text-black capitalize tracking-wider">
-                Email
-              </th>
-              <th class="px-4 py-4 text-left text-sm font-semibold text-black capitalize tracking-wider">
-                jabatan
-              </th>
-              <th class="px-4 py-4 text-left text-sm font-semibold text-black capitalize tracking-wider">
-                Bergabung pada
-              </th>
-              <th class="px-4 py-4 text-left text-sm font-semibold text-black capitalize tracking-wider">
-                Total absen
-              </th>
-              <th class="px-4 py-4 text-left text-sm font-semibold text-black capitalize tracking-wider">
-                Total Masuk
-              </th>
-              <th class="px-4 py-4 text-left text-sm font-semibold text-black capitalize tracking-wider">
-                Actions
-              </th>
-            </tr>
-          </thead>
+            <thead class="bg-gray-300 whitespace-nowrap">
+                <tr>
+                    <th class="px-4 py-4 text-left text-sm font-semibold text-black capitalize tracking-wider">
+                        No
+                    </th>
+                    <th class="px-4 py-4 text-left text-sm font-semibold text-black capitalize tracking-wider">
+                        Nama
+                    </th>
+                    <th class="px-4 py-4 text-left text-sm font-semibold text-black capitalize tracking-wider">
+                        Email
+                    </th>
+                    <th class="px-4 py-4 text-left text-sm font-semibold text-black capitalize tracking-wider">
+                        jabatan
+                    </th>
+                    <th class="px-4 py-4 text-left text-sm font-semibold text-black capitalize tracking-wider">
+                        Bergabung pada
+                    </th>
+                    <th class="px-4 py-4 text-left text-sm font-semibold text-black capitalize tracking-wider">
+                        Total absen
+                    </th>
+                    <th class="px-4 py-4 text-left text-sm font-semibold text-black capitalize tracking-wider">
+                        Total Masuk
+                    </th>
+                    <th class="px-4 py-4 text-left text-sm font-semibold text-black capitalize tracking-wider">
+                        Actions
+                    </th>
+                </tr>
+            </thead>
 
-          <tbody class="bg-white divide-y divide-gray-200 whitespace-nowrap">
-            <tr>
-                <td class="px-4 py-4 text-base text-gray-800">
-                    John Doe
-                  </td>
-              <td class="px-4 py-4 text-base text-gray-800">
-                John Doe
-              </td>
-              <td class="px-4 py-4 text-base text-gray-800">
-                john@example.com
-              </td>
-              <td class="px-4 py-4 text-base text-gray-800">
-                Admin
-              </td>
-              <td class="px-4 py-4 text-base text-gray-800">
-                2022-05-15
-              </td>
-              <td class="px-4 py-4 text-base text-gray-800">
-               20 hari
-              </td>
-              <td class="px-4 py-4 text-base text-gray-800">
-                20 hari
-               </td>
-              <td class="px-4 py-4 text-base text-gray-800">
-                <button class="text-blue-600 mr-4">Edit</button>
-                <button class="text-red-600">Delete</button>
-              </td>
-            </tr>
+            <tbody class="bg-white divide-y divide-gray-200 whitespace-nowrap">
+                <tr>
+                    <td class="px-4 py-4 text-base text-gray-800">
+                        John Doe
+                    </td>
+                    <td class="px-4 py-4 text-base text-gray-800">
+                        John Doe
+                    </td>
+                    <td class="px-4 py-4 text-base text-gray-800">
+                        john@example.com
+                    </td>
+                    <td class="px-4 py-4 text-base text-gray-800">
+                        Admin
+                    </td>
+                    <td class="px-4 py-4 text-base text-gray-800">
+                        2022-05-15
+                    </td>
+                    <td class="px-4 py-4 text-base text-gray-800">
+                        20 hari
+                    </td>
+                    <td class="px-4 py-4 text-base text-gray-800">
+                        20 hari
+                    </td>
+                    <td class="px-4 py-4 text-base text-gray-800">
+                        <button class="text-blue-600 mr-4">Edit</button>
+                        <button class="text-red-600">Delete</button>
+                    </td>
+                </tr>
 
 
-          </tbody>
+            </tbody>
         </table>
-      </div>
+    </div>
 </div>

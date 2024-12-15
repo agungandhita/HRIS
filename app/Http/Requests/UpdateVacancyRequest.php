@@ -22,8 +22,9 @@ class UpdateVacancyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'job_description' => 'required|string',
-            'qualifications' => 'required|string',
+
+            'posting_date' => 'required|date|before_or_equal:closing_date',
+            'closing_date' => 'required|date|after_or_equal:posting_date',
         ];
     }
 }

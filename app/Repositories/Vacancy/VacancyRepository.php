@@ -51,24 +51,24 @@ class VacancyRepository implements VacancyInterface
         return $vacancies;
     }
 
-    public function updateVacancies(int $id, array $data)
+    public function updateVacancies(int $id, array $data, int $userId)
     {
 
         $vacancy = Vacancy::findOrFail($id);
 
-        // Menghilangkan karakter [ ] dan memisahkan berdasarkan tanda kutip
-        $jobDescription = preg_replace('/\[|\]/', '', $data['job_description']);
-        $qualifications = preg_replace('/\[|\]/', '', $data['qualifications']);
+        $vacancy->posting_date = $data['posting_date'];
+        $vacancy->closing_date = $data['closing_date'];
 
-        // Mengubah menjadi array berdasarkan tanda kutip
-        $jobDescriptionArray = array_map('trim', explode('","', trim($jobDescription, '"')));
-        $qualificationsArray = array_map('trim', explode('","', trim($qualifications, '"')));
+        $vacancy->user_updated = $userId;
 
-        // Encode kembali menjadi JSON
-        $vacancy->job_description = json_encode($jobDescriptionArray);
-        $vacancy->qualifications = json_encode($qualificationsArray);
+        if (Carbon::now()->greaterThan(Carbon::parse($vacancy->closing_date))) {
+            $vacancy->status = 'closed';
+        } else {
+            $vacancy->status = 'open';
+        }
 
-        // Simpan perubahan
+        $vacancy->updated_at = Carbon::now('Asia/Jakarta');
+
         $vacancy->save();
 
         return $vacancy;
@@ -78,4 +78,15 @@ class VacancyRepository implements VacancyInterface
 
     //     return Vacancy::where('slug', $slug)->firstOrFail();
     // }
+
+
+    public function delete(int $id, int $userId ) {
+        $vacancy = Vacancy::findOrFail($id);
+
+        $vacancy->user_deleted = $userId;
+        $vacancy->deleted = true;
+        $vacancy->deleted_at = Carbon::now('Asia/Jakarta');
+
+        return $vacancy->save();
+    }
 }

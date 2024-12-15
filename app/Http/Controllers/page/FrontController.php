@@ -43,7 +43,11 @@ class FrontController extends Controller
     {
         $loker = $this->LokerRepository->showAll();
 
-        // dd($loker);
+        if ($loker->isEmpty()) {
+            return view('home.page.career', [
+                'message' => 'Saat ini tidak ada lowongan tersedia.'
+            ]);
+        }
 
         return view('home.page.career', [
             'data' => $loker
@@ -114,7 +118,12 @@ class FrontController extends Controller
 
         $this->LamaranRepository->storeJobApplication($data['vacancy_id'], $lamaran->lamar_id);
 
-        return redirect()->back()->with('succes', 'Lamaran berhasil dikirim!');
+        if ($lamaran) {
+            return redirect()->route('career.apply', ['id' => $id])->with('success', 'Berhasil mengirim lamaran!');
+        } else {
+            return redirect()->route('career.apply', ['id' => $id])->with('error', 'Gagal mengirim lamaran.');
+        }
+
     }
 
 

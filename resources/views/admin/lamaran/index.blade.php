@@ -43,11 +43,11 @@
                                 {{ $no + 1 }}
                             </td>
                             <td class="text-gray-800 text-center p-4 text-sm">
-                                {{ $item->lamaran[0]->nama_lengkap }}
+                                {{ $item->lamaran->nama_lengkap }}
                             </td>
                             <td class="text-center p-4 text-sm">
                                 <div class="mx-auto px-3 py-1 w-max text-black rounded">
-                                    {{ $item->lamaran[0]->no_telepon }}
+                                    {{ $item->lamaran->no_telepon }}
                                 </div>
                             </td>
                             <td class="text-center p-4 text-sm">
@@ -56,7 +56,7 @@
                             </td>
                             <td class="text-center p-4 flex items-center">
                                 <div class="w-full pt-2">
-                                    <a href="" class="text-center text-blue-700 capitalize">
+                                    <a href="{{ route('lamaran.detail', $item->lamar_id) }}" class="text-center text-blue-700 capitalize">
                                         lihat Berkas
                                     </a>
                                 </div>

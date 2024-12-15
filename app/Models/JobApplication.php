@@ -29,6 +29,6 @@ class JobApplication extends Model
     }
 
     public function lamaran() {
-        return $this->hasMany(Lamaran::class, 'lamar_id' );
+        return $this->belongsTo(Lamaran::class, 'lamar_id' );
     }
 }
