@@ -6,6 +6,7 @@ use App\Models\Lamaran;
 use Illuminate\Http\Request;
 use App\Models\JobApplication;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateJobApplicationRequest;
 use App\Models\Vacancy;
 
 class LamaranController extends Controller
@@ -18,6 +19,7 @@ class LamaranController extends Controller
     }
 
     public function index() {
+
         $lamaran = JobApplication::with('lamaran', 'vacancy')->get();
         // dd($lamaran);
 
@@ -38,5 +40,17 @@ class LamaranController extends Controller
             'data' => $lamaran,
             'lamaran' => Lamaran::all(),
         ]);
+    }
+
+    public function update(UpdateJobApplicationRequest $request, $id) {
+        $lamaran = $request->validated();
+
+        $lamaran = JobApplication::findOrFail($id);
+
+        $lamaran->status = $request->status;
+        $lamaran->save();
+
+        return redirect()->route('lamaran.index', $id)->with('success', 'Status berhasil diperbarui.');
+
     }
 }

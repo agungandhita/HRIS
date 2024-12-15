@@ -61,6 +61,7 @@ Route::middleware('admin')->group(function () {
         }
         return abort(404, 'CV tidak ditemukan.');
     })->name('cv.view');
+    Route::post('/lamaran/update/{id}', [LamaranController::class, 'update'])->name('lamaran.update');
 
     //Vacancy
     Route::get('/vacancy', [VacancyController::class, 'index'])->name('vacancy.index');

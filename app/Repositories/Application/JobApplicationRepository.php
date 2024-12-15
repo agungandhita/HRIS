@@ -27,4 +27,12 @@ class JobApplicationRepository implements JobApplicationInterface
             throw $e;
         }
     }
+
+    // public function updateApplicationStatus(int $id, int $userId){
+    //     $application = JobApplication::find($id);
+    //     $application->user_updated = $userId;
+    //     $application->save();
+    //     return $application;
+
+    // }
 }

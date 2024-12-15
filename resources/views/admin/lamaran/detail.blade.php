@@ -38,6 +38,15 @@
                         </div>
 
                         <div class="col-span-4 sm:col-span-9">
+                            <div class="bg-white shadow rounded-lg p-6 mb-2">
+                                <h2 class="text-base md:text-xl font-bold mb-4">Alamat Pelamar</h2>
+                                <ul class="text-justify text-sm md:text-lg">
+                                    <li>Kabupaten   : {{ $data->lamaran->kabupaten }}</li>
+                                    <li>kecamatan   : {{ $data->lamaran->kecamatan }}</li>
+                                    <li>alamat lengkap  : {{ $data->lamaran->alamat_lengkap }}</li>
+                                </ul>
+                            </div>
+
                             <div class="bg-white shadow rounded-lg p-6">
                                 <h2 class="text-base md:text-xl font-bold mb-4">Pengalaman Kerja</h2>
 

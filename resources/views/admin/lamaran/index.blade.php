@@ -23,6 +23,9 @@
                             Sebagai
                         </th>
                         <th class="p-3 text-sm font-semibold bg-gray-200 text-black">
+                            Lokasi
+                        </th>
+                        <th class="p-3 text-sm font-semibold bg-gray-200 text-black">
                             Berkas
                         </th>
                         <th class="p-3 text-sm font-semibold bg-gray-200 text-black">
@@ -35,12 +38,12 @@
                     </tr>
                 </thead>
 
-                @foreach ($data as $no => $item)
+                @foreach ($data as $cek => $item)
                     {{-- @dd($item) --}}
                     <tbody class="whitespace-nowrap divide-y divide-gray-200">
                         <tr class="hover:bg-gray-50">
                             <td class="text-gray-800 text-center p-4 text-sm">
-                                {{ $no + 1 }}
+                                {{ $cek + 1 }}
                             </td>
                             <td class="text-gray-800 text-center p-4 text-sm">
                                 {{ $item->lamaran->nama_lengkap }}
@@ -54,6 +57,10 @@
                                 <div class="mx-auto px-3 py-1 w-max text-black rounded"> {{ $item->vacancy->title }}
                                 </div>
                             </td>
+                            <td class="text-center p-4 text-sm">
+                                <div class="mx-auto px-3 py-1 w-max text-black rounded"> {{ $item->vacancy->cabang }}
+                                </div>
+                            </td>
                             <td class="text-center p-4 flex items-center">
                                 <div class="w-full pt-2">
                                     <a href="{{ route('lamaran.detail', $item->lamar_id) }}" class="text-center text-blue-700 capitalize">
@@ -62,8 +69,14 @@
                                 </div>
                             </td>
                             <td class="text-center p-4 text-sm">
-                                <div class="mx-auto px-3 py-1 bg-green-500 w-max text-white rounded">{{ $item->status }}
-                                </div>
+                                <div class="mx-auto px-3 py-1 w-max text-white rounded
+                                @if ($item->status === 'rejected') bg-red-500
+                                @elseif ($item->status === 'interview') bg-yellow-500
+                                @elseif ($item->status === 'approved') bg-green-500
+                                @else bg-gray-500 @endif">
+                                {{ $item->status }}
+                            </div>
+
                             </td>
                             <td class="p-4">
                                 <div class="flex justify-center gap-x-4 items-center">
@@ -78,8 +91,8 @@
                                         </button>
                                     </a> --}}
 
-                                    <a href="" class="mt-1">
-                                        <button title="edit data">
+                                        <button title="edit data" data-modal-target="default-modal{{ $cek }}"
+                                        data-modal-toggle="default-modal{{ $cek }}">
                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                 class="w-5 fill-blue-500 hover:fill-blue-700" viewBox="0 0 348.882 348.882">
                                                 <path
@@ -90,7 +103,48 @@
                                                     data-original="#000000" />
                                             </svg>
                                         </button>
-                                    </a>
+
+                                        {{-- modal edit --}}
+                                        @foreach ($data as $key => $edit)
+                                        <div id="default-modal{{ $key }}" tabindex="-1" aria-hidden="true"
+                                            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                            <form action="{{ route('lamaran.update', $edit->application_id) }}" method="POST">
+                                                @csrf
+                                                <div class="relative px-4 w-96 max-w-2xl max-h-full">
+                                                    <!-- Modal content -->
+                                                    <div class="relative bg-white rounded-lg shadow">
+                                                        <!-- Modal header -->
+                                                        <div
+                                                            class="p-4 md:p-5 border-b rounded-t ">
+                                                            <h3 class="text-xl font-semibold text-gray-900 ">
+                                                                Edit
+                                                            </h3>
+                                                        </div>
+                                                        <!-- Modal body -->
+                                                        <div class="mb-2 px-8">
+                                                            <label for="status" class="block font-medium mb-2">Status</label>
+                                                            <select name="status" id="status" class="border border-gray-300 rounded px-4 py-2 w-full">
+                                                                <option value="shortlisted" {{ $edit->status == 'shortlisted' ? 'selected' : '' }}>shortlisted</option>
+                                                                <option value="interview" {{ $edit->status == 'interview' ? 'selected' : '' }}>Interview</option>
+                                                                <option value="rejected" {{ $edit->status == 'rejected' ? 'selected' : '' }}>Rejected</option>
+                                                                <option value="on-boarding" {{ $edit->status == 'on-boarding' ? 'selected' : '' }}>on-boarding</option>
+                                                            </select>
+                                                        </div>
+                                                        <!-- Modal footer -->
+                                                        <div class="flex gap-x-4 items-center p-4 md:p-5 rounded-b">
+
+                                                            <button data-modal-hide="default-modal{{ $key }}"
+                                                                type="button"
+                                                                class="py-2.5 px-5 text-sm font-semibold text-white focus:outline-none bg-red-600 rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">Batal</button>
+                                                            <button data-modal-hide="default-modal" type="submit"
+                                                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    @endforeach
+
 
 
                                     <form action="/delete/" method="POST">
