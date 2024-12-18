@@ -14,7 +14,7 @@
                             <div class="bg-white shadow rounded-lg p-6">
                                 <div class="flex flex-col items-center">
                                     <img src="{{ asset('storage/' . $data->lamaran->foto) }}"
-                                        class="w-32 h-36 bg-gray-300 rounded-full mb-4 shrink-0 object-cover">
+                                        class="w-32 h-36 bg-gray-300 mb-4 shrink-0 object-coer" alt="Profile Picture">
                                     </img>
                                     <h1 class="text-xl font-bold text-center">{{ $data->lamaran->nama_lengkap }}</h1>
                                     <p class="text-gray-700"></p>
@@ -50,21 +50,28 @@
                             <div class="bg-white shadow rounded-lg p-6">
                                 <h2 class="text-base md:text-xl font-bold mb-4">Pengalaman Kerja</h2>
 
-                                <div class="flex flex-col gap-x-4">
-                                    <h1 class="text-base md:text-lg font-bold">
-                                        {{ $data->lamaran->nama_perusahaan }}
-                                    </h1>
-                                    <h1 class="text-sm md:text-lg font-semibold text-slate-500">
-                                        {{ \Carbon\Carbon::parse($data->lamaran->start_date)->format('F Y') }} -
-                                        {{ \Carbon\Carbon::parse($data->lamaran->end_date)->format('F Y') }}
-                                    </h1>
-                                </div>
-                                <div class="mt-2">
-                                    <p class="text-sm md:text-base text-justify">
-                                        {{ $data->lamaran->deskripsi_pekerjaan }}
-                                    </p>
-                                </div>
+                                @if ($data->lamaran && $data->lamaran->nama_perusahaan)
+                                    <div class="flex flex-col gap-x-4">
+                                        <h1 class="text-base md:text-lg font-bold">
+                                            {{ $data->lamaran->nama_perusahaan }}
+                                        </h1>
+                                        <h1 class="text-sm md:text-lg font-semibold text-slate-500">
+                                            {{ \Carbon\Carbon::parse($data->lamaran->start_date)->format('F Y') }} -
+                                            {{ \Carbon\Carbon::parse($data->lamaran->end_date)->format('F Y') }}
+                                        </h1>
+                                    </div>
+                                    <div class="mt-2">
+                                        <p class="text-sm md:text-base text-justify">
+                                            {{ $data->lamaran->deskripsi_pekerjaan }}
+                                        </p>
+                                    </div>
+                                @else
+                                    <div class="text-sm md:text-lg text-gray-500">
+                                        Tidak memiliki pengalaman kerja
+                                    </div>
+                                @endif
                             </div>
+
                             <div class="mt-2 bg-white shadow rounded-lg p-6">
                                 <h1 class="text-lg md:text-lg font-bold mb-2">
                                     cv

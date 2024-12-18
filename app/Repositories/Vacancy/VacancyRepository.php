@@ -29,7 +29,7 @@ class VacancyRepository implements VacancyInterface
         return $this->vacancyModel->create($data);
     }
 
-    public function getAllVacancies()
+    public function getAllVacancies($filters = [])
     {
 
         $vacancies = Vacancy::all()->map(function ($item) {

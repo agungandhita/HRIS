@@ -95,6 +95,7 @@
                         <form action="{{ route('create.pegawai') }}" method="POST">
                             @csrf
                             <div class="grid gap-6 mb-6 md:grid-cols-2">
+
                                 <div>
                                     <h2 class="block mb-2 text-lg font-semibold text-black">Nama</h2>
                                     <input type="text" name="nama"

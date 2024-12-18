@@ -119,7 +119,7 @@ class FrontController extends Controller
         $this->LamaranRepository->storeJobApplication($data['vacancy_id'], $lamaran->lamar_id);
 
         if ($lamaran) {
-            return redirect()->route('career.apply', ['id' => $id])->with('success', 'Berhasil mengirim lamaran!');
+            return redirect()->route('career.apply', ['id' => $id])->with('success', 'Berhasil mengirim lamaran, mohon tunggu informasi selanjutnya.');
         } else {
             return redirect()->route('career.apply', ['id' => $id])->with('error', 'Gagal mengirim lamaran.');
         }

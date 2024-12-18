@@ -14,22 +14,40 @@ class LamaranController extends Controller
 
     private $lamaranRepository;
 
-    public function __construct(Lamaran $lamaran) {
+    public function __construct(Lamaran $lamaran)
+    {
         $this->lamaranRepository = $lamaran;
     }
 
-    public function index() {
+    public function index(Request $request)
+    {
+        $data = JobApplication::with(['lamaran', 'vacancy'])
+            ->when($request->filled('nama_lengkap'), function ($query) use ($request) {
+                return $query->whereHas('lamaran', function ($q) use ($request) {
+                    $q->where('nama_lengkap', 'like', '%' . $request->nama_lengkap . '%');
+                });
+            })
+            ->when($request->filled('cabang'), function ($query) use ($request) {
+                return $query->whereHas('vacancy', function ($q) use ($request) {
+                    $q->where('cabang', $request->cabang);
+                });
+            })
+            ->when($request->filled('status'), function ($query) use ($request) {
+                return $query->where('status', $request->status);
+            })
+            ->get();
 
-        $lamaran = JobApplication::with('lamaran', 'vacancy')->get();
-        // dd($lamaran);
+            // dd($data);
+        $cabangList = Vacancy::distinct()->pluck('cabang');
 
         return view('admin.lamaran.index', [
-            'data' => $lamaran,
+            'data' => $data,
             'lamaran' => Lamaran::all(),
-            'vacancy' => Vacancy::all()
-
+            'vacancy' => Vacancy::all(),
+            'cabangList' => $cabangList,
         ]);
     }
+
 
     public function detail($id)
     {
@@ -42,7 +60,8 @@ class LamaranController extends Controller
         ]);
     }
 
-    public function update(UpdateJobApplicationRequest $request, $id) {
+    public function update(UpdateJobApplicationRequest $request, $id)
+    {
         $lamaran = $request->validated();
 
         $lamaran = JobApplication::findOrFail($id);
@@ -51,6 +70,5 @@ class LamaranController extends Controller
         $lamaran->save();
 
         return redirect()->route('lamaran.index', $id)->with('success', 'Status berhasil diperbarui.');
-
     }
 }

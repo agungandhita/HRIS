@@ -3,6 +3,7 @@
 namespace App\Repositories\Pegawai;
 use App\Models\Pegawai;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class PegawaiRepository implements PegawaiInterface {
 
@@ -14,7 +15,14 @@ class PegawaiRepository implements PegawaiInterface {
     }
 
     public function index() {
-        return $this->pegawaiModel->all();
+
+        $user = Auth::user();
+
+        if ($user->role !== 'manajer') {
+            return collect([]);
+        }
+
+        return Pegawai::where('user_id', $user->user_id)->get();
     }
 
     public function store(array $data)
@@ -23,6 +31,10 @@ class PegawaiRepository implements PegawaiInterface {
 
         $nip = $this->generateNip($data['tanggal_masuk']);
         $data['nip'] = $nip;
+
+        if (isset($data['password'])) {
+            $data['password'] = Hash::make($data['password']);
+        }
 
         return Pegawai::create($data);
     }
@@ -43,6 +55,7 @@ class PegawaiRepository implements PegawaiInterface {
 
         return $nip;
     }
+
 
 
 

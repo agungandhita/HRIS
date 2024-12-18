@@ -22,7 +22,7 @@ class UpdateJobApplicationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'status' => 'required|in:shortlisted,interview,rejected,on boarding',
+            'status' => 'required|in:shortlisted,interview,rejected,on-boarding',
         ];
     }
 }

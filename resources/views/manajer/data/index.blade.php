@@ -36,8 +36,10 @@
                         </tr>
                     </thead>
 
+                    @if (@isset($message))
+                        <p class="text-red-600">{{ $message }}</p>
+                    @else
                     @foreach ($pegawai as $item)
-
                     <tbody class="whitespace-nowrap">
                         <tr class="hover:bg-gray-50">
                             <td class="p-4 text-[15px] text-gray-800">
@@ -92,6 +94,8 @@
                         </tr>
                     </tbody>
                     @endforeach
+                    @endif
+
                 </table>
             </div>
         </div>

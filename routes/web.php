@@ -8,8 +8,10 @@ use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\data\LamaranController;
 use App\Http\Controllers\admin\manajer\ManajerController;
+use App\Http\Controllers\admin\stock\StockController;
 use App\Http\Controllers\admin\vacancy\VacancyController;
 use \App\Http\Controllers\manajer\data\PegawaiController as DataPegawaiController;
+use App\Http\Controllers\pegawai\absen\PegawaiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +53,6 @@ Route::middleware('admin')->group(function () {
     //lamaran
     Route::get('/lamaran', [LamaranController::class, 'index'])->name('lamaran.index');
     Route::get('/lamaran/detail/{id}', [LamaranController::class, 'detail'])->name('lamaran.detail');
-
     Route::get('/cv/view/{id}', function ($id) {
         $application = JobApplication::with('lamaran')->findOrFail($id);
         $cvPath = $application->lamaran->cv;
@@ -62,6 +63,9 @@ Route::middleware('admin')->group(function () {
         return abort(404, 'CV tidak ditemukan.');
     })->name('cv.view');
     Route::post('/lamaran/update/{id}', [LamaranController::class, 'update'])->name('lamaran.update');
+
+    //stock
+    Route::get('/monitor/stock', [StockController::class, 'index'])->name('stock.index');
 
     //Vacancy
     Route::get('/vacancy', [VacancyController::class, 'index'])->name('vacancy.index');
@@ -76,6 +80,12 @@ Route::middleware(['auth', 'manajer'])->group(function () {
     Route::get('/list/pegawai', [DataPegawaiController::class, 'index'])->name('data');
     Route::post('create/pegawai', [DataPegawaiController::class, 'store'])->name('create.pegawai');
     Route::get('/stock', [\App\Http\Controllers\manajer\stock\StockController::class, 'index'])->name('stock');
+});
+
+Route::middleware(['auth:pegawai'])->group(function () {
+    Route::get('/pegawai', [PegawaiController::class, 'index'])->name('pegawai.dashboard');
+    Route::post('/absen/masuk', [PegawaiController::class, 'absenMasuk'])->name('absen.masuk');
+    Route::post('/absen/keluar', [PegawaiController::class, 'absenPulang'])->name('absen.keluar');
 });
 
 

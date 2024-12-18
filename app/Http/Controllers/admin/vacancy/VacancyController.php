@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin\vacancy;
 
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreVacancyRequest;
@@ -21,9 +22,30 @@ class VacancyController extends Controller
         $this->vacancyRepository = $vacancyRepository;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $data = $this->vacancyRepository->getAllVacancies();
+        $data = Vacancy::query()
+        ->when($request->filled('title'), function ($query) use ($request) {
+            return $query->where('title', 'like', '%' . $request->title . '%');
+        })
+        ->when($request->filled('status'), function ($query) use ($request) {
+            return $query->where('status', $request->status);
+        })
+        ->get()
+        ->map(function ($vacancy) {
+            Carbon::setLocale('id');
+            $vacancy->closing_date_formatted = Carbon::parse($vacancy->closing_date)->translatedFormat('d F Y');
+
+            $vacancy->job_description = str_replace(['[', ']', '"'], '', $vacancy->job_description);
+            $vacancy->job_description = explode(',', $vacancy->job_description);
+            $vacancy->job_description = array_map('trim', $vacancy->job_description);
+
+            $vacancy->qualifications = str_replace(['[', ']', '"'], '', $vacancy->qualifications);
+            $vacancy->qualifications = explode(',', $vacancy->qualifications);
+            $vacancy->qualifications = array_map('trim', $vacancy->qualifications);
+
+            return $vacancy;
+        });
 
         return view('admin.loker.index', [
             'data' => $data,

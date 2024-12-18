@@ -40,38 +40,40 @@
                     </nav>
                     <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl capitalize">data loker</h1>
                 </div>
-                <div class="md:flex">
+                <div class="md:flex md:items-center md:justify-between">
                     <div class="items-center mb-3 sm:flex sm:divide-x sm:divide-gray-100 sm:mb-0">
-                        <form class="lg:pr-3" action="#" method="GET">
-                            <label for="users-search" class="sr-only">Search</label>
-                            <div class="flex flex-col sm:flex-row gap-2 md:gap-x-4">
-                                <div class="relative mt-1 lg:w-64 xl:w-96">
-                                    <input type="text" name="email" id="users-search"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5"
-                                        placeholder="Cari Loker">
-                                </div>
-                                <div class="flex gap-2">
-                                    <!-- Tombol Search -->
-                                    <button type="submit" class="border-2 bg-blue-600 hover:bg-blue-800 rounded-lg">
-                                        <h1 class="py-1 px-3 text-white font-semibold">
-                                            Search
-                                        </h1>
-                                    </button>
+                        <form method="GET" action="{{ route('vacancy.index') }}">
+                            <div class="md:flex gap-y-2 gap-x-4 mb-2">
+                                <!-- Input untuk filter title -->
+                                <input class="rounded-lg" type="text" name="title" placeholder="Cari Title" value="{{ request('title') }}">
 
-                                    <!-- Tombol Undo -->
-                                    <button type="submit" class="border-2 bg-red-600 hover:bg-red-800 rounded-lg">
-                                        <h1 class="py-1 px-3 text-white font-semibold">
-                                            Undo
-                                        </h1>
-                                    </button>
-                                </div>
+                                <!-- Dropdown untuk filter status -->
+                                <select class="rounded-lg w-full" name="status">
+                                    <option value="">-- Pilih Status --</option>
+                                    <option value="Open" {{ request('status') == 'Open' ? 'selected' : '' }}>Open</option>
+                                    <option value="Closed" {{ request('status') == 'Closed' ? 'selected' : '' }}>Closed</option>
+                                </select>
+                                <!-- Tombol Submit -->
+                                <button type="submit" class="rounded-lg bg-blue-600">
+                                    <p class="text-white p-2 text-lg font-semibold capitalize">
+                                        Search
+                                    </p>
+                                </button>
+
+                                <!-- Tombol Reset -->
+                                <a href="{{ route('vacancy.index') }}" class="bg-red-600 rounded-lg" >
+                                    <p class="text-white p-2 text-lg text-center font-semibold capitalize">
+                                        reset
+                                    </p>
+                            </a>
                             </div>
                         </form>
+
                     </div>
 
                     <div class="flex items-center ml-auto space-x-2 sm:space-x-3">
                         <a href="/vacancy/add"
-                            class="inline-flex items-center justify-center w-1/2 px-3 py-2 text-sm font-semibold text-center text-white bg-blue-600 border border-gray-300 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-primary-300 sm:w-auto ">
+                            class="inline-flex items-center justify-center w-1/2 p-2 font-semibold text-center text-white bg-blue-600 border border-gray-300 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-primary-300 sm:w-auto ">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5 mr-2 -ml-1"
                                 fill="currentColor">
                                 <path
@@ -80,20 +82,12 @@
                             </svg>
                             Tambah
                         </a>
-                        {{-- <a href="#"
-                            class="inline-flex items-center justify-center w-1/2 px-3 py-2 text-sm font-semibold text-center text-white bg-green-600 border border-gray-300 rounded-lg hover:bg-green-800 focus:ring-4 focus:ring-primary-300 sm:w-auto ">
-                            <svg class="w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                            Export
-                        </a> --}}
                     </div>
                 </div>
             </div>
+
         </div>
+
 
         <div class="p-4 bg-white rounded-2xl shadow-xl">
             <div class="font-[sans-serif] overflow-x-auto">

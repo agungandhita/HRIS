@@ -4,9 +4,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class isManajer
+class isPegawai
 {
     /**
      * Handle an incoming request.
@@ -15,10 +16,10 @@ class isManajer
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->check() && auth()->user()->role === 'manajer') {
+        if (Auth::guard('pegawai')->check()) {
             return $next($request);
         }
 
-        return redirect('/login')->with('error', 'Anda tidak memiliki akses ke halaman ini.');
+        return redirect('/login')->with('error', 'Akses hanya untuk pegawai.');
     }
 }

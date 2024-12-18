@@ -46,7 +46,7 @@ return [
 
     'pegawai' => [
         'driver' => 'session',
-        'provider' => 'pegawai',
+        'provider' => 'pegawais',
     ],
 ],
 
@@ -74,7 +74,7 @@ return [
         'model' => User::class,
     ],
 
-    'pegawai' => [
+    'pegawais' => [
         'driver' => 'eloquent',
         'model' => Pegawai::class,
     ],

@@ -50,16 +50,6 @@ class LokerRepository implements LokerInterface
         return $loker;
     }
 
-    public function getById($id)
-    {
-        $job = $this->lokerModel->where('vacancy_Id', $id)->firstOrFail();
-
-        // Proses job_description dan qualifications agar selalu dalam bentuk array
-        $job->job_description = $this->processListField($job->job_description);
-        $job->qualifications = $this->processListField($job->qualifications);
-
-        return $job;
-    }
 
     private function processListField($field)
     {
@@ -73,5 +63,16 @@ class LokerRepository implements LokerInterface
         $field = array_map('trim', $field);
 
         return $field;
+    }
+
+    public function getById($id)
+    {
+        $job = $this->lokerModel->where('vacancy_Id', $id)->firstOrFail();
+
+        // Proses job_description dan qualifications agar selalu dalam bentuk array
+        $job->job_description = $this->processListField($job->job_description);
+        $job->qualifications = $this->processListField($job->qualifications);
+
+        return $job;
     }
 }

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\manajer\data;
 
+use App\Models\Pegawai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StorePegawaiRequest;
 use App\Repositories\Pegawai\PegawaiRepository;
 
@@ -20,6 +22,7 @@ class PegawaiController extends Controller
 
     public function index() {
 
+    // Kirim data ke view
         return view ('manajer.data.index', [
             'pegawai' => $this->pegawaiRepository->index()
         ]);

@@ -22,6 +22,7 @@ class StorePegawaiRequest extends FormRequest
     public function rules(): array
     {
         return [
+            // 'user_id' => 'required|exists:users,id',
             'nama' => 'required|string|max:255',
             'tanggal_masuk' => 'required|date',
             'nip' => 'numeric|digits_between:1,19',

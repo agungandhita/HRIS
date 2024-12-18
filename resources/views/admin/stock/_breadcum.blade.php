@@ -21,7 +21,7 @@
                                 d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                                 clip-rule="evenodd"></path>
                         </svg>
-                        <a href="{{ route('lamaran.index') }}" class="ml-1 text-gray-700 hover:text-primary-600 md:ml-2">Pelamar</a>
+                        <a href="" class="ml-1 text-gray-700 hover:text-primary-600 md:ml-2">Pelamar</a>
                     </div>
                     <div class="flex items-center">
                         <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
@@ -39,13 +39,13 @@
         <div class="md:flex">
             <div class="items-center mb-3 sm:flex sm:divide-x sm:divide-gray-100 sm:mb-0">
 
-                <form action="{{ route('lamaran.index') }}" method="GET" class="mb-6">
+                <form action="" method="GET" class="mb-6">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div>
                             <label for="nama_lengkap" class="block text-sm font-medium text-gray-700">Nama Pelamar</label>
                             <input type="text" name="nama_lengkap" id="nama_lengkap"
                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200"
-                                   value="{{ request('nama_lengkap') }}"
+                                   value=""
                                    placeholder="Cari nama pelamar">
                         </div>
 
@@ -79,7 +79,7 @@
                         <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
                             Cari
                         </button>
-                        <a href="{{ route('lamaran.index') }}" class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300">
+                        <a href="" class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300">
                             Reset
                         </a>
                     </div>
