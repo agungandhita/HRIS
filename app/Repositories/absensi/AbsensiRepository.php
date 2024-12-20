@@ -25,8 +25,23 @@ class AbsensiRepository implements AbsensiInterface
     public function hasAbsensiToday(int $pegawaiId): bool
     {
         return Absensi::where('pegawai_id', $pegawaiId)
-            ->whereDate('tanggal_absensi', Carbon::today())
-            ->exists();
+        ->whereDate('tanggal_absensi', now()->toDateString())
+        ->whereNotNull('jam_masuk')
+        ->exists();
+    }
+
+    public function checkCutiLimit($pegawaiId)
+    {
+        $currentMonth = Carbon::now()->month;
+        $currentYear = Carbon::now()->year;
+
+        $cutiCount = Absensi::where('pegawai_id', $pegawaiId)
+            ->where('status', 'cuti')
+            ->whereYear('tanggal_absensi', $currentYear)
+            ->whereMonth('tanggal_absensi', $currentMonth)
+            ->count();
+
+        return $cutiCount < 2;
     }
 
     public function getTodayAbsensi(int $pegawaiId)
@@ -45,9 +60,36 @@ class AbsensiRepository implements AbsensiInterface
         return $absensi;
     }
 
-    public function dataAbsen(int $pegawaiId) {
+    public function dataAbsen(int $pegawaiId)
+    {
         return Absensi::where('pegawai_id', $pegawaiId)
-        ->orderBy('tanggal_absensi', 'desc')
-        ->get();
+            ->orderBy('tanggal_absensi', 'desc')
+            ->get();
+    }
+
+    public function detailAbsen($pegawaiId)
+    {
+        return Absensi::where('pegawai_id', $pegawaiId)
+                      ->whereDate('created_at', now())
+                      ->first();
+    }
+
+    public function checkUnclosedAbsensi()
+    {
+        return Absensi::whereNull('jam_pulang')
+            ->whereDate('tanggal_absensi', now()->toDateString())
+            ->get();
+    }
+
+    public function markUnclosedAbsensiAsAbsent()
+    {
+        $absensis = $this->checkUnclosedAbsensi();
+        $limitTime = Carbon::parse('02:00:00');
+
+        foreach ($absensis as $absensi) {
+            if (now()->greaterThanOrEqualTo($limitTime)) {
+                $absensi->update(['status' => 'absen']);
+            }
+        }
     }
 }

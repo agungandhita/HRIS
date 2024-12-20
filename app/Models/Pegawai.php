@@ -43,5 +43,8 @@ class Pegawai extends Authenticatable
         return $this->belongsTo(Absensi::class, 'pegawai_id', );
     }
 
+    public function gaji() {
+        return $this->hasMany(Gaji::class, 'pegawai_id', 'pegawai_id');
+    }
 
 }

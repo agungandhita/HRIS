@@ -53,7 +53,7 @@
                                 class="mx-auto px-3 py-1 w-max text-white rounded
                                 @if ($item->status === 'rejected') bg-red-500
                                 @elseif ($item->status === 'interview') bg-yellow-500
-                                @elseif ($item->status === 'on-boarding') bg-green-500
+                                @elseif ($item->status === 'on boarding') bg-green-500
                                 @else bg-gray-500 @endif">
                                 {{ $item->status }}
                             </div>
@@ -122,7 +122,7 @@
                                             Interview</option>
                                         <option value="rejected" {{ $item->status == 'rejected' ? 'selected' : '' }}>
                                             Rejected</option>
-                                        <option value="on-boarding" {{ $item->status == 'on-boarding' ? 'selected' : '' }}>
+                                        <option value="on boarding" {{ $item->status == 'on boarding' ? 'selected' : '' }}>
                                             On-boarding</option>
                                     </select>
                                 </div>

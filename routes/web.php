@@ -86,6 +86,9 @@ Route::middleware(['auth:pegawai'])->group(function () {
     Route::get('/pegawai', [PegawaiController::class, 'index'])->name('pegawai.dashboard');
     Route::post('/absen/masuk', [PegawaiController::class, 'absenMasuk'])->name('absen.masuk');
     Route::post('/absen/keluar', [PegawaiController::class, 'absenPulang'])->name('absen.keluar');
+    Route::post('/izin', [PegawaiController::class, 'izin'])->name('absen.izin');
+    Route::get('/check-absent', [PegawaiController::class, 'checkAbsent']);
+
 });
 
 

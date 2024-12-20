@@ -21,7 +21,7 @@
                                 d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                                 clip-rule="evenodd"></path>
                         </svg>
-                        <a href="" class="ml-1 text-gray-700 hover:text-primary-600 md:ml-2">Pelamar</a>
+                        <a href="" class="ml-1 text-gray-700 hover:text-primary-600 md:ml-2">Stock</a>
                     </div>
                     <div class="flex items-center">
                         <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
@@ -34,7 +34,7 @@
                     </div>
                 </ol>
             </nav>
-            <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl capitalize">data Pelamar</h1>
+            <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl capitalize">data bahan</h1>
         </div>
         <div class="md:flex">
             <div class="items-center mb-3 sm:flex sm:divide-x sm:divide-gray-100 sm:mb-0">
@@ -42,22 +42,22 @@
                 <form action="" method="GET" class="mb-6">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div>
-                            <label for="nama_lengkap" class="block text-sm font-medium text-gray-700">Nama Pelamar</label>
+                            <label for="nama_lengkap" class="block text-sm font-medium text-gray-700">Nama bahan</label>
                             <input type="text" name="nama_lengkap" id="nama_lengkap"
                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200"
                                    value=""
-                                   placeholder="Cari nama pelamar">
+                                   placeholder="Cari nama bahan">
                         </div>
 
                         <div>
-                            <label for="cabang" class="block text-sm font-medium text-gray-700">Cabang</label>
-                            <select name="cabang" id="cabang"
+                            <label for="Jenis" class="block text-sm font-medium text-gray-700">Jenis</label>
+                            <select name="Jenis" id="Jenis"
                                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200">
-                                <option value="">Semua Cabang</option>
-                                @foreach($cabangList ?? [] as $cabang)
-                                    <option value="{{ $cabang }}"
-                                            {{ request('cabang') == $cabang ? 'selected' : '' }}>
-                                        {{ $cabang }}
+                                <option value="">Semua Jenis</option>
+                                @foreach($JenisList ?? [] as $Jenis)
+                                    <option value="{{ $Jenis }}"
+                                            {{ request('Jenis') == $Jenis ? 'selected' : '' }}>
+                                        {{ $Jenis }}
                                     </option>
                                 @endforeach
                             </select>

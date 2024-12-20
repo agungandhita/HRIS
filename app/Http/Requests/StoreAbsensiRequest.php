@@ -26,16 +26,18 @@ class StoreAbsensiRequest extends FormRequest
         return [
             'pegawai_id' => 'nullable|exists:pegawais,pegawai_id',
             'tanggal_absensi' => 'nullable|date',
-            'jam_masuk' => 'nullable',
+            'keterangan' => 'nullable|string',
+            // 'foto_masuk' => 'required|string',
+            // 'foto_pulang' => 'required|string',
         ];
     }
 
     public function prepareForValidation()
-{
-    $this->merge([
-        'pegawai_id' => Auth::guard('pegawai')->user()->pegawai_id,
-        'tanggal_absensi' => Carbon::now()->toDateString(),
-        'jam_masuk' => Carbon::now()->toTimeString(),
-    ]);
-}
+    {
+        $this->merge([
+            'pegawai_id' => Auth::guard('pegawai')->user()->pegawai_id,
+            'tanggal_absensi' => Carbon::now()->toDateString(),
+            'jam_masuk' => Carbon::now()->toTimeString(),
+        ]);
+    }
 }

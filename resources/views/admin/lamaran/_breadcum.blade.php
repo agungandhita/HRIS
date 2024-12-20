@@ -68,6 +68,7 @@
                             <select name="status" id="status"
                                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200">
                                 <option value="">Semua Status</option>
+                                <option value="shortlisted" {{ request('status') == 'rejected' ? 'selected' : '' }}>Shorlisted</option>
                                 <option value="rejected" {{ request('status') == 'rejected' ? 'selected' : '' }}>Rejected</option>
                                 <option value="interview" {{ request('status') == 'interview' ? 'selected' : '' }}>Interview</option>
                                 <option value="on-boarding" {{ request('status') == 'on-boarding' ? 'selected' : '' }}>On Boarding</option>

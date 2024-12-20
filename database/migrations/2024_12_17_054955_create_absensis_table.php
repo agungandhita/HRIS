@@ -15,13 +15,17 @@ return new class extends Migration
             $table->id('absensi_id');
             $table->foreignId('pegawai_id')->constrained('pegawais', 'pegawai_id')->onDelete('cascade');
             $table->date('tanggal_absensi');
-            $table->time('jam_masuk');
+            $table->time('jam_masuk')->nullable();
             $table->time('jam_pulang')->nullable();
             $table->text('keterangan')->nullable();
-            // $table->text('status');
+            $table->enum('status', ['masuk', 'pulang', 'izin', 'cuti', 'absen'])->default('masuk');
+            $table->string('foto_masuk')->nullable();
+            $table->string('foto_pulang')->nullable();
             $table->timestamps();
         });
     }
+
+
 
     /**
      * Reverse the migrations.

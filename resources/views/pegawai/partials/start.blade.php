@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=()">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>Document</title>
     <script>
@@ -16,6 +17,8 @@
             document.documentElement.classList.remove('dark')
         }
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
 </head>
 
 <body class="bg-main">

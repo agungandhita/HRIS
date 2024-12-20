@@ -16,6 +16,9 @@ class Absensi extends Model
         'jam_masuk',
         'jam_pulang',
         'keterangan',
+        'status',
+        'foto_masuk',
+        'foto_pulang',
     ];
 
     public function pegawai()
