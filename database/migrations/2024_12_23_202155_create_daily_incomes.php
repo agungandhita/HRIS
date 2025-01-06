@@ -11,19 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('stocks', function (Blueprint $table) {
-            $table->id('stock_id');
-            $table->string('nama');
-            $table->enum('tipe', ['ikan', 'bahan pokok', 'bumbu']);
-            $table->enum('unit', ['kilo', 'kardus', 'karung']);
-            $table->integer('quantity');
-            $table->date('tanggal_masuk');
+        Schema::create('daily_incomes', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained('users', 'user_id');
+            $table->decimal('amount', 12, 2);
+            $table->date('income_date');
+            $table->text('description')->nullable();
+            $table->string('foto')->nullable(); // tambahan kolom untuk foto
             $table->integer('user_created')->nullable();
             $table->integer('user_updated')->nullable();
             $table->softDeletes();
             $table->integer('user_deleted')->nullable();
-            $table->integer('deleted')->nullable();
-            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -33,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('stocks');
+        Schema::dropIfExists('daily_incomes');
     }
 };

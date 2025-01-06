@@ -26,4 +26,8 @@ class Absensi extends Model
         return $this->belongsTo(Pegawai::class, 'pegawai_id');
     }
 
+    public function pengajuan() {
+        return $this->hasMany(Pengajuan::class, 'absensi_id');
+    }
+
 }

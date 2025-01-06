@@ -27,6 +27,9 @@ class StorePegawaiRequest extends FormRequest
             'tanggal_masuk' => 'required|date',
             'nip' => 'numeric|digits_between:1,19',
             'no_telepon' => 'required|string|max:14',
+            'nama_bank' => 'required|string',
+            'atas_nama' => 'required|string',
+            'no_rekening' => 'required|string',
             'email' => 'required|email|unique:pegawais,email',
             'password' => 'required|string|min:8',
         ];

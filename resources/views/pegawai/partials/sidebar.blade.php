@@ -65,8 +65,8 @@
                 </form>
                 <div class="max-h-[50px] h-full w-full border-t-[1px] border-main2 flex gap-x-3 pt-2">
                     <div class="my-auto">
-                        <h1 class="text-lg text-white font-bold">{{ Auth::guard('pegawai')->user()->nama }}</h1>
-                        <h1 class="text-lg text-white font-bold">{{ Auth::guard('pegawai')->user()->posisi }}</h1>
+                        <h1 class="text-lg text-white font-bold"></h1>
+                        <h1 class="text-lg text-white font-bold"></h1>
                     </div>
                 </div>
             </div>

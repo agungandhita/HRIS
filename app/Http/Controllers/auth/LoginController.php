@@ -19,7 +19,6 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         try {
-            // Validasi input
             $credentials = $request->validate([
                 'email' => ['required', 'email'],
                 'password' => ['required'],
@@ -54,16 +53,21 @@ class LoginController extends Controller
         try {
             if (Auth::guard('pegawai')->check()) {
                 Auth::guard('pegawai')->logout();
-            } else {
+            }
+
+            if (Auth::guard('web')->check()) {
                 Auth::guard('web')->logout();
             }
 
+            // Invalidasi semua sesi
             $request->session()->invalidate();
             $request->session()->regenerateToken();
 
             return redirect('/')->with('success', 'Berhasil logout');
         } catch (Exception $e) {
+            // Tangkap error jika ada
             return back()->with('toast_error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
     }
+
 }

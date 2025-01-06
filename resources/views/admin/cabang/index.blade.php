@@ -4,31 +4,28 @@
     <section>
         @include('admin.dashboard._header')
         <div class="mt-24">
-            @include('admin.manajer._breadcum')
+            @include('admin.cabang._breadcum')
         </div>
         <div class="font-sans overflow-x-auto rounded-xl ">
             <table class="min-w-full bg-white border-[4px] border-gray-100 mt-4">
                 <thead class="bg-gray-300 whitespace-nowrap rounded-xl">
                     <tr>
-                        <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                        <th class="p-4 text-left text-xs font-semibold text-gray-800 capitalize">
                             No
                         </th>
-                        <th class="p-4 text-left text-xs font-semibold text-gray-800">
-                            Nama
+                        <th class="p-4 text-left text-xs font-semibold text-gray-800 capitalize">
+                            Nama Manajer
                         </th>
-                        <th class="p-4 text-left text-xs font-semibold text-gray-800">
-                            Email
-                        </th>
-                        <th class="p-4 text-left text-xs font-semibold text-gray-800">
-                            cabang
-                        </th>
-                        <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                        <th class="p-4 text-left text-xs font-semibold text-gray-800 capitalize">
                             nomer hp
                         </th>
-                        <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                        <th class="p-4 text-left text-xs font-semibold text-gray-800 capitalize">
+                            cabang
+                        </th>
+                        <th class="p-4 text-left text-xs font-semibold text-gray-800 capitalize">
                             jumlah pegawai
                         </th>
-                        <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                        <th class="p-4 text-left text-xs font-semibold text-gray-800 capitalize">
                             Actions
                         </th>
                     </tr>
@@ -44,13 +41,10 @@
                                 {{ $user->nama }}
                             </td>
                             <td class="p-4 text-[15px] text-gray-800">
-                                {{ $user->email }}
+                                {{ $user->no_hp }}
                             </td>
                             <td class="p-4 text-[15px] text-gray-800">
                                 {{ $user->kota }}, {{ $user->provinsi }}
-                            </td>
-                            <td class="p-4 text-[15px] text-gray-800">
-                                {{ $user->no_hp }}
                             </td>
                             <td class="p-4 text-[15px] text-gray-800">
                                 {{ $user->pegawai_count ?? 0 }} orang
@@ -78,7 +72,7 @@
                                     </a>
 
 
-                                    <form action="/delete/{{ $user->user_id }}" method="POST">
+                                    <form action="/cabang/delete/{{ $user->user_id }}" method="POST">
                                         @csrf
                                         <button class="mr-4 mt-1" title="Delete" type="button" id="deleteButton" data-modal-target="deleteModal" data-modal-toggle="deleteModal">
                                             <svg xmlns="http://www.w3.org/2000/svg"

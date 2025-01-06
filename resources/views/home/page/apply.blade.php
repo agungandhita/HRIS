@@ -285,10 +285,13 @@
 
                 {{-- pengalaman kerja  --}}
 
-                <div class="flex overflow-hidden border-[1px] rounded-t-xl min-h-[56px] bg-gray-200 px-4 py-2">
+                <div class=" overflow-hidden border-[1px] rounded-t-xl min-h-[56px] bg-gray-200 px-4 py-2">
                     <h1 class="text-lg md:text-2xl font-semibold font-[sans-serif] capitalize text-slate-800 pt-1">
                         Pengalaman Kerja
                     </h1>
+                    <span class="font-semibold font-[sans-serif] capitalize text-red-500 pt-2">
+                        kosongkan Jika Tidak Punya Pengalaman Kerja
+                    </span>
                 </div>
 
                 <div class="bg-white justify-between mb-4 border-[1px] rounded-b-xl shadow-best">

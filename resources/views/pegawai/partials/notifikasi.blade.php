@@ -1,34 +1,35 @@
+{{-- <div class="container mx-auto px-4 py-6">
+    <div class="flex justify-between items-center mb-6">
+        <h1 class="text-2xl font-bold">Status Pengajuan</h1>
+    </div>
 
-
-<!-- Dropdown menu -->
-<div class="z-50 hidden max-w-lg w-full h-[620px] my-4 text-base overflow-hidden list-none bg-white rounded shadow-lg relative"
-id="notification-dropdown">
-<div class="block px-4 py-2 text-base font-medium text-center text-gray-700 bg-gray-50">
-    Notifications
-</div>
-<div class="overflow-y-auto scrollbar h-[620px]">
-    @for ($i = 1; $i <= 20; $i++)
-        <form action="" method="POST">
-            @csrf
-            <button class="w-full text-left flex px-4 py-3 bg-main border-b-[1px] border-main4">
-                <div class="w-full pl-3">
-                    <div class="text-gray-500 font-normal text-sm mb-1.5 dark:text-gray-400">
-                        Norifikasi Baru
-                        <div class="text-xs font-medium text-primary-700 dark:text-primary-400">
-                            21 September 2023
-                        </div>
-                    </div>
-            </button>
-        </form>
-    @endfor
-
-</div>
-<div
-    class="fixed bottom-0 w-full block px-4 py-2 text-base font-medium text-center text-gray-700 bg-gray-50">
-    <form action="" method="POST" id="read_all_admin">
-        @csrf
-        <button type="submit" class="capitalize">mark as read all</button>
-    </form>
-</div>
-</div>
-<!-- Dropdown menu -->
+    <div class="space-y-4">
+        @forelse(auth()->user()->notifications as $notification)
+        <div class="border rounded p-4 {{ $notification->read_at ? 'bg-gray-50' : 'bg-white border-blue-500' }}">
+            <div class="flex justify-between">
+                <div class="flex-1">
+                    <p class="font-semibold">{{ $notification->data['pesan'] }}</p>
+                    @if($notification->data['detail']['catatan'] != '-')
+                    <p class="mt-2 text-sm">
+                        <strong>Catatan:</strong> {{ $notification->data['detail']['catatan'] }}
+                    </p>
+                    @endif
+                    <p class="text-sm text-gray-500 mt-2">
+                        {{ \Carbon\Carbon::parse($notification->data['tanggal'])->diffForHumans() }}
+                    </p>
+                </div>
+                @if(!$notification->read_at)
+                <button onclick="markAsRead('{{ $notification->id }}')"
+                        class="text-blue-500 hover:text-blue-700">
+                    Tandai Dibaca
+                </button>
+                @endif
+            </div>
+        </div>
+        @empty
+        <div class="text-center py-8 text-gray-500">
+            Tidak ada notifikasi
+        </div>
+        @endforelse
+    </div>
+</div> --}}

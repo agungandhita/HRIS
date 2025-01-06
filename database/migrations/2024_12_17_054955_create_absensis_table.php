@@ -18,7 +18,7 @@ return new class extends Migration
             $table->time('jam_masuk')->nullable();
             $table->time('jam_pulang')->nullable();
             $table->text('keterangan')->nullable();
-            $table->enum('status', ['masuk', 'pulang', 'izin', 'cuti', 'absen'])->default('masuk');
+            $table->enum('status', ['masuk', 'izin', 'cuti', 'absen'])->default('masuk');
             $table->string('foto_masuk')->nullable();
             $table->string('foto_pulang')->nullable();
             $table->timestamps();

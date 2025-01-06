@@ -20,6 +20,10 @@ return new class extends Migration
             $table->string('posisi');
             $table->date('tanggal_masuk');
             $table->string('no_telepon', 14);
+            $table->string('nama_bank');
+            $table->string('no_rekening');
+            $table->string('atas_nama');
+            $table->string('gaji_pokok');
             $table->string('email')->unique();
             $table->string('password');
             $table->integer('user_created')->nullable();

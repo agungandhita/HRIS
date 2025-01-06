@@ -12,12 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('penggajians', function (Blueprint $table) {
-            $table->id('gaji_id');
-            $table->foreignId('pegawai_id')->constrained('pegawais', 'pegawai_id')->onDelete('cascade');
-            $table->date('tanggal_gaji');
-            $table->integer('total_hari_kerja')->default(0);
-            $table->integer('potongan_terlambat')->default(0);
-            $table->integer('total_gaji')->default(0);
+            $table->id('penggajian_id');
+            $table->foreignId('pegawai_id')->constrained('pegawais', 'pegawai_id');
+            $table->integer('jumlah_masuk');
+            $table->integer('jumlah_terlambat');
+            $table->decimal('total_gaji', 12, 2);
+            $table->decimal('total_potongan', 12, 2);
+            $table->decimal('gaji_bersih', 12, 2);
+            $table->string('bulan');
+            $table->integer('tahun');
+            $table->date('tanggal_penggajian');
+            $table->text('keterangan')->nullable();
+            $table->enum('status', ['belum_di_gaji', 'sudah_di_gaji'])->default('belum_di_gaji');
             $table->timestamps();
         });
     }

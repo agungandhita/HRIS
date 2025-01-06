@@ -1,6 +1,6 @@
 @include('pegawai.partials.start')
 
-
+    @include('pegawai.partials.notifikasi')
     @include('pegawai.partials.sidebar')
 
     <div id="main-content"

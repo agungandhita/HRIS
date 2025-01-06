@@ -11,18 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('stock_history', function (Blueprint $table) {
-            $table->id('history_id');
-            $table->foreignId('stock_id')->references('stock_id')->on('stocks')->onDelete('cascade');
-            $table->integer('quantity_change');
-            $table->string('keterangan');
-            $table->date('tanggal_perubahan');
+        Schema::create('monthly_incomes', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained('users', 'user_id');
+            $table->decimal('total_amount', 12, 2);
+            $table->integer('month');
+            $table->integer('year');
             $table->integer('user_created')->nullable();
             $table->integer('user_updated')->nullable();
             $table->softDeletes();
             $table->integer('user_deleted')->nullable();
-            $table->integer('deleted')->nullable();
-            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('stock_history');
+        Schema::dropIfExists('monthly_incomes');
     }
 };

@@ -89,13 +89,11 @@
                             </svg>
                         </button>
                     </div>
-
                     <div class="p-4 overflow-y-auto">
-
                         <form action="{{ route('create.pegawai') }}" method="POST">
                             @csrf
-                            <div class="grid gap-6 mb-6 md:grid-cols-2">
-
+                            <!-- Input Nama dan No HP -->
+                            <div class="grid gap-6 mb-2 md:grid-cols-2">
                                 <div>
                                     <h2 class="block mb-2 text-lg font-semibold text-black">Nama</h2>
                                     <input type="text" name="nama"
@@ -107,7 +105,7 @@
                                 </div>
 
                                 <div>
-                                    <h2 for="no_hp" class="block mb-2 text-lg font-semibold text-black">No Hp</h2>
+                                    <h2 for="no_hp" class="block mb-2 text-lg font-semibold text-black">No HP</h2>
                                     <input type="text" name="no_telepon" inputmode="numeric" pattern="[0-9]*"
                                         placeholder="Masukkan Nomor Telepon"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -118,9 +116,43 @@
                                 </div>
                             </div>
 
+                            <div class="flex gap-x-3">
+
+                                <div class="mb-4">
+                                    <h2 for="posisi" class="block text-lg font-semibold text-black">Posisi</h2>
+                                    <input name="posisi" placeholder="Ex: waiters"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        value="{{ old('posisi') }}" required />
+                                    @error('posisi')
+                                        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-4">
+                                    <h2 for="posisi" class="block text-lg font-semibold text-black">Gaji Pokok</h2>
+                                    <input name="gaji_pokok" placeholder="Rp: "
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        value="{{ old('gaji_pokok') }}" required />
+                                    @error('gaji_pokok')
+                                        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
                             <div class="mb-4">
-                                <h2 for="tanggal_masuk" class="block text-lg font-semibold text-black">Tanggal Masuk</h2>
-                                <input type="date" name="tanggal_masuk" placeholder="First Name" required
+                                <h2 class="block text-lg font-semibold text-black">Jenis Kelamin</h2>
+                                <select name="jenis_kelamin" id="jenis_kelamin"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                    <option disabled selected>Jenis kelamin</option>
+                                    <option value="laki-laki">Laki-Laki</option>
+                                    <option value="perempuan">Perempuan</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-4">
+                                <h2 for="tanggal_masuk" class="block text-lg font-semibold text-black">Tanggal Masuk
+                                </h2>
+                                <input type="date" name="tanggal_masuk"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                     value="{{ old('tanggal_masuk') }}" required />
                                 @error('tanggal_masuk')
@@ -128,56 +160,73 @@
                                 @enderror
                             </div>
 
-                            <div class="mb-4">
-                                <h2 for="posisi" class="block text-lg font-semibold text-black">posisi</h2>
-                                <input name="posisi" placeholder="Ex: waiters"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                    value="{{ old('posisi') }}" required>
-                                @error('posisi')
-                                    <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
-                                @enderror
-                            </div>
 
-                            <div class="mb-6">
-                                <h2 class="block text-lg font-semibold text-black">Jenis Kelamin</h2>
-                                <div class="relative flex items-center">
-                                    <select name="jenis_kelamin" id="jenis_kelamin"
-                                        class="select select-ghostpx-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5capitalize">
-                                        <option disabled selected class="text-sm">Jenis kelamin</option>
-                                        <option value="laki-laki" class="text-sm">Laki-Laki</option>
-                                        <option value="perempuan" class="text-sm">perempuan</option>
-                                    </select>
+                            <!-- Input Nama Bank dan Nomor Rekening -->
+                            <div class="flex gap-x-3">
+                                <div class="mb-4">
+                                    <h2 for="nama_bank" class="block text-lg font-semibold text-black">Nama Bank</h2>
+                                    <input name="nama_bank" placeholder="Nama Bank"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        value="{{ old('nama_bank') }}" required />
+                                    @error('nama_bank')
+                                        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-4">
+                                    <h2 for="no_rekening" class="block text-lg font-semibold text-black">Nomor
+                                        Rekening</h2>
+                                    <input name="no_rekening" placeholder="Nomor Rekening"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        value="{{ old('no_rekening') }}" required />
+                                    @error('no_rekening')
+                                        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 
-                            <div class="mb-6">
-                                <h2 class="block mb-2 text-lg font-semibold text-black">Email</h2>
-                                <input type="email" name="email"
+                            <!-- Input Atas Nama -->
+                            <div class="mb-4">
+                                <h2 for="atas_nama" class="block text-lg font-semibold text-black">Atas Nama</h2>
+                                <input name="atas_nama" placeholder="Atas Nama"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                    placeholder="john.doe@company.com" value="{{ old('email') }}" required />
-                                @error('email')
+                                    value="{{ old('atas_nama') }}" required />
+                                @error('atas_nama')
                                     <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
                                 @enderror
                             </div>
 
-                            <div class="mb-6">
-                                <h2 class="block mb-2 text-lg font-semibold text-black">Password</h2>
-                                <input type="password" name="password"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                    placeholder="•••••••••" required />
-                                @error('password')
-                                    <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
-                                @enderror
+                            <!-- Input Email dan Password -->
+                            <div class="flex gap-x-3">
+                                <div class="mb-6">
+                                    <h2 class="block mb-2 text-lg font-semibold text-black">Email</h2>
+                                    <input type="email" name="email"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        placeholder="john.doe@company.com" value="{{ old('email') }}" required />
+                                    @error('email')
+                                        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-6">
+                                    <h2 class="block mb-2 text-lg font-semibold text-black">Password</h2>
+                                    <input type="password" name="password"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        placeholder="•••••••••" required />
+                                    @error('password')
+                                        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                                    @enderror
+                                </div>
                             </div>
 
+                            <!-- Button -->
                             <div class="flex justify-end items-center gap-x-2 py-3 px-4 border-t">
                                 <button type="button"
-                                    class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
-                                    data-hs-overlay="#hs-scale-animation-modal">
+                                    class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50">
                                     Close
                                 </button>
                                 <button type="submit"
-                                    class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                                    class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700">
                                     Save changes
                                 </button>
                             </div>

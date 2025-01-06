@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class Pegawai extends Authenticatable
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory,SoftDeletes, Notifiable;
     protected $table = "pegawais";
     protected $primaryKey = "pegawai_id";
 
@@ -32,6 +33,10 @@ class Pegawai extends Authenticatable
         'email',
         'password',
         'user_id',
+        'nama_bank',
+        'no_rekening',
+        'atas_nama',
+        'gaji_pokok'
     ];
 
 
@@ -46,5 +51,11 @@ class Pegawai extends Authenticatable
     public function gaji() {
         return $this->hasMany(Gaji::class, 'pegawai_id', 'pegawai_id');
     }
+
+    public function pengajuan() {
+        return $this->hasMany(Pengajuan::class, 'pegawai_id', 'pegawai_id');
+    }
+
+
 
 }

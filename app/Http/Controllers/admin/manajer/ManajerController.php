@@ -27,7 +27,7 @@ class ManajerController extends Controller
             return $user;
         });
 
-        return view('admin.manajer.index', [
+        return view('admin.cabang.index', [
             'data' => $head,
             'pegawai' => $manajer,
             'title' => 'data manajer'
@@ -41,9 +41,9 @@ class ManajerController extends Controller
 
             $this->manajerRepository->update($id, $data);
 
-            return redirect()->route('/manajer/data')->with('success', 'berhasil mengupdate data manajer');
+            return redirect()->route('/cabang/data')->with('success', 'berhasil mengupdate data cabang');
         } catch (Exception $e) {
-            return redirect()->route('/manajer/data')->with('eror', 'terjadi kesalahan');
+            return redirect()->route('/cabang/data')->with('eror', 'terjadi kesalahan');
         }
     }
 
@@ -54,9 +54,9 @@ class ManajerController extends Controller
             $data['password'] = bcrypt($data['password']);
             $this->manajerRepository->store($data);
 
-            return redirect()->route('manajer.index')->with('success', 'Berhasil menambah manajer');
+            return redirect()->route('cabang.index')->with('success', 'Berhasil menambah cabang');
         } catch (Exception $e) {
-            return redirect()->back()->with('error', 'Gagal menambah manajer: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Gagal menambah cabang: ' . $e->getMessage());
         }
     }
 
@@ -65,6 +65,7 @@ class ManajerController extends Controller
 
     public function destroy(User $user, $id)
     {
+        // dd($id);
         $user = User::where('user_id', $id)->update([
             'user_deleted' => auth()->user()->user_id,
             'deleted' => true
@@ -74,7 +75,7 @@ class ManajerController extends Controller
             User::find($id)->delete();
         }
 
-        return redirect('/manajer/data')->with('toast_success', 'sukses menghapus data');
+        return redirect()->route('cabang.index')->with('toast_success', 'sukses menghapus data');
     }
 
     public function look()
@@ -84,6 +85,6 @@ class ManajerController extends Controller
 
         // dd($pegawai);
 
-        return view('admin.manajer.read');
+        return view('admin.cabang.read');
     }
 }

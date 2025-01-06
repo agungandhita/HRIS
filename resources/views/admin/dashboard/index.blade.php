@@ -13,12 +13,12 @@
                     </p>
                     <img src="{{ asset('img/hello.png') }}" class="object-contain w-16 justify-end" alt="">
                 </div>
-    
+
                 <p class="text-3xl font-serif pb-4 mx-4 uppercase text-black">
-                    selamat datang di dashboard admin 
+                    selamat datang di dashboard admin
                 </p>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
                 <div class="bg-white border-[1px] border-main3 rounded-md h-36">
                     <div class="flex justify-between p-3">
                         <div class="pt-4">
@@ -35,9 +35,7 @@
                     </div>
                 </div>
 
-                <div class="bg-white border-[1px] border-main3 rounded-md h-36">
 
-                </div>
 
                 <div class="bg-white border-[1px] border-main3 rounded-md h-36">
 

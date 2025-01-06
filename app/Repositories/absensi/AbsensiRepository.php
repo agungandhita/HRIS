@@ -84,12 +84,17 @@ class AbsensiRepository implements AbsensiInterface
     public function markUnclosedAbsensiAsAbsent()
     {
         $absensis = $this->checkUnclosedAbsensi();
-        $limitTime = Carbon::parse('02:00:00');
+        $limitTime = Carbon::parse('01:00:00');
 
         foreach ($absensis as $absensi) {
             if (now()->greaterThanOrEqualTo($limitTime)) {
                 $absensi->update(['status' => 'absen']);
             }
         }
+    }
+
+    public function create(array $data)
+    {
+        return Absensi::create($data);
     }
 }

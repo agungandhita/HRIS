@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // $pegawai = Pegawai::factory(20)->make();
-        $users = User::factory(2)->create(['role' => 'manajer']);
+        // $users = User::factory(2)->create(['role' => 'manajer']);
 
 
         // foreach ($pegawai as $index => $p) {

@@ -82,7 +82,7 @@ class PegawaiController extends Controller
             return redirect()->back()->with('error', 'Anda belum melakukan absensi masuk hari ini.');
         }
 
-        if ($currentTime->format('H:i') < '02:00') {
+        if ($currentTime->format('H:i') < '08:00') {
             return redirect()->back()->with('error', 'Tidak bisa absen pulang sebelum jam 14:00.');
         }
 
@@ -93,7 +93,7 @@ class PegawaiController extends Controller
             'pegawai_id' => $pegawaiId,
             'tanggal_absensi' => $currentTime->toDateString(),
             'jam_pulang' => $currentTime->format('H:i'),
-            'status' => 'pulang',
+            'status' => 'masuk',
             'foto_pulang' => $fotoPath,
         ];
 
@@ -131,27 +131,28 @@ class PegawaiController extends Controller
         return redirect()->back()->with('success', ucfirst($status) . ' berhasil dicatat.');
     }
 
+
+
     private function saveBase64Image($base64String, $directory)
-{
-    if (!$base64String) {
-        return null;
+    {
+        if (!$base64String) {
+            return null;
+        }
+
+        // Decode base64 string
+        $imageData = explode(',', $base64String);
+        $decodedImage = base64_decode(end($imageData));
+
+        // Generate unique filename
+        $fileName = $directory . '/' . uniqid() . '.png';
+
+        // Simpan file ke folder storage/app/public/$directory
+        if (!Storage::disk('public')->put($fileName, $decodedImage)) {
+            return null;
+        }
+
+
+        // Return file path untuk disimpan di database
+        return $fileName;
     }
-
-    // Decode base64 string
-    $imageData = explode(',', $base64String);
-    $decodedImage = base64_decode(end($imageData));
-
-    // Generate unique filename
-    $fileName = $directory . '/' . uniqid() . '.png';
-
-    // Simpan file ke folder storage/app/public/$directory
-    if (!Storage::disk('public')->put($fileName, $decodedImage)) {
-        return null;
-    }
-
-
-    // Return file path untuk disimpan di database
-    return $fileName;
-}
-
 }

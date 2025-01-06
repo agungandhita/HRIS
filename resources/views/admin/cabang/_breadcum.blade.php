@@ -20,7 +20,7 @@
                                 d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                                 clip-rule="evenodd"></path>
                         </svg>
-                        <a href="{{ route('manajer.index') }}" class="ml-1 text-gray-700 hover:text-primary-600 md:ml-2">Manajer</a>
+                        <a href="{{ route('cabang.index') }}" class="ml-1 text-gray-700 hover:text-primary-600 md:ml-2">Cabang</a>
                     </div>
                     <div class="flex items-center">
                         <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
@@ -33,7 +33,7 @@
                     </div>
                 </ol>
             </nav>
-            <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl capitalize">data manajer</h1>
+            <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl capitalize">data cabang</h1>
         </div>
         <div class="sm:flex">
             <div class="items-center hidden mb-3 sm:flex sm:divide-x sm:divide-gray-100 sm:mb-0 ">
@@ -93,7 +93,7 @@
             </div>
             <div class="p-4 overflow-y-auto">
 
-                <form action="/manajer/create" method="post">
+                <form action="{{ route('tambah.cabang') }}" method="post">
                     @csrf
                     <div class="grid gap-6 mb-6 md:grid-cols-2">
                         <div>
