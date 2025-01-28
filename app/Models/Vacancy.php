@@ -17,15 +17,10 @@ class Vacancy extends Model
         'vacancy_id'
     ];
 
-    // protected static function boot()
-    // {
-    //     parent::boot();
+    // protected $fillable = [
+    //   'title',
 
-    //     // Membuat slug otomatis
-    //     static::creating(function ($vacancy) {
-    //         $vacancy->slug = Str::slug($vacancy->title);
-    //     });
-    // }
+    // ];
 
 
     public function lamaran() {

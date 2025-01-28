@@ -37,13 +37,12 @@
                                 Tipe Kerjaan
                             </h1>
                             <div class="relative flex items-center">
-                                <select name="job_type"
+                                <select name="type_job"
                                     class="select select-ghost px-4 bg-[#ffffff] focus:bg-transparent text-black w-full text-lg border outline-[#007bff] rounded transition-all capitalize">
                                     <option disabled selected class="text-base">Pilih Tipe Kerja</option>
-                                    <option value="penuh waktu" class="text-base">Penuh Waktu</option>
+                                    <option value="full" class="text-base">Penuh Waktu</option>
                                     <option value="shift" class="text-base">Shift</option>
                                 </select>
-
                             </div>
                         </div>
 

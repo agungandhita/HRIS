@@ -19,15 +19,13 @@ class PengajuanRepository implements PengajuanInterface
         try {
             DB::beginTransaction();
 
-            // Buat absensi baru ketika disetujui
             $absensi = Absensi::create([
                 'pegawai_id' => $pengajuan->pegawai_id,
                 'tanggal_absensi' => $pengajuan->tanggal_pengajuan,
-                'status' => $pengajuan->status, // izin atau cuti
+                'status' => $pengajuan->status, 
                 'keterangan' => $pengajuan->alasan
             ]);
 
-            // Update pengajuan dengan absensi_id dan status
             $pengajuan->update([
                 'status_pengajuan' => 'disetujui',
                 'absensi_id' => $absensi->absensi_id

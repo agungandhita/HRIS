@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id('user_id');
             $table->text('nama');
             $table->string('email')->unique();
-            $table->string('provinsi');
-            $table->string('kota');
-            $table->string('no_hp');
-            $table->enum('role', ['manajer', 'admin']);
+            $table->string('provinsi')->nullable();
+            $table->string('kota')->nullable();
+            $table->string('no_hp')->nullable();
+            $table->enum('role', ['manajer', 'admin'])->default('manajer');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->integer('user_created')->nullable();

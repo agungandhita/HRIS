@@ -67,7 +67,7 @@ class LokerRepository implements LokerInterface
 
     public function getById($id)
     {
-        $job = $this->lokerModel->where('vacancy_Id', $id)->firstOrFail();
+        $job = $this->lokerModel->where('vacancy_id', $id)->firstOrFail();
 
         // Proses job_description dan qualifications agar selalu dalam bentuk array
         $job->job_description = $this->processListField($job->job_description);
